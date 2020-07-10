@@ -6,11 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/JouerAuCon/0-Gameplay.unity
-    guid: 35cdef91bfdf8764d863dc4a74dcab50
+    path: Assets/Scenes/MasterScene.unity
+    guid: 39e4f78326bf4f44d833fd2995f48ee5
   - enabled: 1
     path: Assets/Scenes/0-Gameplay.unity
     guid: 0421630ed87b4e848acbc4713237b8ed
+  - enabled: 1
+    path: Assets/Scenes/1-FirstRoom.unity
+    guid: 4fa0d86d0d4765d468dc048a33b4c031
+  - enabled: 1
+    path: Assets/Scenes/2-TransitionCorridor.unity
+    guid: 5a2de916d1b5a264698dbbbabd3d2620
   - enabled: 1
     path: Assets/Scenes/3-BossRoom.unity
     guid: 034300a56fb3784438f2b5b04bde96b6

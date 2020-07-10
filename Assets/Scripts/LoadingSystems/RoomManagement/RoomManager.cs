@@ -22,12 +22,11 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
         IEnumerator Start()
         {
             _sceneLoadingSystem.Initialize();
-            var tracker = _sceneLoadingSystem.Load(initialRoom);
+            yield return WaitForSceneLoad(initialRoom);
 
-            var wait = new WaitForEndOfFrame();
-            while (!tracker.LoadingIsDone)
+            if (loadGameplay)
             {
-                yield return wait;
+                yield return WaitForSceneLoad(SceneId.GameplayScene);
             }
 
             //GameObject.FindObjectsOfType<RoomDoor>();
@@ -39,6 +38,16 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
             if (Input.GetKeyDown(KeyCode.L))
             {
                 _sceneLoadingSystem.Load(SceneId.CorridorRoomScene);
+            }
+        }
+
+        private IEnumerator WaitForSceneLoad(SceneId sceneId)
+        {
+            var tracker = _sceneLoadingSystem.Load(sceneId);
+            var wait = new WaitForEndOfFrame();
+            while (!tracker.LoadingIsDone)
+            {
+                yield return wait;
             }
         }
     }

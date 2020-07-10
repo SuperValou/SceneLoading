@@ -48,10 +48,17 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
 
             if (_loadedScenes.Contains(sceneInfo))
             {
+                Debug.Log($"{sceneInfo} is already loaded.");
                 return new AlreadyDoneTracker();
             }
             
-            var asyncOperation = SceneManager.LoadSceneAsync(sceneInfo.Name, LoadSceneMode.Single);
+            var asyncOperation = SceneManager.LoadSceneAsync(sceneInfo.Name, LoadSceneMode.Additive);
+            if (asyncOperation == null)
+            {
+                throw new InvalidOperationException($"Scene '{sceneInfo.Name}' doesn't have a Build Index. " +
+                                                    $"Add it to the Build Settings.");
+            }
+
             _loadedScenes.Add(sceneInfo);
             var loadingTracker = new LoadingTracker(asyncOperation);
             return loadingTracker;

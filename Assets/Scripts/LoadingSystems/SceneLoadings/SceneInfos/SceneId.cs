@@ -11,10 +11,10 @@
         [SceneInfo("1-FirstRoom", SceneType.Room)]
         WakeUpRoomScene,
 
-        [SceneInfo("lol", SceneType.Room)]
+        [SceneInfo("2-TransitionCorridor", SceneType.Room)]
         CorridorRoomScene,
 
-        [SceneInfo("lul", SceneType.Room)]
+        [SceneInfo("3-BossRoom", SceneType.Room)]
         BossRoomScene
     }
 }
