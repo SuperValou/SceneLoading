@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.LoadingSystems.Systems;
-using Assets.Scripts.LoadingSystems.Systems.SceneInfos;
+﻿using Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos;
 using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.RoomManagement

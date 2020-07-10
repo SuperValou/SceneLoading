@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.LoadingSystems.Systems.SceneInfos;
+﻿using Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos;
 using Assets.Scripts.LoadingSystems.Trackings;
 
-namespace Assets.Scripts.LoadingSystems.Systems
+namespace Assets.Scripts.LoadingSystems.SceneLoadings
 {
     public interface ISceneLoadingSystem
     {

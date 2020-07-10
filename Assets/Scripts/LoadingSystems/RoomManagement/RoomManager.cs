@@ -1,10 +1,7 @@
 ﻿using System.Collections;
-using Assets.Scripts.LoadingSystems.Systems;
-using Assets.Scripts.LoadingSystems.Systems.SceneInfos;
-using Assets.Scripts.LoadingSystems.Trackings;
-using UnityEditor;
+using Assets.Scripts.LoadingSystems.SceneLoadings;
+using Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.LoadingSystems.RoomManagement
 {

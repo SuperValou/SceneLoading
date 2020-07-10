@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.LoadingSystems.Systems.SceneInfos
+﻿namespace Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos
 {
     public enum SceneType
     {

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Assets.Scripts.LoadingSystems.Systems.SceneInfos;
+using Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos;
 using Assets.Scripts.LoadingSystems.Trackings;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.LoadingSystems.Systems
+namespace Assets.Scripts.LoadingSystems.SceneLoadings
 {
     public class SceneLoadingSystem : ISceneLoadingSystem
     {

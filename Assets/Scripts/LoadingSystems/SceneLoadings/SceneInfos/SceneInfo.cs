@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using Assets.Scripts.Utilities;
 
-namespace Assets.Scripts.LoadingSystems.Systems.SceneInfos
+namespace Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos
 {
     public class SceneInfo
     {
