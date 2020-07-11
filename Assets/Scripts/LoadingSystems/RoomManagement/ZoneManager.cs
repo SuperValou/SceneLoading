@@ -1,11 +1,12 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Assets.Scripts.LoadingSystems.SceneLoadings;
 using Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos;
 using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.RoomManagement
 {
-    public class RoomManager : MonoBehaviour
+    public class ZoneManager : MonoBehaviour
     {
         // -- Editor
 
@@ -18,30 +19,33 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
         // -- Class
 
         private readonly ISceneLoadingSystem _sceneLoadingSystem = new SceneLoadingSystem();
-        
+
+        private readonly ICollection<IDoor> _doors = new HashSet<IDoor>();
+
         IEnumerator Start()
         {
             _sceneLoadingSystem.Initialize();
-            yield return WaitForSceneLoad(initialRoom);
+            yield return LoadSceneAsync(initialRoom);
 
             if (loadGameplay)
             {
-                yield return WaitForSceneLoad(SceneId.GameplayScene);
+                yield return LoadSceneAsync(SceneId.GameplayScene);
             }
-
-            //GameObject.FindObjectsOfType<RoomDoor>();
         }
-
-        // Update is called once per frame
+        
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.L))
+            foreach (var door in _doors)
             {
-                _sceneLoadingSystem.Load(SceneId.CorridorRoomScene);
+                if (door.State == DoorState.RequestingOpening)
+                {
+                    var tracker = _sceneLoadingSystem.Load(door.RoomOnTheOtherSide);
+                    door.Open(tracker);
+                }
             }
         }
 
-        private IEnumerator WaitForSceneLoad(SceneId sceneId)
+        private IEnumerator LoadSceneAsync(SceneId sceneId)
         {
             var tracker = _sceneLoadingSystem.Load(sceneId);
             var wait = new WaitForEndOfFrame();
@@ -49,6 +53,16 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
             {
                 yield return wait;
             }
+        }
+
+        public void Register(IDoor door)
+        {
+            _doors.Add(door);
+        }
+
+        public void Unregister(IDoor door)
+        {
+            _doors.Remove(door);
         }
     }
 }
