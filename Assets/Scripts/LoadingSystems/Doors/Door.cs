@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Assets.Scripts.LoadingSystems.DoorManagement;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEngine;
@@ -113,10 +113,9 @@ namespace Assets.Scripts.LoadingSystems.Doors
                 throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
                                                     $"and was not expected to close.");
             }
-
-            // TODO: Use Closing state instead
+            
             State = DoorState.Closed;
-            OnClosed();
+            OnClose();
         }
 
         public void Lock()
@@ -130,10 +129,8 @@ namespace Assets.Scripts.LoadingSystems.Doors
         }
 
         protected abstract void OnLoading(float progress);
-
         protected abstract void OnOpen();
-
-        protected abstract void OnClosed();
+        protected abstract void OnClose();
 
         void OnDestroy()
         {

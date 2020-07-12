@@ -13,20 +13,10 @@
         WaitingToOpen,
 
         /// <summary>
-        /// Door is opening.
-        /// </summary>
-        Opening,
-
-        /// <summary>
         /// Door is completely open.
         /// </summary>
         Open,
         
-        /// <summary>
-        /// Door is closing.
-        /// </summary>
-        Closing,
-
         /// <summary>
         /// Door is closed and cannot be opened by the player in the current situation.
         /// </summary>

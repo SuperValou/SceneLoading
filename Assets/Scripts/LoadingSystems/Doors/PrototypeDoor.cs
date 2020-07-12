@@ -1,15 +1,29 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using Assets.Scripts.Utilities;
+using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Doors
 {
     public class PrototypeDoor : Door
     {
+        // -- Editor
+
         [Header("Parts")]
         public float openingGap = 2f;
 
         [Header("Parts")]
         public GameObject leftWing;
         public GameObject rightWing;
+
+        // -- Class
+
+        private Animator _animator;
+
+        protected override void Start()
+        {
+            base.Start();
+            _animator = this.GetOrThrow<Animator>();
+        }
 
         protected override void OnLoading(float progress)
         {
@@ -18,14 +32,12 @@ namespace Assets.Scripts.LoadingSystems.Doors
 
         protected override void OnOpen()
         {
-            leftWing.transform.position += leftWing.transform.right * openingGap;
-            rightWing.transform.position += -1f * rightWing.transform.right * openingGap;
+            _animator.SetTrigger("OnOpen");
         }
 
-        protected override void OnClosed()
+        protected override void OnClose()
         {
-            leftWing.transform.position += -1f * leftWing.transform.right * openingGap;
-            rightWing.transform.position += rightWing.transform.right * openingGap;
+            _animator.SetTrigger("OnClose");
         }
     }
 }
