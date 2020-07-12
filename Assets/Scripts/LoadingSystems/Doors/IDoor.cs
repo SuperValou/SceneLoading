@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos;
+﻿using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.RoomManagement
+namespace Assets.Scripts.LoadingSystems.Doors
 {
     public interface IDoor
     {

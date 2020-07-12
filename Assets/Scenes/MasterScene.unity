@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 1754760536}
   - component: {fileID: 1754760535}
   m_Layer: 0
-  m_Name: RoomLoadingManager
+  m_Name: DoorManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos;
+﻿using Assets.Scripts.LoadingSystems.SceneInfos;
 
 namespace Assets.Scripts.LoadingSystems.SceneLoadings
 {

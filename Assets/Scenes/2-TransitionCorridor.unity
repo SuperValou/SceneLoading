@@ -727,7 +727,7 @@ GameObject:
   - component: {fileID: 1612411409}
   - component: {fileID: 1612411410}
   m_Layer: 0
-  m_Name: ZoneManagerProxy
+  m_Name: DoorManagerProxy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -802,12 +802,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1841462054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c1377cd59bdff4d98f846bb43b7389, type: 3}
+  m_Script: {fileID: 11500000, guid: b8d1ad53d3ead884088785de6d4980da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 2
+  roomOnTheOtherSide: 0
   triggeringTag: Player
-  zoneManagerProxy: {fileID: 1612411410}
+  doorManagerProxy: {fileID: 1612411410}
   openingGap: 2
   leftWing: {fileID: 1286498507}
   rightWing: {fileID: 752996768}

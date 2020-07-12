@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos
+namespace Assets.Scripts.LoadingSystems.SceneInfos
 {
     [AttributeUsage(AttributeTargets.Field)]
     internal class SceneInfoAttribute : Attribute

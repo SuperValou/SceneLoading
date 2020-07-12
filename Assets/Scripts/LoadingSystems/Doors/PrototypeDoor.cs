@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.RoomManagement
+namespace Assets.Scripts.LoadingSystems.Doors
 {
     public class PrototypeDoor : Door
     {

@@ -1,8 +1,9 @@
 ﻿using System;
-using Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos;
+using Assets.Scripts.LoadingSystems.DoorManagement;
+using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.RoomManagement
+namespace Assets.Scripts.LoadingSystems.Doors
 {
     public abstract class Door : MonoBehaviour, IDoor
     {
@@ -13,7 +14,7 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
         public string triggeringTag = "Player";
         
         [Header("References")]
-        public ZoneManagerProxy zoneManagerProxy;
+        public DoorManagerProxy doorManagerProxy;
 
         // -- Class
 
@@ -30,7 +31,7 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
         {
             _initialName = this.name;
             RoomOnTheOtherSide = roomOnTheOtherSide;
-            zoneManagerProxy.Register(door: this);
+            doorManagerProxy.Register(door: this);
         }
         
         void OnTriggerEnter(Collider collidingObject)
@@ -143,7 +144,7 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
 
         void OnDestroy()
         {
-            zoneManagerProxy.Unregister(door: this);
+            doorManagerProxy.Unregister(door: this);
         }
     }
 }
