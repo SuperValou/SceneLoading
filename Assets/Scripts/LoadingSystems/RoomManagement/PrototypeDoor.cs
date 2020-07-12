@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.LoadingSystems.RoomManagement
 {
-    public class PrototypeDoor : RoomDoor
+    public class PrototypeDoor : Door
     {
         [Header("Parts")]
         public float openingGap = 2f;

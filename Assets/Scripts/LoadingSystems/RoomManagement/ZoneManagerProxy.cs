@@ -19,14 +19,14 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
             }
         }
 
-        public void Register(RoomDoor roomDoor)
+        public void Register(Door door)
         {
-            _zoneManager?.Register(roomDoor);
+            _zoneManager?.Register(door);
         }
 
-        public void Unregister(RoomDoor roomDoor)
+        public void Unregister(Door door)
         {
-            _zoneManager?.Unregister(roomDoor);
+            _zoneManager?.Unregister(door);
         }
     }
 }

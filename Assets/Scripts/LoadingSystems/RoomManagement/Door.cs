@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.RoomManagement
 {
-    public abstract class RoomDoor : MonoBehaviour, IDoor
+    public abstract class Door : MonoBehaviour, IDoor
     {
         // -- Editor
 
@@ -30,7 +30,7 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
         {
             _initialName = this.name;
             RoomOnTheOtherSide = roomOnTheOtherSide;
-            zoneManagerProxy.Register(roomDoor: this);
+            zoneManagerProxy.Register(door: this);
         }
         
         void OnTriggerEnter(Collider collidingObject)
@@ -143,7 +143,7 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
 
         void OnDestroy()
         {
-            zoneManagerProxy.Unregister(roomDoor: this);
+            zoneManagerProxy.Unregister(door: this);
         }
     }
 }
