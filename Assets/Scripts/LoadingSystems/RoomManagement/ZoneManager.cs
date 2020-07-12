@@ -67,12 +67,13 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
                         {
                             // there is no door on the other side!
                             Debug.LogError($"There is no opposite door for '{door}'.");
-                            door.CloseInSync();
-                            continue;
+                            door.OpenInSync();
                         }
-
-                        door.OpenInSync();
-                        doorOnTheOtherSide.OpenInSync();
+                        else
+                        {
+                            door.OpenInSync();
+                            doorOnTheOtherSide.OpenInSync();
+                        }
                     }
                     else if (_sceneLoadingSystem.IsLoading(door.RoomOnTheOtherSide, out float progress))
                     {
@@ -85,15 +86,17 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
                 }
 
                 // Closing door
-                else if (door.State == DoorState.WaitingToClose)
+                else if (door.State == DoorState.WaitingToClose 
+                     && !door.PlayerIsAround)
                 {
                     if (doorOnTheOtherSide == null)
                     {
-                        Debug.LogError($"Door {door} is in state {door.State} " +
+                        Debug.LogError($"Door '{door}' is in state {door.State} " +
                                        $"but there is no corresponding door for it in '{door.RoomOnTheOtherSide}'.");
                         door.CloseInSync();
                     }
-                    else
+                    else if (doorOnTheOtherSide.State == DoorState.WaitingToClose 
+                         && !doorOnTheOtherSide.PlayerIsAround)
                     {
                         door.CloseInSync();
                         doorOnTheOtherSide.CloseInSync();

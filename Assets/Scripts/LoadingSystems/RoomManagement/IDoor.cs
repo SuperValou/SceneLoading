@@ -9,6 +9,8 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
         Vector3 Position { get; }
         SceneId RoomOnTheOtherSide { get; }
 
+        bool PlayerIsAround { get; }
+
         void NotifyLoadingProgress(float progress);
         void OpenInSync();
         void CloseInSync();

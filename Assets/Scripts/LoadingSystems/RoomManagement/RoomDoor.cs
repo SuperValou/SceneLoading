@@ -18,16 +18,14 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
         // -- Class
 
         private string _initialName;
-
-        private bool _shouldOpen = false;
-        private bool _shouldClose = false;
-
+        
         private bool _shouldLock = false;
 
         public DoorState State { get; private set; } = DoorState.Closed;
         public Vector3 Position => this.transform.position;
         public SceneId RoomOnTheOtherSide { get; private set; }
-        
+        public bool PlayerIsAround { get; private set; }
+
         protected virtual void Start()
         {
             _initialName = this.name;
@@ -42,7 +40,7 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
                 return;
             }
 
-            _shouldOpen = true;
+            PlayerIsAround = true;
         }
 
         void OnTriggerExit(Collider collidingObject)
@@ -52,29 +50,21 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
                 return;
             }
 
-            _shouldClose = true;
+            PlayerIsAround = false;
         }
 
         protected virtual void Update()
         {
-            this.name = $"{_initialName}-{State.ToString()}";
+            this.name = $"{_initialName}-{State.ToString()} (from '{this.gameObject.scene.name}' to '{RoomOnTheOtherSide}')";
 
-            // Door is locked and the player wants to open it
-            if (State == DoorState.Locked && _shouldOpen)
+            // Door is locked
+            if (State == DoorState.Locked)
             {
-                _shouldOpen = false;
-            }
-
-            // Door is closed and the player wants to open it
-            else if (State == DoorState.Closed && _shouldOpen)
-            {
-                State = DoorState.WaitingToOpen;
-            }
-
-            // Door is opened and the player wants to close it
-            else if (State == DoorState.Opened && _shouldClose)
-            {
-                State = DoorState.WaitingToClose;
+                if (!_shouldLock)
+                {
+                    // Unlock door
+                    State = DoorState.Closed;
+                }
             }
 
             // Door is closed and must lock
@@ -83,10 +73,16 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
                 State = DoorState.Locked;
             }
 
-            // Door is locked and must revert back to a normally closed state
-            else if (State == DoorState.Locked && !_shouldLock)
+            // Door is closed and the player wants to open it
+            else if (State == DoorState.Closed && PlayerIsAround)
             {
-                State = DoorState.Closed;
+                State = DoorState.WaitingToOpen;
+            }
+
+            // Door is opened and the player wants to close it
+            else if (State == DoorState.Opened && !PlayerIsAround)
+            {
+                State = DoorState.WaitingToClose;
             }
         }
 
@@ -94,7 +90,7 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
         {
             if (State != DoorState.WaitingToOpen)
             {
-                throw new InvalidOperationException($"Door {name} is in state '{State}' " +
+                throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
                                                     $"and was not expected to be notified of some loading progess.");
             }
 
@@ -103,29 +99,29 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
         
         public void OpenInSync()
         {
-            if (State != DoorState.Closed && State != DoorState.WaitingToOpen)
+            if (State != DoorState.Closed 
+             && State != DoorState.WaitingToOpen)
             {
-                throw new InvalidOperationException($"Door {name} is in state '{State}' " +
+                throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
                                                     $"and was not expected to open.");
             }
 
             // TODO: Use Closing state instead
             State = DoorState.Opened;
-            _shouldOpen = false;
             OnOpened();
         }
         
         public void CloseInSync()
         {
-            if (State != DoorState.Opened && State != DoorState.WaitingToClose)
+            if (State != DoorState.Opened 
+             && State != DoorState.WaitingToClose)
             {
-                throw new InvalidOperationException($"Door {name} is in state '{State}' " +
+                throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
                                                     $"and was not expected to close.");
             }
 
             // TODO: Use Closing state instead
             State = DoorState.Closed;
-            _shouldClose = false;
             OnClosed();
         }
 

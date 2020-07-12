@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -71,26 +72,6 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             _loadingScenes.Add(sceneInfo, asyncOperation);
         }
 
-        private void OnLoadingCompletedCallback(AsyncOperation asyncOperation)
-        {
-            asyncOperation.completed -= OnLoadingCompletedCallback;
-
-            SceneInfo sc = _loadingScenes.First(kvp => kvp.Value == asyncOperation).Key;
-            _loadedScenes.Add(sc);
-            _loadingScenes.Remove(sc);
-        }
-
-        public bool IsLoaded(SceneId sceneId)
-        {
-            SceneInfo sceneInfo = GetOrThrowSceneInfo(sceneId);
-            return _loadedScenes.Contains(sceneInfo);
-        }
-
-        public bool IsLoading(SceneId sceneId)
-        {
-            return IsLoading(sceneId, out float _);
-        }
-
         public bool IsLoading(SceneId sceneId, out float progress)
         {
             progress = 0;
@@ -104,6 +85,17 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             var tracker = _loadingScenes[sceneInfo];
             progress = tracker.progress;
             return true;
+        }
+
+        public bool IsLoaded(SceneId sceneId)
+        {
+            SceneInfo sceneInfo = GetOrThrowSceneInfo(sceneId);
+            return _loadedScenes.Contains(sceneInfo);
+        }
+
+        public bool IsLoading(SceneId sceneId)
+        {
+            return IsLoading(sceneId, out float _);
         }
 
         private SceneInfo GetOrThrowSceneInfo(SceneId sceneId)
@@ -120,5 +112,15 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             
             return _sceneIdToSceneInfo[sceneId];
         }
+
+        private void OnLoadingCompletedCallback(AsyncOperation asyncOperation)
+        {
+            asyncOperation.completed -= OnLoadingCompletedCallback;
+
+            SceneInfo sc = _loadingScenes.First(kvp => kvp.Value == asyncOperation).Key;
+            _loadedScenes.Add(sc);
+            _loadingScenes.Remove(sc);
+        }
+
     }
 }

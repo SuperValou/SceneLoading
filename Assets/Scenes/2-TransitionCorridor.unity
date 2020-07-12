@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c1377cd59bdff4d98f846bb43b7389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 3
+  roomOnTheOtherSide: 2
   triggeringTag: Player
   zoneManagerProxy: {fileID: 1612411410}
   openingGap: 2
