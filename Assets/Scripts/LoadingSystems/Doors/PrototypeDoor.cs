@@ -16,7 +16,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
             // discard
         }
 
-        protected override void OnOpened()
+        protected override void OnOpen()
         {
             leftWing.transform.position += leftWing.transform.right * openingGap;
             rightWing.transform.position += -1f * rightWing.transform.right * openingGap;

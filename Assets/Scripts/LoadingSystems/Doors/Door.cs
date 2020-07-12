@@ -56,7 +56,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
 
         protected virtual void Update()
         {
-            this.name = $"{_initialName}-{State.ToString()} (from '{this.gameObject.scene.name}' to '{RoomOnTheOtherSide}')";
+            this.name = $"{_initialName} ({State.ToString()})";
 
             // Door is locked
             if (State == DoorState.Locked)
@@ -78,12 +78,6 @@ namespace Assets.Scripts.LoadingSystems.Doors
             else if (State == DoorState.Closed && PlayerIsAround)
             {
                 State = DoorState.WaitingToOpen;
-            }
-
-            // Door is opened and the player wants to close it
-            else if (State == DoorState.Opened && !PlayerIsAround)
-            {
-                State = DoorState.WaitingToClose;
             }
         }
 
@@ -108,14 +102,13 @@ namespace Assets.Scripts.LoadingSystems.Doors
             }
 
             // TODO: Use Closing state instead
-            State = DoorState.Opened;
-            OnOpened();
+            State = DoorState.Open;
+            OnOpen();
         }
         
         public void CloseInSync()
         {
-            if (State != DoorState.Opened 
-             && State != DoorState.WaitingToClose)
+            if (State != DoorState.Open)
             {
                 throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
                                                     $"and was not expected to close.");
@@ -138,7 +131,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
 
         protected abstract void OnLoading(float progress);
 
-        protected abstract void OnOpened();
+        protected abstract void OnOpen();
 
         protected abstract void OnClosed();
 

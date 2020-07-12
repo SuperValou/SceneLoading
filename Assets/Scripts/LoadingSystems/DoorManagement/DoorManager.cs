@@ -46,7 +46,7 @@ namespace Assets.Scripts.LoadingSystems.DoorManagement
                 foreach (var d in _doors)
                 {
                     if (d.Key.State == DoorState.WaitingToOpen
-                     || d.Key.State == DoorState.WaitingToClose)
+                     || d.Key.State == DoorState.Open)
                     {
                         doors.Add(d.Key, d.Value);
                     }
@@ -87,16 +87,15 @@ namespace Assets.Scripts.LoadingSystems.DoorManagement
                 }
 
                 // Closing door
-                else if (door.State == DoorState.WaitingToClose 
+                else if (door.State == DoorState.Open 
                      && !door.PlayerIsAround)
                 {
                     if (doorOnTheOtherSide == null)
                     {
-                        Debug.LogError($"Door '{door}' is in state {door.State} " +
-                                       $"but there is no corresponding door for it in '{door.RoomOnTheOtherSide}'.");
+                        Debug.LogError($"There is no opposite door for '{door}'.");
                         door.CloseInSync();
                     }
-                    else if (doorOnTheOtherSide.State == DoorState.WaitingToClose 
+                    else if (doorOnTheOtherSide.State == DoorState.Open 
                          && !doorOnTheOtherSide.PlayerIsAround)
                     {
                         door.CloseInSync();

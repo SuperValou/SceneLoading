@@ -18,15 +18,10 @@
         Opening,
 
         /// <summary>
-        /// Door is completely opened.
+        /// Door is completely open.
         /// </summary>
-        Opened,
-
-        /// <summary>
-        /// Door is completely opened and the player wants to close it.
-        /// </summary>
-        WaitingToClose,
-
+        Open,
+        
         /// <summary>
         /// Door is closing.
         /// </summary>
