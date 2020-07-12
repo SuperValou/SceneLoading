@@ -11,7 +11,7 @@ namespace Assets.Scripts.LoadingSystems.RoomManagement
 
         private ZoneManager _zoneManager;
 
-        void Start()
+        void Awake()
         {
             _zoneManager = GameObject.FindObjectOfType<ZoneManager>();
             if (_zoneManager == null)

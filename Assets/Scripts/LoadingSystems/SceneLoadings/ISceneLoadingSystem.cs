@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos;
-using Assets.Scripts.LoadingSystems.Trackings;
 
 namespace Assets.Scripts.LoadingSystems.SceneLoadings
 {
@@ -7,6 +6,12 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
     {
         void Initialize();
 
-        ILoadingTracker Load(SceneId sceneId);
+        void Load(SceneId sceneId);
+
+        bool IsLoaded(SceneId sceneId);
+
+        bool IsLoading(SceneId sceneId);
+
+        bool IsLoading(SceneId sceneId, out float progress);
     }
 }

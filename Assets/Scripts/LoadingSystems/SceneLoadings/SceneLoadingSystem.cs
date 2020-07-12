@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Assets.Scripts.LoadingSystems.SceneLoadings.SceneInfos;
-using Assets.Scripts.LoadingSystems.Trackings;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using AsyncOperation = UnityEngine.AsyncOperation;
 
 namespace Assets.Scripts.LoadingSystems.SceneLoadings
 {
     public class SceneLoadingSystem : ISceneLoadingSystem
     {
         private readonly Dictionary<SceneId, SceneInfo> _sceneIdToSceneInfo = new Dictionary<SceneId, SceneInfo>();
+
+        private readonly IDictionary<SceneInfo, AsyncOperation> _loadingScenes = new Dictionary<SceneInfo, AsyncOperation>();
         private readonly HashSet<SceneInfo> _loadedScenes = new HashSet<SceneInfo>();
 
         public void Initialize()
@@ -42,26 +44,66 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             }
         }
         
-        public ILoadingTracker Load(SceneId sceneId)
+        public void Load(SceneId sceneId)
         {
             SceneInfo sceneInfo = GetOrThrowSceneInfo(sceneId);
 
             if (_loadedScenes.Contains(sceneInfo))
             {
                 Debug.Log($"{sceneInfo} is already loaded.");
-                return new AlreadyDoneTracker();
+                return;
             }
-            
-            var asyncOperation = SceneManager.LoadSceneAsync(sceneInfo.Name, LoadSceneMode.Additive);
+
+            if (_loadingScenes.ContainsKey(sceneInfo))
+            {
+                Debug.LogWarning($"{sceneInfo} is already loading.");
+                return;
+            }
+
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneInfo.Name, LoadSceneMode.Additive);
             if (asyncOperation == null)
             {
                 throw new InvalidOperationException($"Scene '{sceneInfo.Name}' doesn't have a Build Index. " +
                                                     $"Add it to the Build Settings.");
             }
 
-            _loadedScenes.Add(sceneInfo);
-            var loadingTracker = new LoadingTracker(asyncOperation);
-            return loadingTracker;
+            asyncOperation.completed += OnLoadingCompletedCallback;
+            _loadingScenes.Add(sceneInfo, asyncOperation);
+        }
+
+        private void OnLoadingCompletedCallback(AsyncOperation asyncOperation)
+        {
+            asyncOperation.completed -= OnLoadingCompletedCallback;
+
+            SceneInfo sc = _loadingScenes.First(kvp => kvp.Value == asyncOperation).Key;
+            _loadedScenes.Add(sc);
+            _loadingScenes.Remove(sc);
+        }
+
+        public bool IsLoaded(SceneId sceneId)
+        {
+            SceneInfo sceneInfo = GetOrThrowSceneInfo(sceneId);
+            return _loadedScenes.Contains(sceneInfo);
+        }
+
+        public bool IsLoading(SceneId sceneId)
+        {
+            return IsLoading(sceneId, out float _);
+        }
+
+        public bool IsLoading(SceneId sceneId, out float progress)
+        {
+            progress = 0;
+            SceneInfo sceneInfo = GetOrThrowSceneInfo(sceneId);
+
+            if (!_loadingScenes.ContainsKey(sceneInfo))
+            {
+                return false;
+            }
+
+            var tracker = _loadingScenes[sceneInfo];
+            progress = tracker.progress;
+            return true;
         }
 
         private SceneInfo GetOrThrowSceneInfo(SceneId sceneId)

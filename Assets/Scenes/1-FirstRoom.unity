@@ -1347,7 +1347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1221847409}
   - component: {fileID: 1221847410}
-  - component: {fileID: 1221847413}
+  - component: {fileID: 1221847411}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -1384,7 +1384,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12, y: 12, z: 12}
   m_Center: {x: 0, y: 0, z: 6}
---- !u!114 &1221847413
+--- !u!114 &1221847411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1393,15 +1393,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1221847408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f8b0a09d296bb64384c468aed74a7ae, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c1377cd59bdff4d98f846bb43b7389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roomOnTheOtherSide: 3
-  initialState: 0
   triggeringTag: Player
+  zoneManagerProxy: {fileID: 858934575}
+  openingGap: 2
   leftWing: {fileID: 1698538455}
   rightWing: {fileID: 2043404923}
-  zoneManagerProxy: {fileID: 858934575}
 --- !u!1 &1365179792
 GameObject:
   m_ObjectHideFlags: 0
