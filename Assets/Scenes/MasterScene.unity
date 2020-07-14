@@ -243,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadGameplay: 1
   initialRoom: 2
+  maxLoadedRooms: 2
 --- !u!4 &1754760536
 Transform:
   m_ObjectHideFlags: 0

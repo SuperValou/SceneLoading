@@ -19,6 +19,9 @@ namespace Assets.Scripts.LoadingSystems.DoorManagement
         [Tooltip("First room to spawn")]
         public SceneId initialRoom;
 
+        [Tooltip("Max number of rooms loaded at the same")]
+        public int maxLoadedRooms = 2;
+
         // -- Class
 
         private readonly ISceneLoadingSystem _sceneLoadingSystem = new SceneLoadingSystem();
@@ -26,19 +29,21 @@ namespace Assets.Scripts.LoadingSystems.DoorManagement
         private readonly IDictionary<IDoor, IDoor> _doors = new Dictionary<IDoor, IDoor>();
         private readonly object _lock = new object();
 
-        private SceneId _playerCurrentRoom;
+        private readonly Queue<SceneId> _roomsQueue = new Queue<SceneId>();
+        private SceneId _playerCurrentRoomId;
 
         IEnumerator Start()
         {
             _sceneLoadingSystem.Initialize();
+
             yield return LoadSceneAsync(initialRoom);
+            EnqueueRoom(initialRoom);
+            _playerCurrentRoomId = initialRoom;
 
             if (loadGameplay)
             {
                 yield return LoadSceneAsync(SceneId.GameplayScene);
             }
-
-            _playerCurrentRoom = initialRoom;
         }
 
         void Update()
@@ -64,9 +69,9 @@ namespace Assets.Scripts.LoadingSystems.DoorManagement
                 IDoor doorOnTheOtherSide = kvp.Value; // can be null
 
                 // Track the room the player is in
-                if (door.PlayerIsAround && door.Room != _playerCurrentRoom)
+                if (door.PlayerIsAround && door.Room != _playerCurrentRoomId)
                 {
-                    _playerCurrentRoom = door.Room;
+                    _playerCurrentRoomId = door.Room;
                 }
 
                 // Opening door
@@ -85,6 +90,8 @@ namespace Assets.Scripts.LoadingSystems.DoorManagement
                             door.OpenInSync();
                             doorOnTheOtherSide.OpenInSync();
                         }
+
+                        EnqueueRoom(door.RoomOnTheOtherSide);
                     }
                     else if (_sceneLoadingSystem.IsLoading(door.RoomOnTheOtherSide, out float progress))
                     {
@@ -113,6 +120,22 @@ namespace Assets.Scripts.LoadingSystems.DoorManagement
                     }
                 }
             }
+
+            // Unload old rooms
+            if (_roomsQueue.Count > maxLoadedRooms)
+            {
+                SceneId roomToUnload = _roomsQueue.Dequeue();
+                if (roomToUnload == _playerCurrentRoomId)
+                {
+                    EnqueueRoom(roomToUnload);
+                }
+                else
+                {
+                    _sceneLoadingSystem.Unload(roomToUnload);
+                }
+            }
+
+            this.name = string.Join(">", _roomsQueue.Select(sc => sc.ToString()));
         }
 
         public void Register(IDoor newDoor)
@@ -187,6 +210,25 @@ namespace Assets.Scripts.LoadingSystems.DoorManagement
             {
                 yield return wait;
             }
+        }
+
+        private void EnqueueRoom(SceneId roomId)
+        {
+            // remove the room id if it's already there
+            int initialCount = _roomsQueue.Count;
+            for (int i = 0; i < initialCount; i++)
+            {
+                SceneId id = _roomsQueue.Dequeue();
+                if (id == roomId)
+                {
+                    continue;
+                }
+
+                _roomsQueue.Enqueue(id);
+            }
+
+            // enqueue the room id
+            _roomsQueue.Enqueue(roomId);
         }
     }
 }

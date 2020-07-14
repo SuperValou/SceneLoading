@@ -71,6 +71,11 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             _loadingScenes.Add(sceneInfo, asyncOperation);
         }
 
+        public bool IsLoading(SceneId sceneId)
+        {
+            return IsLoading(sceneId, out float _);
+        }
+
         public bool IsLoading(SceneId sceneId, out float progress)
         {
             progress = 0;
@@ -92,9 +97,28 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             return _loadedScenes.Contains(sceneInfo);
         }
 
-        public bool IsLoading(SceneId sceneId)
+        public void Unload(SceneId sceneId)
         {
-            return IsLoading(sceneId, out float _);
+            SceneInfo sceneInfo = GetOrThrowSceneInfo(sceneId);
+            if (_loadingScenes.ContainsKey(sceneInfo))
+            {
+                Debug.LogError($"'{sceneInfo}' is still loading but is getting unloaded at the same time. " +
+                               $"Unintended things can happen.");
+
+                _loadingScenes.Remove(sceneInfo);
+            }
+
+            SceneManager.UnloadSceneAsync(sceneInfo.Name);
+            _loadedScenes.Remove(sceneInfo);
+        }
+
+        private void OnLoadingCompletedCallback(AsyncOperation asyncOperation)
+        {
+            asyncOperation.completed -= OnLoadingCompletedCallback;
+
+            SceneInfo sc = _loadingScenes.First(kvp => kvp.Value == asyncOperation).Key;
+            _loadedScenes.Add(sc);
+            _loadingScenes.Remove(sc);
         }
 
         private SceneInfo GetOrThrowSceneInfo(SceneId sceneId)
@@ -108,17 +132,8 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             {
                 throw new ArgumentException($"Scene {sceneId} is unknown. Did you forget to add it to the {nameof(SceneId)} enumeration?", nameof(sceneId));
             }
-            
+
             return _sceneIdToSceneInfo[sceneId];
-        }
-
-        private void OnLoadingCompletedCallback(AsyncOperation asyncOperation)
-        {
-            asyncOperation.completed -= OnLoadingCompletedCallback;
-
-            SceneInfo sc = _loadingScenes.First(kvp => kvp.Value == asyncOperation).Key;
-            _loadedScenes.Add(sc);
-            _loadingScenes.Remove(sc);
         }
 
     }
