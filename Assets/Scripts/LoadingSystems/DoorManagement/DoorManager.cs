@@ -26,6 +26,8 @@ namespace Assets.Scripts.LoadingSystems.DoorManagement
         private readonly IDictionary<IDoor, IDoor> _doors = new Dictionary<IDoor, IDoor>();
         private readonly object _lock = new object();
 
+        private SceneId _playerCurrentRoom;
+
         IEnumerator Start()
         {
             _sceneLoadingSystem.Initialize();
@@ -35,6 +37,8 @@ namespace Assets.Scripts.LoadingSystems.DoorManagement
             {
                 yield return LoadSceneAsync(SceneId.GameplayScene);
             }
+
+            _playerCurrentRoom = initialRoom;
         }
 
         void Update()
@@ -58,7 +62,13 @@ namespace Assets.Scripts.LoadingSystems.DoorManagement
             {
                 IDoor door = kvp.Key;
                 IDoor doorOnTheOtherSide = kvp.Value; // can be null
-                
+
+                // Track the room the player is in
+                if (door.PlayerIsAround && door.Room != _playerCurrentRoom)
+                {
+                    _playerCurrentRoom = door.Room;
+                }
+
                 // Opening door
                 if (door.State == DoorState.WaitingToOpen)
                 {

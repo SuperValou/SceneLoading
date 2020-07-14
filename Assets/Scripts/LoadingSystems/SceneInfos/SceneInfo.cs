@@ -105,5 +105,22 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
             return new List<SceneInfo>(_cache);
         }
 
+        public static SceneInfo GetFromSceneName(string sceneName)
+        {
+            if (sceneName == null)
+            {
+                throw new ArgumentNullException(nameof(sceneName));
+            }
+
+            ICollection<SceneInfo> all = GetAll();
+            SceneInfo sceneInfo = all.FirstOrDefault(sc => sc.Name == sceneName);
+            if (sceneInfo == null)
+            {
+                throw new ArgumentException($"Unable to find {nameof(SceneInfo)} corresponding to scene named '{sceneName}'. " +
+                                            $"Available scene names are: {string.Join(", ", all.Select(sc => sc.Name))}.");
+            }
+
+            return sceneInfo;
+        }
     }
 }

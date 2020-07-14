@@ -22,15 +22,20 @@ namespace Assets.Scripts.LoadingSystems.Doors
         
         private bool _shouldLock = false;
 
+        public SceneInfo SceneInfo { get; private set; }
+        public SceneId Room => SceneInfo?.Id ?? (SceneId) ~0; // Undefined SceneId (all bits set to 1)
+        public SceneId RoomOnTheOtherSide { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
         public DoorState State { get; private set; } = DoorState.Closed;
         public Vector3 Position => this.transform.position;
-        public SceneId RoomOnTheOtherSide { get; private set; }
+        
         public bool PlayerIsAround { get; private set; }
 
         protected virtual void Start()
         {
             _initialName = this.name;
             RoomOnTheOtherSide = roomOnTheOtherSide;
+            SceneInfo = SceneInfo.GetFromSceneName(this.gameObject.scene.name);
+
             doorManagerProxy.Register(door: this);
         }
         

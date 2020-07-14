@@ -5,10 +5,12 @@ namespace Assets.Scripts.LoadingSystems.Doors
 {
     public interface IDoor
     {
+        SceneInfo SceneInfo { get; }
+        SceneId Room { get; }
+        SceneId RoomOnTheOtherSide { get; }
         DoorState State { get; }
         Vector3 Position { get; }
-        SceneId RoomOnTheOtherSide { get; }
-
+        
         bool PlayerIsAround { get; }
 
         void NotifyLoadingProgress(float progress);
