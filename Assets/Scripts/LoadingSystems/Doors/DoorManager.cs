@@ -2,12 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.LoadingSystems.Doors;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using Assets.Scripts.LoadingSystems.SceneLoadings;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.DoorManagement
+namespace Assets.Scripts.LoadingSystems.Doors
 {
     public class DoorManager : MonoBehaviour
     {

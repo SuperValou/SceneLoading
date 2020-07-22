@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/3-BossRoom.unity
     guid: 034300a56fb3784438f2b5b04bde96b6
+  - enabled: 1
+    path: Assets/Scenes/3-1-Corridor-A.unity
+    guid: df7fc34f86d2cfd4692dc600d5f6e26f
+  - enabled: 1
+    path: Assets/Scenes/3-2-Corridor-B.unity
+    guid: 95ea1f6afccb3e44d9e8287152199357
+  - enabled: 1
+    path: Assets/Scenes/3-3-Corridor-C.unity
+    guid: 84ffa5da8212ddf4f9ff008505744fbe
   m_configObjects: {}

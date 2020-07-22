@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.LoadingSystems.Doors;
 using Assets.Scripts.Utilities;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.Doors
+namespace Assets.Scripts.Doors
 {
     public class PrototypeDoor : Door
     {

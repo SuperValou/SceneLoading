@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Assets.Scripts.Utilities;
+using Assets.Scripts.LoadingSystems.Utilities;
 
 namespace Assets.Scripts.LoadingSystems.SceneInfos
 {

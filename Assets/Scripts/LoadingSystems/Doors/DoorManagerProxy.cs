@@ -1,7 +1,6 @@
-﻿using Assets.Scripts.LoadingSystems.Doors;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.DoorManagement
+namespace Assets.Scripts.LoadingSystems.Doors
 {
     public class DoorManagerProxy : MonoBehaviour
     {

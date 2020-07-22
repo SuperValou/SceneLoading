@@ -610,7 +610,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 749366727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d1ad53d3ead884088785de6d4980da, type: 3}
+  m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roomOnTheOtherSide: 4
@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1612411408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f34422ed560443e4ba5e62deee369c39, type: 3}
+  m_Script: {fileID: 11500000, guid: b3ba713ee72cb9242a9634ca557fc4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1841462054
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1841462054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d1ad53d3ead884088785de6d4980da, type: 3}
+  m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roomOnTheOtherSide: 2
