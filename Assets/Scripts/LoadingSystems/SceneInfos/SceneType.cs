@@ -5,6 +5,7 @@
         Master,
         Gameplay,
         Room,
-        Screen
+        Screen,
+        TestRoom
     }
 }

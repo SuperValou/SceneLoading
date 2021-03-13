@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
     public class SceneLoadingSystem : ISceneLoadingSystem
     {
         private readonly Dictionary<SceneId, SceneInfo> _sceneIdToSceneInfo = new Dictionary<SceneId, SceneInfo>();
-
+        
         private readonly IDictionary<SceneInfo, AsyncOperation> _loadingScenes = new Dictionary<SceneInfo, AsyncOperation>();
         private readonly HashSet<SceneInfo> _loadedScenes = new HashSet<SceneInfo>();
 
@@ -41,11 +41,28 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
                 }
 
                 _loadedScenes.Add(sceneInfo);
+
+                // TODO: subscribe to events like SceneManager.sceneUnloaded
             }
         }
-        
-        public void Load(SceneId sceneId)
+
+        public void LoadSingle(SceneId sceneId, bool activateWhenReady)
         {
+            Load(sceneId, LoadSceneMode.Single, activateWhenReady);
+        }
+
+        public void LoadAdditive(SceneId sceneId, bool activateWhenReady)
+        {
+            Load(sceneId, LoadSceneMode.Additive, activateWhenReady);
+        }
+
+        public void Load(SceneId sceneId, LoadSceneMode mode, bool activateWhenReady)
+        {
+            if (!Enum.IsDefined(typeof(LoadSceneMode), mode))
+            {
+                throw new InvalidEnumArgumentException(nameof(mode), (int)mode, typeof(LoadSceneMode));
+            }
+
             SceneInfo sceneInfo = GetOrThrowSceneInfo(sceneId);
 
             if (_loadedScenes.Contains(sceneInfo))
@@ -60,13 +77,14 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
                 return;
             }
 
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneInfo.Name, LoadSceneMode.Additive);
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneInfo.Name, mode);
             if (asyncOperation == null)
             {
                 throw new InvalidOperationException($"Scene '{sceneInfo.Name}' doesn't have a Build Index. " +
                                                     $"Add it to the Build Settings.");
             }
 
+            asyncOperation.allowSceneActivation = activateWhenReady;
             asyncOperation.completed += OnLoadingCompletedCallback;
             _loadingScenes.Add(sceneInfo, asyncOperation);
         }
@@ -86,9 +104,47 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
                 return false;
             }
 
-            var tracker = _loadingScenes[sceneInfo];
-            progress = tracker.progress;
+            AsyncOperation asyncOperation = _loadingScenes[sceneInfo];
+            progress = asyncOperation.progress;
             return true;
+        }
+
+        public bool IsReadyToActivate(SceneId sceneId)
+        {
+            SceneInfo sceneInfo = GetOrThrowSceneInfo(sceneId);
+
+            if (_loadedScenes.Contains(sceneInfo))
+            {
+                // Scene is actually already loaded and activated
+                return true;
+            }
+
+            if (!_loadingScenes.ContainsKey(sceneInfo))
+            {
+                throw new InvalidOperationException($"'{sceneInfo}' is not ready for activation because it is not loading. Did you forget to call the {nameof(Load)} method?");
+            }
+
+            AsyncOperation asyncOperation = _loadingScenes[sceneInfo];
+            return asyncOperation.progress >= 0.9f; // see documentation: https://docs.unity3d.com/ScriptReference/AsyncOperation-allowSceneActivation.html
+        }
+
+        public void Activate(SceneId sceneId)
+        {
+            SceneInfo sceneInfo = GetOrThrowSceneInfo(sceneId);
+            if (!_loadingScenes.ContainsKey(sceneInfo))
+            {
+                if (_loadedScenes.Contains(sceneInfo))
+                {
+                    // Scene is already loaded and ready
+                    return;
+                }
+
+                throw new InvalidOperationException($"Cannot activate '{sceneInfo}' because it's not loading. " +
+                                                    $"Did you forget to call the {nameof(LoadAdditive)} method?");
+            }
+
+            AsyncOperation asyncOperation = _loadingScenes[sceneInfo];
+            asyncOperation.allowSceneActivation = true;
         }
 
         public bool IsLoaded(SceneId sceneId)
@@ -135,6 +191,5 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
 
             return _sceneIdToSceneInfo[sceneId];
         }
-
     }
 }
