@@ -21,8 +21,8 @@ namespace Assets.Scripts.LoadingSystems.Doors
         
         private bool _shouldLock = false;
         
-        public SceneId Room { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
-        public SceneId RoomOnTheOtherSide { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
+        public SceneId RoomId { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
+        public SceneId RoomIdOnTheOtherSide { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
         public DoorState State { get; private set; } = DoorState.Closed;
         public Vector3 Position => this.transform.position;
         
@@ -31,14 +31,16 @@ namespace Assets.Scripts.LoadingSystems.Doors
         protected virtual void Start()
         {
             _initialName = this.name;
-            RoomOnTheOtherSide = roomOnTheOtherSide;
-            SceneInfo sceneInfo = SceneInfo.GetForGameObject(this.gameObject);
-            if (sceneInfo.Type != SceneType.Room || sceneInfo.Type != SceneType.TestRoom)
+            
+            RoomId = SceneInfo.GetRoomIdForGameObject(this.gameObject);
+
+            if (!SceneInfo.IsRoom(roomOnTheOtherSide))
             {
-                Debug.LogWarning($"{nameof(Door)} ({this.gameObject}) should belong to a Room scene, not a '{sceneInfo.Type}' scene.");
+                throw new ArgumentException($"Room id '{roomOnTheOtherSide}' on the other side of '{gameObject.name}' ({this.GetType().Name}) is not actually a Room. " +
+                                            $"Are you sure you selected a valid room id?");
             }
 
-            Room = sceneInfo.Id;
+            RoomIdOnTheOtherSide = roomOnTheOtherSide;
 
             doorManagerProxy.Register(door: this);
         }
@@ -95,7 +97,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
             if (State != DoorState.WaitingToOpen)
             {
                 throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
-                                                    $"and was not expected to be notified of some loading progess.");
+                                                    $"and was not expecting to be notified about some loading progess.");
             }
 
             OnLoading(progress);
@@ -107,7 +109,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
              && State != DoorState.WaitingToOpen)
             {
                 throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
-                                                    $"and was not expected to open.");
+                                                    $"and was not expecting to open.");
             }
 
             // TODO: Use Closing state instead
@@ -120,7 +122,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
             if (State != DoorState.Open)
             {
                 throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
-                                                    $"and was not expected to close.");
+                                                    $"and was not expecting to close.");
             }
             
             State = DoorState.Closed;

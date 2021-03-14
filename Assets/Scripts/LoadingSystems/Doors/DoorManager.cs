@@ -12,7 +12,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
     {
         // -- Editor
 
-        [Tooltip("Max number of rooms loaded at the same")]
+        [Tooltip("Max number of rooms loaded at the same time.")]
         public int maxLoadedRooms = 2;
 
         [Header("References")]
@@ -23,9 +23,9 @@ namespace Assets.Scripts.LoadingSystems.Doors
         private readonly IDictionary<IDoor, IDoor> _doors = new Dictionary<IDoor, IDoor>();
         private readonly object _lock = new object();
 
-        private readonly Queue<SceneId> _roomsQueue = new Queue<SceneId>();
+        private readonly Queue<SceneId> _roomIdsQueue = new Queue<SceneId>();
 
-        public SceneId PlayerCurrentRoomId { get; private set; }
+        public SceneId PlayerCurrentRoomId { get; private set; } = (SceneId) ~0;
 
         void Update()
         {
@@ -50,15 +50,15 @@ namespace Assets.Scripts.LoadingSystems.Doors
                 IDoor doorOnTheOtherSide = kvp.Value; // can be null
 
                 // Track the room the player is in
-                if (door.PlayerIsAround && door.Room != PlayerCurrentRoomId)
+                if (door.PlayerIsAround && door.RoomId != PlayerCurrentRoomId)
                 {
-                    PlayerCurrentRoomId = door.Room;
+                    PlayerCurrentRoomId = door.RoomId;
                 }
 
                 // Opening door
                 if (door.State == DoorState.WaitingToOpen)
                 {
-                    if (sceneLoadingManager.IsLoaded(door.RoomOnTheOtherSide))
+                    if (sceneLoadingManager.IsLoaded(door.RoomIdOnTheOtherSide))
                     {
                         if (doorOnTheOtherSide == null)
                         {
@@ -72,15 +72,15 @@ namespace Assets.Scripts.LoadingSystems.Doors
                             doorOnTheOtherSide.OpenInSync();
                         }
 
-                        EnqueueRoom(door.RoomOnTheOtherSide);
+                        EnqueueRoom(door.RoomIdOnTheOtherSide);
                     }
-                    else if (sceneLoadingManager.IsLoading(door.RoomOnTheOtherSide, out float progress))
+                    else if (sceneLoadingManager.IsLoading(door.RoomIdOnTheOtherSide, out float progress))
                     {
                         door.NotifyLoadingProgress(progress);
                     }
                     else
                     {
-                        StartCoroutine(sceneLoadingManager.LoadSubSenesAsync(door.RoomOnTheOtherSide));
+                        StartCoroutine(sceneLoadingManager.LoadSubSenesAsync(door.RoomIdOnTheOtherSide));
                     }
                 }
 
@@ -103,20 +103,20 @@ namespace Assets.Scripts.LoadingSystems.Doors
             }
 
             // Unload old rooms
-            if (_roomsQueue.Count > maxLoadedRooms)
+            if (_roomIdsQueue.Count > maxLoadedRooms)
             {
-                SceneId roomToUnload = _roomsQueue.Dequeue();
-                if (roomToUnload == PlayerCurrentRoomId)
+                SceneId roomIdToUnload = _roomIdsQueue.Dequeue();
+                if (roomIdToUnload == PlayerCurrentRoomId)
                 {
-                    EnqueueRoom(roomToUnload);
+                    EnqueueRoom(roomIdToUnload);
                 }
                 else
                 {
-                    sceneLoadingManager.Unload(roomToUnload);
+                    sceneLoadingManager.Unload(roomIdToUnload);
                 }
             }
 
-            this.name = string.Join(">", _roomsQueue.Select(sc => sc.ToString()));
+            this.name = $"Current room: {PlayerCurrentRoomId.ToString()} ({string.Join(">", _roomIdsQueue.Select(id => id.ToString()))})";
         }
 
         public void Register(IDoor newDoor)
@@ -185,20 +185,20 @@ namespace Assets.Scripts.LoadingSystems.Doors
         private void EnqueueRoom(SceneId roomId)
         {
             // remove the room id if it's already there
-            int initialCount = _roomsQueue.Count;
+            int initialCount = _roomIdsQueue.Count;
             for (int i = 0; i < initialCount; i++)
             {
-                SceneId id = _roomsQueue.Dequeue();
+                SceneId id = _roomIdsQueue.Dequeue();
                 if (id == roomId)
                 {
                     continue;
                 }
 
-                _roomsQueue.Enqueue(id);
+                _roomIdsQueue.Enqueue(id);
             }
 
             // enqueue the room id
-            _roomsQueue.Enqueue(roomId);
+            _roomIdsQueue.Enqueue(roomId);
         }
     }
 }

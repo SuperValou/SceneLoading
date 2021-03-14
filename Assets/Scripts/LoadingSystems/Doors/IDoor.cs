@@ -5,8 +5,8 @@ namespace Assets.Scripts.LoadingSystems.Doors
 {
     public interface IDoor
     {
-        SceneId Room { get; }
-        SceneId RoomOnTheOtherSide { get; }
+        SceneId RoomId { get; }
+        SceneId RoomIdOnTheOtherSide { get; }
         DoorState State { get; }
         Vector3 Position { get; }
         
