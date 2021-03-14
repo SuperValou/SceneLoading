@@ -133,6 +133,14 @@ namespace Assets.Scripts.LoadingSystems.Doors
                     throw new ArgumentException($"{newDoor} is already registered.");
                 }
 
+                // The very first door being registered will act as the starting point for the player
+                if (_doors.Count == 0)
+                {
+                    EnqueueRoom(newDoor.RoomId);
+                    PlayerCurrentRoomId = newDoor.RoomId;
+                }
+
+                // Find the room on the other side if applicable (the room may not be loaded yet)
                 IDoor doorOnTheOtherSide = null;
                 foreach (var registeredDoor in _doors.Keys)
                 {
