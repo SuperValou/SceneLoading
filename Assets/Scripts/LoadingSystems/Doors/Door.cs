@@ -9,6 +9,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
         // -- Editor
 
         [Header("Values")]
+        [RoomId]
         public SceneId roomOnTheOtherSide;
         public string triggeringTag = "Player";
         

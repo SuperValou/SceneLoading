@@ -1,0 +1,14 @@
+{
+    "name": "SceneLoadingSystems-Editor",
+    "references": [
+        "GUID:517079b27cb427545a95928a5c18837b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
