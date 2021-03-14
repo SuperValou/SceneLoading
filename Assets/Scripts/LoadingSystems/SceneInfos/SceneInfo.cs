@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Assets.Scripts.LoadingSystems.Utilities;
+using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.SceneInfos
 {
@@ -105,18 +106,24 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
             return new List<SceneInfo>(_cache);
         }
 
-        public static SceneInfo GetFromSceneName(string sceneName)
+        public static SceneInfo GetForGameObject(GameObject gameobject)
         {
+            if (ReferenceEquals(gameobject, null))
+            {
+                throw new ArgumentNullException(nameof(gameobject));
+            }
+            
+            string sceneName = gameobject.scene.name;
             if (sceneName == null)
             {
-                throw new ArgumentNullException(nameof(sceneName));
+                throw new ArgumentNullException($"GameObject {gameobject} has a null scene name.");
             }
 
             ICollection<SceneInfo> all = GetAll();
             SceneInfo sceneInfo = all.FirstOrDefault(sc => sc.Name == sceneName);
             if (sceneInfo == null)
             {
-                throw new ArgumentException($"Unable to find {nameof(SceneInfo)} corresponding to scene named '{sceneName}'. " +
+                throw new ArgumentException($"Unable to find {nameof(SceneInfo)} corresponding to scene '{sceneName}' for gameObject '{gameobject}'. " +
                                             $"Available scene names are: {string.Join(", ", all.Select(sc => sc.Name))}.");
             }
 

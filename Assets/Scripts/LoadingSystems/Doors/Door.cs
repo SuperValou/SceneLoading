@@ -20,9 +20,8 @@ namespace Assets.Scripts.LoadingSystems.Doors
         private string _initialName;
         
         private bool _shouldLock = false;
-
-        public SceneInfo SceneInfo { get; private set; }
-        public SceneId Room => SceneInfo?.Id ?? (SceneId) ~0; // Undefined SceneId (all bits set to 1)
+        
+        public SceneId Room { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
         public SceneId RoomOnTheOtherSide { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
         public DoorState State { get; private set; } = DoorState.Closed;
         public Vector3 Position => this.transform.position;
@@ -33,7 +32,13 @@ namespace Assets.Scripts.LoadingSystems.Doors
         {
             _initialName = this.name;
             RoomOnTheOtherSide = roomOnTheOtherSide;
-            SceneInfo = SceneInfo.GetFromSceneName(this.gameObject.scene.name);
+            SceneInfo sceneInfo = SceneInfo.GetForGameObject(this.gameObject);
+            if (sceneInfo.Type != SceneType.Room || sceneInfo.Type != SceneType.TestRoom)
+            {
+                Debug.LogWarning($"{nameof(Door)} ({this.gameObject}) should belong to a Room scene, not a '{sceneInfo.Type}' scene.");
+            }
+
+            Room = sceneInfo.Id;
 
             doorManagerProxy.Register(door: this);
         }
