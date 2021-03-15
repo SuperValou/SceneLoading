@@ -35,7 +35,8 @@ namespace Assets.Scripts.LoadingSystems.Doors
             
             RoomId = SceneInfo.GetRoomIdForGameObject(this.gameObject);
 
-            if (!SceneInfo.IsRoom(roomOnTheOtherSide))
+            var sceneInfo = SceneInfo.GetOrThrow(roomOnTheOtherSide);
+            if (!sceneInfo.IsRoom())
             {
                 throw new ArgumentException($"Room id '{roomOnTheOtherSide}' on the other side of '{gameObject.name}' ({this.GetType().Name}) is not actually a Room. " +
                                             $"Are you sure you selected a valid room id?");

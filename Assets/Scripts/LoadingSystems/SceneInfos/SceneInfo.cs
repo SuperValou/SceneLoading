@@ -36,6 +36,11 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
             Type = type;
         }
 
+        public bool IsRoom()
+        {
+            return this.Type == SceneType.Room || this.Type == SceneType.TestRoom;
+        }
+
         public override bool Equals(object obj)
         {
             SceneInfo info = obj as SceneInfo;
@@ -136,12 +141,6 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
             return sceneInfo;
         }
         
-        public static bool IsRoom(SceneId sceneId)
-        {
-            var sceneInfo = GetOrThrow(sceneId);
-            return sceneInfo.Type == SceneType.Room || sceneInfo.Type == SceneType.TestRoom;
-        }
-
         public static SceneId GetRoomIdForGameObject(GameObject gameobject)
         {
             if (ReferenceEquals(gameobject, null))

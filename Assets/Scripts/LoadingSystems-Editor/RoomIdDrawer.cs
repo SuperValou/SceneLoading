@@ -23,7 +23,7 @@ namespace Assets.Scripts
                 return;
             }
 
-            var roomInfos = SceneInfo.GetAll().Where(si => SceneInfo.IsRoom(si.Id)).ToList();
+            var roomInfos = SceneInfo.GetAll().Where(si => si.IsRoom()).ToList();
             _optionIds = roomInfos.Select(ri => (int) ri.Id).ToList();
             _displayedOptions = roomInfos.Select(roomInfo =>
             {
