@@ -7,15 +7,17 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
         void Initialize();
 
         /// <summary>
-        /// Loads the given scene if needed.
+        /// Loads the given scene and unload everything else.
+        /// If <see cref="activateWhenReady"/> is set to false, you will have to manually call the <see cref="Activate"/> method.
         /// </summary>
-        void Load(SceneId sceneId);
+        void LoadSingle(SceneId sceneId, bool activateWhenReady);
 
         /// <summary>
-        /// Returns wether or not the given scene is fully loaded.
+        /// Loads the given scene if needed.
+        /// If <see cref="activateWhenReady"/> is set to false, you will have to manually call the <see cref="Activate"/> method.
         /// </summary>
-        bool IsLoaded(SceneId sceneId);
-
+        void LoadAdditive(SceneId sceneId, bool activateWhenReady);
+        
         /// <summary>
         /// Returns wether or not the given scene is still loading.
         /// </summary>
@@ -25,6 +27,21 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
         /// Returns wether or not the given scene is still loading. Provides the loading progress (between 0 and 1).
         /// </summary>
         bool IsLoading(SceneId sceneId, out float progress);
+
+        /// <summary>
+        /// Returns wether or not the given scene is almost loaded and is waiting for activation.
+        /// </summary>
+        bool IsReadyToActivate(SceneId sceneId);
+        
+        /// <summary>
+        /// Allow the given scene to complete its loading and activate itself (i.e. call the Start methods and such)
+        /// </summary>
+        void Activate(SceneId sceneId);
+
+        /// <summary>
+        /// Returns wether or not the given scene is fully loaded.
+        /// </summary>
+        bool IsLoaded(SceneId sceneId);
 
         /// <summary>
         /// Unloads the given scene.

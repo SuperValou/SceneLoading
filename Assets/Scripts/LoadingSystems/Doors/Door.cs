@@ -9,6 +9,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
         // -- Editor
 
         [Header("Values")]
+        [RoomId]
         public SceneId roomOnTheOtherSide;
         public string triggeringTag = "Player";
         
@@ -20,10 +21,9 @@ namespace Assets.Scripts.LoadingSystems.Doors
         private string _initialName;
         
         private bool _shouldLock = false;
-
-        public SceneInfo SceneInfo { get; private set; }
-        public SceneId Room => SceneInfo?.Id ?? (SceneId) ~0; // Undefined SceneId (all bits set to 1)
-        public SceneId RoomOnTheOtherSide { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
+        
+        public SceneId RoomId { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
+        public SceneId RoomIdOnTheOtherSide { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
         public DoorState State { get; private set; } = DoorState.Closed;
         public Vector3 Position => this.transform.position;
         
@@ -31,9 +31,17 @@ namespace Assets.Scripts.LoadingSystems.Doors
 
         protected virtual void Start()
         {
-            _initialName = this.name;
-            RoomOnTheOtherSide = roomOnTheOtherSide;
-            SceneInfo = SceneInfo.GetFromSceneName(this.gameObject.scene.name);
+            RoomId = SceneInfo.GetRoomIdForGameObject(this.gameObject);
+
+            var sceneInfo = SceneInfo.GetOrThrow(roomOnTheOtherSide);
+            if (!sceneInfo.IsRoom())
+            {
+                throw new ArgumentException($"Room id '{roomOnTheOtherSide}' on the other side of '{gameObject.name}' ({this.GetType().Name}) is not actually a Room. " +
+                                            $"Are you sure you selected a valid room id?");
+            }
+
+            _initialName = $"Door to {sceneInfo.SceneName}";
+            RoomIdOnTheOtherSide = roomOnTheOtherSide;
 
             doorManagerProxy.Register(door: this);
         }
@@ -90,7 +98,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
             if (State != DoorState.WaitingToOpen)
             {
                 throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
-                                                    $"and was not expected to be notified of some loading progess.");
+                                                    $"and was not expecting to be notified about some loading progess.");
             }
 
             OnLoading(progress);
@@ -102,7 +110,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
              && State != DoorState.WaitingToOpen)
             {
                 throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
-                                                    $"and was not expected to open.");
+                                                    $"and was not expecting to open.");
             }
 
             // TODO: Use Closing state instead
@@ -115,7 +123,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
             if (State != DoorState.Open)
             {
                 throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
-                                                    $"and was not expected to close.");
+                                                    $"and was not expecting to close.");
             }
             
             State = DoorState.Closed;
@@ -139,6 +147,19 @@ namespace Assets.Scripts.LoadingSystems.Doors
         void OnDestroy()
         {
             doorManagerProxy.Unregister(door: this);
+        }
+
+        // Called in the editor only when the script is loaded or a value is changed in the Inspector
+        void OnValidate()
+        {
+            if (SceneInfo.TryGet(roomOnTheOtherSide, out var sceneInfo))
+            {
+                this.name = $"Door to {sceneInfo.SceneName}";
+            }
+            else
+            {
+                this.name = $"[ERROR] Door to invalid destination: {roomOnTheOtherSide}";
+            }
         }
     }
 }

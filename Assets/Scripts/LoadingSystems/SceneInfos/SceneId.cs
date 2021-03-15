@@ -8,22 +8,25 @@
         [SceneInfo("0-Gameplay", SceneType.Gameplay)]
         GameplayScene,
 
-        [SceneInfo("1-FirstRoom", SceneType.Room)]
+        [SceneInfo("1-WakeUpRoom", SceneType.Room)]
         WakeUpRoomScene,
 
-        [SceneInfo("2-TransitionCorridor", SceneType.Room)]
+        [SceneInfo("1-1-TransitionCorridorRoom", SceneType.Room)]
         CorridorRoomScene,
 
-        [SceneInfo("3-BossRoom", SceneType.Room)]
+        [SceneInfo("3-HubRoom", SceneType.Room)]
         BossRoomScene,
 
-        [SceneInfo("3-1-Corridor-A", SceneType.Room)]
+        [SceneInfo("3-1-CorridorRoom", SceneType.Room)]
         CorridorA,
 
-        [SceneInfo("3-2-Corridor-B", SceneType.Room)]
+        [SceneInfo("3-2-CorridorRoom", SceneType.Room)]
         CorridorB,
 
-        [SceneInfo("3-3-Corridor-C", SceneType.Room)]
-        CorridorC
+        [SceneInfo("4-1-LabAccessRoom", SceneType.Room)]
+        CorridorC,
+
+        [SceneInfo("4-LabRoom", SceneType.Room)]
+        Lab
     }
 }
