@@ -111,6 +111,20 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
             return _cache;
         }
 
+        public static bool TryGet(SceneId sceneId, out SceneInfo sceneInfo)
+        {
+            sceneInfo = null;
+            try
+            {
+                sceneInfo = GetOrThrow(sceneId);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public static SceneInfo GetOrThrow(SceneId sceneId)
         {
             if (!Enum.IsDefined(typeof(SceneId), sceneId))

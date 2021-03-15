@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 749366730}
   - component: {fileID: 749366729}
   m_Layer: 0
-  m_Name: Door to LabAccess
+  m_Name: Door -> CorridorC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

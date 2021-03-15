@@ -31,8 +31,6 @@ namespace Assets.Scripts.LoadingSystems.Doors
 
         protected virtual void Start()
         {
-            _initialName = this.name;
-            
             RoomId = SceneInfo.GetRoomIdForGameObject(this.gameObject);
 
             var sceneInfo = SceneInfo.GetOrThrow(roomOnTheOtherSide);
@@ -42,6 +40,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
                                             $"Are you sure you selected a valid room id?");
             }
 
+            _initialName = $"Door to {sceneInfo.SceneName}";
             RoomIdOnTheOtherSide = roomOnTheOtherSide;
 
             doorManagerProxy.Register(door: this);
@@ -148,6 +147,19 @@ namespace Assets.Scripts.LoadingSystems.Doors
         void OnDestroy()
         {
             doorManagerProxy.Unregister(door: this);
+        }
+
+        // Called in the editor only when the script is loaded or a value is changed in the Inspector
+        void OnValidate()
+        {
+            if (SceneInfo.TryGet(roomOnTheOtherSide, out var sceneInfo))
+            {
+                this.name = $"Door to {sceneInfo.SceneName}";
+            }
+            else
+            {
+                this.name = $"[ERROR] Door to invalid destination: {roomOnTheOtherSide}";
+            }
         }
     }
 }

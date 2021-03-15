@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 545939473}
   - component: {fileID: 545939472}
   m_Layer: 0
-  m_Name: Door to corridor C
+  m_Name: Door to 4-1-LabAccessRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1202,7 +1202,7 @@ GameObject:
   - component: {fileID: 948108767}
   - component: {fileID: 948108766}
   m_Layer: 0
-  m_Name: Door to corridor
+  m_Name: Door to 1-1-TransitionCorridorRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1491,7 +1491,7 @@ GameObject:
   - component: {fileID: 1358955561}
   - component: {fileID: 1358955560}
   m_Layer: 0
-  m_Name: Door to corridor B
+  m_Name: Door to 3-2-CorridorRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1777,7 +1777,7 @@ GameObject:
   - component: {fileID: 1591056151}
   - component: {fileID: 1591056150}
   m_Layer: 0
-  m_Name: Door to corridor A
+  m_Name: Door to 3-1-CorridorRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
