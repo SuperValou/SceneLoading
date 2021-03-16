@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
+namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions
 {
     public class VariableChunk : ISessionChunk
     {

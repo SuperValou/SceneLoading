@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine;
+using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
 using UnityEngine;

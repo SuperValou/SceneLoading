@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
+﻿using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions;
+
+namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
 {
     public class Template
     {
