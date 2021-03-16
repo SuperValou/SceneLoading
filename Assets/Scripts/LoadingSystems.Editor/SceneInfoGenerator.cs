@@ -34,8 +34,8 @@ namespace Assets.Scripts.LoadingSystems.Editor
             Debug.Log("Rewriting to " + destinationFilePath);
 
             // Generate template
-            var builder = new TemplateBuilder();
-            ITemplate template = builder.Build();
+            var builder = new TemplateParser();
+            ITemplate template = builder.Parse();
             ISession session = template.CreateSession();
 
             session.SetVariable("namespace", typeof(SceneId).Namespace);
