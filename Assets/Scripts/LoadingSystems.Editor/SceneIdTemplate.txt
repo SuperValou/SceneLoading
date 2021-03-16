@@ -1,0 +1,10 @@
+﻿namespace <$var:namespace>
+{
+    public enum SceneId
+    {
+		<$template:enumMember>
+        [SceneInfo("<$var:sceneName>", SceneType.<$var:sceneType>)]
+        <$var:sceneEnumMemberName> = <$var:sceneEnumMemberValue>,
+		<$endtemplate>
+    }
+}
