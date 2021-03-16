@@ -17,6 +17,7 @@ namespace Assets.Scripts.LoadingSystems.Editor
 
         public void DoStuff()
         {
+            // Get all scenes
             var scenesGuids = AssetDatabase.FindAssets("t:Scene");
             var scenesPaths = scenesGuids.Select(AssetDatabase.GUIDToAssetPath);
             var sceneNames = scenesPaths.Select(Path.GetFileNameWithoutExtension).ToList();
@@ -27,14 +28,27 @@ namespace Assets.Scripts.LoadingSystems.Editor
                 throw new InvalidOperationException("Two scenes share the same case-insensitive name.");
             }
 
+            // Find SceneId file path
             string destinationFilePath = GetScriptPath(nameof(SceneId));
-            Debug.Log(destinationFilePath);
+            Debug.Log("Rewriting to " + destinationFilePath);
 
-            var template = new Template();
+            // Generate template
+            var template = new Template(mainBoolStub:true);
             ISession session = template.CreateSession();
 
             session.SetVariable("namespace", typeof(SceneId).Namespace);
 
+            Template subtemplate = template.GetSubtemplate("enumMember");
+
+            foreach (var sceneName in sceneNames)
+            {
+                ISession subsession = subtemplate.CreateSession();
+                subsession.SetVariable("sceneEnumMemberName", _enumMemberRegex.Replace(sceneName, "_"));
+
+                session.AppendSubsession("enumMember", subsession);
+            }
+            
+            // Write template to file
             SessionWriter writer = new SessionWriter();
             writer.Write(session, destinationFilePath);
         }

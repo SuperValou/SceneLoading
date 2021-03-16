@@ -34,11 +34,12 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions
             _variables[variableName] = variableValue ?? string.Empty;
         }
 
-        public void AppendSubsession(string subtemplateName, Session subsession)
+        public void AppendSubsession(string subtemplateName, ISession subsession)
         {
             int chunkIndex = _chunks.FindIndex(chunk => 
                 chunk is SubsessionChunk subsessionChunk 
                 && subsessionChunk.SubtemplateName == subtemplateName
+                && subsessionChunk.Subsession == null
             );
 
             _chunks.Insert(chunkIndex, new SubsessionChunk(subtemplateName, subsession));
