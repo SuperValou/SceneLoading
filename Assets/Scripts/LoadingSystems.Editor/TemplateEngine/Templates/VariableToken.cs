@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
 {
-    public class VariableToken
+    public class VariableToken : IToken
     {
         public string VariableName { get; }
 

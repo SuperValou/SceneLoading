@@ -42,6 +42,12 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions
                 && subsessionChunk.Subsession == null
             );
 
+            if (chunkIndex == -1)
+            {
+                throw new ArgumentException($"Unable to find subtemplate name '{subtemplateName}'. " +
+                                            $"Available subtemplate names are '{string.Join(", ", _chunks.OfType<SubsessionChunk>().Select(c => c.SubtemplateName))}'.");
+            }
+
             _chunks.Insert(chunkIndex, new SubsessionChunk(subtemplateName, subsession));
         }
 

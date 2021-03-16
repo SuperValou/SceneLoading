@@ -34,19 +34,20 @@ namespace Assets.Scripts.LoadingSystems.Editor
             Debug.Log("Rewriting to " + destinationFilePath);
 
             // Generate template
-            ITemplate template = new Template(mainBoolStub:true);
+            var builder = new TemplateBuilder();
+            ITemplate template = builder.Build();
             ISession session = template.CreateSession();
 
             session.SetVariable("namespace", typeof(SceneId).Namespace);
 
-            ITemplate subtemplate = template.GetSubtemplate("enumMember");
+            ITemplate subtemplate = template.GetSubtemplate("enumMemberTemplate");
 
             foreach (var sceneName in sceneNames)
             {
                 ISession subsession = subtemplate.CreateSession();
                 subsession.SetVariable("sceneEnumMemberName", _enumMemberRegex.Replace(sceneName, "_"));
 
-                session.AppendSubsession("enumMember", subsession);
+                session.AppendSubsession("enumMemberTemplate", subsession);
             }
             
             // Write template to file

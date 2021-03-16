@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
 {
-    public class SubtemplateToken
+    public class SubtemplateToken : IToken
     {
         public string SubtemplateName { get; }
 

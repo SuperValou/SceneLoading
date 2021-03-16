@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
 {
-    public class TextToken
+    public class TextToken : IToken
     {
         public string Text { get; }
 

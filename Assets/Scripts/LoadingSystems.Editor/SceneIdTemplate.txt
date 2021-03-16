@@ -2,7 +2,7 @@
 {
     public enum SceneId
     {
-		<$template:enumMember>
+		<$template:enumMemberTemplate>
         [SceneInfo("<$var:sceneName>", SceneType.<$var:sceneType>)]
         <$var:sceneEnumMemberName> = <$var:sceneEnumMemberValue>,
 		<$endtemplate>
