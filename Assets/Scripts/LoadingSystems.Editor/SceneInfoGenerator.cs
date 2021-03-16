@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions;
+using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
 using UnityEngine;
@@ -33,12 +34,12 @@ namespace Assets.Scripts.LoadingSystems.Editor
             Debug.Log("Rewriting to " + destinationFilePath);
 
             // Generate template
-            var template = new Template(mainBoolStub:true);
+            ITemplate template = new Template(mainBoolStub:true);
             ISession session = template.CreateSession();
 
             session.SetVariable("namespace", typeof(SceneId).Namespace);
 
-            Template subtemplate = template.GetSubtemplate("enumMember");
+            ITemplate subtemplate = template.GetSubtemplate("enumMember");
 
             foreach (var sceneName in sceneNames)
             {

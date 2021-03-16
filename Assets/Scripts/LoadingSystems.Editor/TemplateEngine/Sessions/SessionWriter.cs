@@ -27,6 +27,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions
                     case TextChunk textChunk:
                         writer.Write(textChunk.Text);
                         break;
+
                     case VariableChunk variableChunk:
                         string value = session.GetVariableValue(variableChunk.VariableName);
                         writer.Write(value);
