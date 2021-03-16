@@ -2,11 +2,11 @@
 
 namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
 {
-    public class TextToken : IToken
+    public class TextNode : INode
     {
         public string Text { get; }
 
-        public TextToken(string text)
+        public TextNode(string text)
         {
             if (string.IsNullOrEmpty(text))
             {

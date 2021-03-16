@@ -6,12 +6,12 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
 {
     public class Template : ITemplate, ITemplateBuilding
     {
-        private readonly List<IToken> _tokens = new List<IToken>();
+        private readonly List<INode> _nodes = new List<INode>();
         private readonly Dictionary<string, ITemplate> _subtemplates = new Dictionary<string, ITemplate>();
 
-        public void AppendToken(IToken token)
+        public void AppendNode(INode node)
         {
-            _tokens.Add(token);
+            _nodes.Add(node);
         }
 
         public void AppendSubtemplate(string subtemplateName, ITemplate subtemplate)
@@ -23,7 +23,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
 
             _subtemplates[subtemplateName] = subtemplate ?? throw new ArgumentNullException(nameof(subtemplate));
 
-            _tokens.Add(new SubtemplateToken(subtemplateName));
+            _nodes.Add(new SubtemplateNode(subtemplateName));
         }
 
         public ITemplate GetSubtemplate(string subtemplateName)
@@ -42,24 +42,24 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
             Session session = new Session();
             ISessionChunkBuilding sessionBuilding = session;
 
-            foreach (var token in this._tokens)
+            foreach (var node in this._nodes)
             {
-                switch (token)
+                switch (node)
                 {
-                    case TextToken textToken:
-                        sessionBuilding.AppendTextChunk(textToken.Text);
+                    case TextNode textNode:
+                        sessionBuilding.AppendTextChunk(textNode.Text);
                         break;
 
-                    case VariableToken variableToken:
-                        sessionBuilding.AppendVariableChunk(variableToken.VariableName);
+                    case VariableNode variableNode:
+                        sessionBuilding.AppendVariableChunk(variableNode.VariableName);
                         break;
 
-                    case SubtemplateToken subtemplateToken:
-                        sessionBuilding.AppendSubsessionChunk(subtemplateToken.SubtemplateName);
+                    case SubtemplateNode subtemplateNode:
+                        sessionBuilding.AppendSubsessionChunk(subtemplateNode.SubtemplateName);
                         break;
 
                     default:
-                        throw new InvalidOperationException($"Unknown token type: {token.GetType().Name}");
+                        throw new InvalidOperationException($"Unknown node type: {node.GetType().Name}");
                 }
             }
 

@@ -95,10 +95,10 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
             Template template = new Template();
             ITemplateBuilding templateBuilding = template;
 
-            templateBuilding.AppendToken(new TextToken("namespace "));
+            templateBuilding.AppendNode(new TextNode("namespace "));
 
-            templateBuilding.AppendToken(new VariableToken("namespace"));
-            templateBuilding.AppendToken(new TextToken(@"
+            templateBuilding.AppendNode(new VariableNode("namespace"));
+            templateBuilding.AppendNode(new TextNode(@"
 {
     public enum SceneId
     {
@@ -108,14 +108,14 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
             Template subtemplate = new Template();
             ITemplateBuilding subtemplateBuilding = subtemplate;
 
-            subtemplateBuilding.AppendToken(new VariableToken("sceneEnumMemberName"));
-            subtemplateBuilding.AppendToken(new TextToken(@",
+            subtemplateBuilding.AppendNode(new VariableNode("sceneEnumMemberName"));
+            subtemplateBuilding.AppendNode(new TextNode(@",
 		"));
 
             templateBuilding.AppendSubtemplate("enumMemberTemplate", subtemplate);
 
             //
-            templateBuilding.AppendToken(new TextToken(@"
+            templateBuilding.AppendNode(new TextNode(@"
     }
 }"));
 

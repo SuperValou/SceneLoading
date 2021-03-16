@@ -2,11 +2,11 @@
 
 namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
 {
-    public class VariableToken : IToken
+    public class VariableNode : INode
     {
         public string VariableName { get; }
 
-        public VariableToken(string variableName)
+        public VariableNode(string variableName)
         {
             if (string.IsNullOrEmpty(variableName))
             {

@@ -2,7 +2,7 @@
 {
     public interface ITemplateBuilding
     {
-        void AppendToken(IToken token);
+        void AppendNode(INode node);
         void AppendSubtemplate(string subtemplateName, ITemplate subtemplate);
     }
 }

@@ -2,11 +2,11 @@
 
 namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
 {
-    public class SubtemplateToken : IToken
+    public class SubtemplateNode : INode
     {
         public string SubtemplateName { get; }
 
-        public SubtemplateToken(string subtemplateName)
+        public SubtemplateNode(string subtemplateName)
         {
             if (string.IsNullOrEmpty(subtemplateName))
             {

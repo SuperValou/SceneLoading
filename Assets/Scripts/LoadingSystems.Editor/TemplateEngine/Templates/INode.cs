@@ -1,6 +1,6 @@
 ﻿namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
 {
-    public interface IToken
+    public interface INode
     {
 
     }
