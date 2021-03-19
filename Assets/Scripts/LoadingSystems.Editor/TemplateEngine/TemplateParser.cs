@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens;
@@ -9,9 +10,8 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
     public class TemplateParser
     {
         private readonly string _templateFilePath;
-        private ParserState _state = ParserState.PlainText;
-        private ITemplate _parsedTemplate = null;
 
+        private ITemplate _parsedTemplate = null;
 
         public TemplateParser(string templateFilePath)
         {
@@ -35,10 +35,40 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
             var tokeniser = new Tokenizer(text);
             tokeniser.Tokenize();
 
+            Template template = new Template();
+            ITemplateBuilding templateBuilding = template;
+
             var tokens = tokeniser.GetTokens();
+            TokenType previousTokenType = TokenType.InstructionEnd;
             foreach (var token in tokens)
             {
-                Debug.Log(token); // TODO
+                var expectedTokenTypes = GetExpectedFollowingTokens(previousTokenType);
+                if (!expectedTokenTypes.Contains(token.Type))
+                {
+                    throw new InvalidOperationException($"Unexpected token '{token}' after '{previousTokenType}'. {string.Join(" or ", expectedTokenTypes)} was expected instead.");
+                }
+
+                switch (token.Type)
+                {
+                    case TokenType.Identifier:
+                        break;
+                    case TokenType.InstructionBegin:
+                        break;
+                    case TokenType.InstructionEnd:
+                        break;
+                    case TokenType.RawText:
+                        break;
+                    case TokenType.SubtemplateBegin:
+                        break;
+                    case TokenType.SubtemplateEnd:
+                        break;
+                    case TokenType.Variable:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                previousTokenType = token.Type;
             }
         }
 
@@ -46,7 +76,8 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
         {
             if (_parsedTemplate == null)
             {
-                throw new InvalidOperationException($"No template were parsed beforehand. Did you forget to call the {nameof(Parse)} method?");
+                throw new InvalidOperationException(
+                    $"No template were parsed beforehand. Did you forget to call the {nameof(Parse)} method?");
             }
 
             return _parsedTemplate;
@@ -85,9 +116,34 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
             return template;
         }
 
-        private enum ParserState
+        private static ICollection<TokenType> GetExpectedFollowingTokens(TokenType tokenType)
         {
-            PlainText
+            switch (tokenType)
+            {
+                case TokenType.Identifier:
+                    return new List<TokenType> {TokenType.InstructionEnd};
+
+                case TokenType.InstructionBegin:
+                    return new List<TokenType> {TokenType.Variable, TokenType.SubtemplateBegin, TokenType.SubtemplateEnd};
+
+                case TokenType.InstructionEnd:
+                    return new List<TokenType> {TokenType.RawText, TokenType.InstructionBegin};
+
+                case TokenType.RawText:
+                    return new List<TokenType> {TokenType.InstructionBegin};
+
+                case TokenType.SubtemplateBegin:
+                    return new List<TokenType> {TokenType.Identifier};
+
+                case TokenType.SubtemplateEnd:
+                    return new List<TokenType> {TokenType.InstructionEnd};
+
+                case TokenType.Variable:
+                    return new List<TokenType> {TokenType.Identifier};
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(tokenType), tokenType,
+                        $"Unexepected token type {tokenType}");
+            }
         }
     }
 }
