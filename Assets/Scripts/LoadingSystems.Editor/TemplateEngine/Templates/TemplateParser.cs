@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
+namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
 {
     public class TemplateParser
     {
