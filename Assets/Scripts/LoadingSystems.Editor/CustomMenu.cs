@@ -15,7 +15,7 @@ namespace Assets.Scripts.LoadingSystems.Editor
         public static void ShowGenerateEnumerationWindow()
         {
             var toto = new SceneInfoGenerator();
-            toto.DoStuff();
+            toto.Generate();
         }
     }
 }

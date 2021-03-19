@@ -16,7 +16,7 @@ namespace Assets.Scripts.LoadingSystems.Editor
     {
         private readonly Regex _enumMemberRegex = new Regex(@"[^\w]");
 
-        public void DoStuff()
+        public void Generate()
         {
             // Get all scenes
             var scenesGuids = AssetDatabase.FindAssets("t:Scene");
