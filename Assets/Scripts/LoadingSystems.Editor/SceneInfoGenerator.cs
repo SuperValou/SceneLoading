@@ -35,7 +35,7 @@ namespace Assets.Scripts.LoadingSystems.Editor
 
             // Generate template
             var builder = new TemplateParser();
-            ITemplate template = builder.Parse();
+            ITemplate template = builder.Stub();
             ISession session = template.CreateSession();
 
             session.SetVariable("namespace", typeof(SceneId).Namespace);
