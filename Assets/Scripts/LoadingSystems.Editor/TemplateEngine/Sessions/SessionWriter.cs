@@ -4,16 +4,16 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions
 {
     public class SessionWriter
     {
-        public void Write(ISession session, string filepath)
+        public void WriteSession(ISession session, string filepath)
         {
             File.WriteAllText(filepath, string.Empty);
             using (StreamWriter writer = new StreamWriter(filepath))
             {
-                this.Write(session, writer);
+                this.WriteSession(session, writer);
             }
         }
 
-        public void Write(ISession session, StreamWriter writer)
+        public void WriteSession(ISession session, StreamWriter writer)
         {
             if (session == null)
             {
@@ -34,7 +34,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions
                         break;
 
                     case SubsessionChunk subsessionChunk:
-                        this.Write(subsessionChunk.Subsession, writer);
+                        this.WriteSession(subsessionChunk.Subsession, writer);
                         break;
                 }
             }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens;
@@ -54,8 +54,6 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
             while (_remainingTokens.Count > 0)
             {
                 Token currentToken = _remainingTokens.Dequeue();
-
-                Debug.Log("Lookin at " + currentToken.ToString());
 
                 var expectedTokenTypes = GetExpectedFollowingTokens(_lastToken.Type);
                 if (!expectedTokenTypes.Contains(currentToken.Type))

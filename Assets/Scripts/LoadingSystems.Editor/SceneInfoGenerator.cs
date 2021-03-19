@@ -47,17 +47,43 @@ namespace Assets.Scripts.LoadingSystems.Editor
 
             ITemplate subtemplate = template.GetSubtemplate("enumMemberTemplate");
 
+            var sceneTypeEnumMemberNames = Enum.GetNames(typeof(SceneType));
+            int i = 0;
             foreach (var sceneName in sceneNames)
             {
+                // Build scene enum member
                 ISession subsession = subtemplate.CreateSession();
-                subsession.SetVariable("sceneEnumMemberName", _enumMemberRegex.Replace(sceneName, "_"));
+                
+                string enumMemberName = _enumMemberRegex.Replace(sceneName, "_");
+                if (char.IsNumber(enumMemberName, 0))
+                {
+                    enumMemberName = $"_{enumMemberName}";
+                }
 
+                string sceneType = null;
+                foreach (var sceneTypeEnumMemberName in sceneTypeEnumMemberNames.OrderByDescending(n => n))
+                {
+                    if (sceneName.EndsWith(sceneTypeEnumMemberName))
+                    {
+                        sceneType = sceneTypeEnumMemberName.ToString();
+                    }
+                }
+
+                if (sceneType == null)
+                {
+                    Debug.LogWarning($"Skipping unknown scene type '{sceneName}'. Known types are {string.Join(", ", sceneTypeEnumMemberNames)}.");
+                }
+
+                subsession.SetVariable("sceneName", sceneName);
+                subsession.SetVariable("sceneEnumMemberName", enumMemberName);
+                subsession.SetVariable("sceneType", sceneType);
+                subsession.SetVariable("sceneEnumMemberValue", i++.ToString());
                 session.AppendSubsession("enumMemberTemplate", subsession);
             }
             
             // Write template to file
             SessionWriter writer = new SessionWriter();
-            writer.Write(session, destinationFilePath);
+            writer.WriteSession(session, destinationFilePath);
         }
 
         private string GetAssetPath(string assetName, string assetExtension)
