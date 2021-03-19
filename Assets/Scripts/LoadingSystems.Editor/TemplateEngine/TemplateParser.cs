@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
@@ -10,6 +11,10 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
     public class TemplateParser
     {
         private readonly string _templateFilePath;
+        private Tokenizer _tokenizer;
+
+        private Queue<Token> _remainingTokens;
+        private Token _lastToken;
 
         private ITemplate _parsedTemplate = null;
 
@@ -30,60 +35,80 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
                 throw new FileNotFoundException($"Unable to find template file at '{_templateFilePath}'.");
             }
 
+            // tokenize file
             string text = File.ReadAllText(_templateFilePath);
+            
+            _tokenizer = new Tokenizer(text);
+            _tokenizer.Tokenize();
 
-            var tokeniser = new Tokenizer(text);
-            tokeniser.Tokenize();
+            // build AST
+            var tokens = _tokenizer.GetTokens();
+            _remainingTokens = new Queue<Token>(tokens);
+            
+            _lastToken = new Token(TokenType.InstructionEnd, "(beginning of the file)");
+            
+            _parsedTemplate = BuildAst();
+        }
 
+        private ITemplate BuildAst()
+        {
             Template template = new Template();
-            ITemplateBuilding templateBuilding = template;
-
-            var tokens = tokeniser.GetTokens();
-            TokenType previousTokenType = TokenType.InstructionEnd;
-            foreach (var token in tokens)
+            while (_remainingTokens.Count > 0)
             {
-                var expectedTokenTypes = GetExpectedFollowingTokens(previousTokenType);
-                if (!expectedTokenTypes.Contains(token.Type))
+                Token currentToken = _remainingTokens.Dequeue();
+
+                Debug.Log("Lookin at " + currentToken.ToString());
+
+                var expectedTokenTypes = GetExpectedFollowingTokens(_lastToken.Type);
+                if (!expectedTokenTypes.Contains(currentToken.Type))
                 {
-                    throw new InvalidOperationException($"Unexpected token '{token}' after '{previousTokenType}'. {string.Join(" or ", expectedTokenTypes)} was expected instead.");
+                    throw new InvalidOperationException($"Unexpected token '{currentToken}' after '{_lastToken}'. {string.Join(" or ", expectedTokenTypes)} was expected instead.");
                 }
 
-                switch (token.Type)
+                switch (currentToken.Type)
                 {
                     case TokenType.Identifier:
                         INode node;
-                        if (previousTokenType == TokenType.Variable)
+                        if (_lastToken.Type == TokenType.Variable)
                         {
-                            node = new VariableNode(token.Value);
-                            templateBuilding.AppendNode(node);
+                            node = new VariableNode(currentToken.Value);
+                            template.AppendNode(node);
                         }
-                        else if (previousTokenType == TokenType.SubtemplateBegin)
+                        else if (_lastToken.Type == TokenType.SubtemplateBegin)
                         {
-                            // TODO
+                            _lastToken = currentToken;
+                            ITemplate subtemplate = BuildAst();
+                            template.AppendSubtemplate(currentToken.Value, subtemplate);
+                            continue;
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException($"Incoherent identifier type, last token was {_lastToken} and current one is {currentToken}.");
                         }
                         break;
 
                     case TokenType.InstructionBegin:
                     case TokenType.InstructionEnd:
+                    case TokenType.SubtemplateBegin:
                     case TokenType.Variable:
                         break;
 
-                    case TokenType.RawText:
-                        templateBuilding.AppendNode(new TextNode(token.Value));
-                        break;
-
-                    case TokenType.SubtemplateBegin:
-                        break;
-
                     case TokenType.SubtemplateEnd:
+                        _lastToken = currentToken;
+                        return template;
+
+                    case TokenType.RawText:
+                        template.AppendNode(new TextNode(currentToken.Value));
                         break;
-                    
+
                     default:
-                        throw new InvalidOperationException($"Unknown token type {token.Type}");
+                        throw new InvalidOperationException($"Unknown token type for {currentToken}");
                 }
 
-                previousTokenType = token.Type;
+                _lastToken = currentToken;
             }
+
+            return template;
         }
 
         public ITemplate GetParsedTemplate()

@@ -33,16 +33,14 @@ namespace Assets.Scripts.LoadingSystems.Editor
             string destinationFilePath = GetAssetPath(nameof(SceneId), ".cs");
             Debug.Log("Rewriting to " + destinationFilePath);
 
-            // Generate template
+            // Get template
             string templatePath = GetAssetPath("SceneIdTemplate", ".txt");
             var parser = new TemplateParser(templatePath);
 
-
-            // TODO: almost there
             parser.Parse();
-            ITemplate template = parser.Stub();
-
-
+            ITemplate template = parser.GetParsedTemplate();
+            
+            // Build template session
             ISession session = template.CreateSession();
 
             session.SetVariable("namespace", typeof(SceneId).Namespace);
