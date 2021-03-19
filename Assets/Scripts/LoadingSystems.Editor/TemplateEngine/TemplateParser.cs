@@ -51,21 +51,35 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
                 switch (token.Type)
                 {
                     case TokenType.Identifier:
+                        INode node;
+                        if (previousTokenType == TokenType.Variable)
+                        {
+                            node = new VariableNode(token.Value);
+                            templateBuilding.AppendNode(node);
+                        }
+                        else if (previousTokenType == TokenType.SubtemplateBegin)
+                        {
+                            // TODO
+                        }
                         break;
+
                     case TokenType.InstructionBegin:
-                        break;
                     case TokenType.InstructionEnd:
-                        break;
-                    case TokenType.RawText:
-                        break;
-                    case TokenType.SubtemplateBegin:
-                        break;
-                    case TokenType.SubtemplateEnd:
-                        break;
                     case TokenType.Variable:
                         break;
+
+                    case TokenType.RawText:
+                        templateBuilding.AppendNode(new TextNode(token.Value));
+                        break;
+
+                    case TokenType.SubtemplateBegin:
+                        break;
+
+                    case TokenType.SubtemplateEnd:
+                        break;
+                    
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        throw new InvalidOperationException($"Unknown token type {token.Type}");
                 }
 
                 previousTokenType = token.Type;
@@ -76,8 +90,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
         {
             if (_parsedTemplate == null)
             {
-                throw new InvalidOperationException(
-                    $"No template were parsed beforehand. Did you forget to call the {nameof(Parse)} method?");
+                throw new InvalidOperationException($"No template were parsed beforehand. Did you forget to call the {nameof(Parse)} method?");
             }
 
             return _parsedTemplate;
@@ -141,8 +154,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
                 case TokenType.Variable:
                     return new List<TokenType> {TokenType.Identifier};
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(tokenType), tokenType,
-                        $"Unexepected token type {tokenType}");
+                    throw new ArgumentOutOfRangeException(nameof(tokenType), tokenType, $"Unknown token type {tokenType}");
             }
         }
     }
