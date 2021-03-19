@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -98,6 +99,11 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens
                     
                 }
             }
+        }
+
+        public ICollection<IToken> GetTokens()
+        {
+            return _tokens;
         }
     }
 }

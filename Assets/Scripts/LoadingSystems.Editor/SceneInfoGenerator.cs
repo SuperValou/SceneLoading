@@ -30,12 +30,19 @@ namespace Assets.Scripts.LoadingSystems.Editor
             }
 
             // Find SceneId file path
-            string destinationFilePath = GetScriptPath(nameof(SceneId));
+            string destinationFilePath = GetAssetPath(nameof(SceneId), ".cs");
             Debug.Log("Rewriting to " + destinationFilePath);
 
             // Generate template
-            var builder = new TemplateParser();
-            ITemplate template = builder.Stub();
+            string templatePath = GetAssetPath("SceneIdTemplate", ".txt");
+            var parser = new TemplateParser(templatePath);
+
+
+            // TODO: almost there
+            parser.Parse();
+            ITemplate template = parser.Stub();
+
+
             ISession session = template.CreateSession();
 
             session.SetVariable("namespace", typeof(SceneId).Namespace);
@@ -55,21 +62,21 @@ namespace Assets.Scripts.LoadingSystems.Editor
             writer.Write(session, destinationFilePath);
         }
 
-        private string GetScriptPath(string scriptName)
+        private string GetAssetPath(string assetName, string assetExtension)
         {
-            if (string.IsNullOrEmpty(scriptName))
+            if (string.IsNullOrEmpty(assetName))
             {
-                throw new ArgumentException("Value cannot be null or empty.", nameof(scriptName));
+                throw new ArgumentException("Value cannot be null or empty.", nameof(assetName));
             }
 
-            var paths = AssetDatabase.FindAssets(scriptName).Select(AssetDatabase.GUIDToAssetPath).ToArray();
+            var paths = AssetDatabase.FindAssets(assetName).Select(AssetDatabase.GUIDToAssetPath).ToArray();
             string relativePath = null;
             foreach (var path in paths)
             {
                 string filename = Path.GetFileNameWithoutExtension(path);
                 string extension = Path.GetExtension(path);
 
-                if (filename == scriptName && extension == ".cs")
+                if (filename == assetName && extension == assetExtension)
                 {
                     relativePath = path; // looks like "Assets/Scripts/.../<script name>.cs"
                     break;
@@ -78,7 +85,7 @@ namespace Assets.Scripts.LoadingSystems.Editor
 
             if (relativePath == null)
             {
-                throw new InvalidOperationException($"Unable to find {scriptName} script. Results were: '{string.Join(", ", paths)}' ({paths.Length} results).");
+                throw new InvalidOperationException($"Unable to find '{assetName}' asset. Results were: '{string.Join(", ", paths)}' ({paths.Length} results).");
             }
 
             string root = Application.dataPath; // returns "<path to project folder>/Assets"

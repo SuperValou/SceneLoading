@@ -1,89 +1,52 @@
 ﻿using System;
 using System.IO;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
+using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens;
+using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine
 {
     public class TemplateParser
     {
+        private readonly string _templateFilePath;
         private ParserState _state = ParserState.PlainText;
         private ITemplate _parsedTemplate = null;
 
-        public void Parse(string templateFilePath)
+
+        public TemplateParser(string templateFilePath)
+        {
+            _templateFilePath = templateFilePath;
+        }
+
+        public void Parse()
         {
             if (_parsedTemplate != null)
             {
                 return;
             }
 
-            using (var reader = new StreamReader(templateFilePath))
+            if (!File.Exists(_templateFilePath))
             {
-                Parse(reader);
+                throw new FileNotFoundException($"Unable to find template file at '{_templateFilePath}'.");
+            }
+
+            string text = File.ReadAllText(_templateFilePath);
+
+            var tokeniser = new Tokenizer(text);
+            tokeniser.Tokenize();
+
+            var tokens = tokeniser.GetTokens();
+            foreach (var token in tokens)
+            {
+                Debug.Log(token); // TODO
             }
         }
-
-        public void Parse(StreamReader reader)
-        {
-            if (_parsedTemplate != null)
-            {
-                return;
-            }
-
-            if (!TryReadNext(reader, out char c))
-            {
-                if (_state == ParserState.PlainText)
-                {
-                    return;
-                }
-
-                throw new InvalidOperationException("Unexpected end of stream");
-            }
-
-            switch (_state)
-            {
-                case ParserState.PlainText:
-                    if (c == '<')
-                    {
-                        if (TryReadNext(reader, out char nextChar) && nextChar == '$')
-                        {
-
-                        }
-                    }
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        private char ReadNext(StreamReader reader)
-        {
-            if (reader.EndOfStream)
-            {
-                throw new InvalidOperationException("Parsing error");
-            }
-
-            return (char) reader.Read();
-        }
-
-        private bool TryReadNext(StreamReader reader, out char nextChar)
-        {
-            if (reader.EndOfStream)
-            {
-                nextChar = '0';
-                return false;
-            }
-
-            nextChar = (char) reader.Read();
-            return true;
-        }
-
 
         public ITemplate GetParsedTemplate()
         {
             if (_parsedTemplate == null)
             {
-                throw new InvalidOperationException(
-                    $"No template were parsed beforehand. Did you forget to call the {nameof(Parse)} method?");
+                throw new InvalidOperationException($"No template were parsed beforehand. Did you forget to call the {nameof(Parse)} method?");
             }
 
             return _parsedTemplate;
