@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.LoadingSystems.SceneInfos;
+﻿using Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations;
+using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
 
 namespace Assets.Scripts.LoadingSystems.Editor

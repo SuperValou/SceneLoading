@@ -1,16 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
-using Assets.Scripts.LoadingSystems.Editor.TemplateEngine;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.Editor
+namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 {
     public class SceneInfoGenerator
     {
