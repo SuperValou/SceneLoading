@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.LoadingSystems.SceneInfos
 {
-    public class SceneInfo
+    public partial class SceneInfo
     {
         public SceneId Id { get; }
         public string SceneName { get; }
