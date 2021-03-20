@@ -5,15 +5,12 @@ using System.Text.RegularExpressions;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
 using Assets.Scripts.LoadingSystems.SceneInfos;
-using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 {
     public class SceneInfoGenerator
     {
-        private readonly Regex _enumMemberRegex = new Regex(@"[^\w]");
-
         public void Generate()
         {
             // Get all scenes
@@ -48,25 +45,12 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
             int i = 0;
             foreach (var sceneName in sceneNames)
             {
-                // Build scene enum member
                 ISession subsession = subtemplate.CreateSession();
-                
-                string enumMemberName = _enumMemberRegex.Replace(sceneName, "_");
-                if (char.IsNumber(enumMemberName, 0))
-                {
-                    enumMemberName = $"_{enumMemberName}";
-                }
 
-                string sceneType = null;
-                foreach (var sceneTypeEnumMemberName in sceneTypeEnumMemberNames.OrderByDescending(n => n))
-                {
-                    if (sceneName.EndsWith(sceneTypeEnumMemberName))
-                    {
-                        sceneType = sceneTypeEnumMemberName.ToString();
-                    }
-                }
+                string enumMemberName = SceneNamingConvention.GetEnumMemberName(sceneName);
+                string sceneType = SceneNamingConvention.GetSceneType(sceneName);
 
-                if (sceneType == null)
+                if (sceneType == string.Empty)
                 {
                     Debug.LogWarning($"Skipping unknown scene type '{sceneName}'. Known types are {string.Join(", ", sceneTypeEnumMemberNames)}.");
                 }
