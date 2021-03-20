@@ -4,7 +4,7 @@ using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.Editor
+namespace Assets.Scripts.LoadingSystems.Editor.PropertyDrawers
 {
     [CustomPropertyDrawer(typeof(RoomIdAttribute))]
     public class RoomIdDrawer : PropertyDrawer
