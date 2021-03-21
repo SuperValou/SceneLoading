@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Assets.Scripts.LoadingSystems.SceneInfos;
+using Assets.Scripts.LoadingSystems.SceneInfos.Attributes;
 using Assets.Scripts.LoadingSystems.SceneLoadings;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Assets.Scripts.MainScenesScripts
         // -- Editor
 
         [Header("Values")]
+        [GameplayId]
         public SceneId gameplayToLoad;
 
         [RoomId]

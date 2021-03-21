@@ -4,10 +4,10 @@ using UnityEditor;
 
 namespace Assets.Scripts.LoadingSystems.Editor.PropertyDrawers
 {
-    [CustomPropertyDrawer(typeof(RoomIdAttribute))]
-    public class RoomIdDrawer : SceneIdDrawer
+    [CustomPropertyDrawer(typeof(GameplayIdAttribute))]
+    public class GameplayIdDrawer : SceneIdDrawer
     {
-        public RoomIdDrawer() : base(SceneType.Room)
+        public GameplayIdDrawer() : base(SceneType.Gameplay)
         {
         }
     }
