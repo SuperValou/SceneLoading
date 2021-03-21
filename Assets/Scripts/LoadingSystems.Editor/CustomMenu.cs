@@ -1,22 +1,18 @@
 ﻿using Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
+using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Editor
 {
     public static class CustomMenu
     {
-        [MenuItem("Rooms/Create new Room")]
-        public static void ShowCreateNewRoomWindow()
-        {
-            //EditorWindow.GetWindow<ScriptLinkWindow>();
-        }
-
         [MenuItem("Rooms/Generate " + nameof(SceneId) + " enumeration")]
-        public static void ShowGenerateEnumerationWindow()
+        public static void GenerateEnumeration()
         {
-            var toto = new SceneInfoFileGenerator();
-            toto.Generate();
+            Debug.Log($"Executing {nameof(SceneInfoGenerator)} script...");
+            SceneInfoGenerator.Execute();
+            Debug.Log($"Done executing {nameof(SceneInfoGenerator)} script.");
         }
     }
 }

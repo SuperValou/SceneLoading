@@ -4,13 +4,14 @@ using System.Linq;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
 using Assets.Scripts.LoadingSystems.SceneInfos;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 {
-    public class SceneInfoFileGenerator
+    public static class SceneInfoGenerator
     {
-        public void Generate()
+        public static void Execute()
         {
             // Get all scenes
             var sceneNames = AssetDatabaseExt.GetAllScenePaths(relativeToAssetFolder: true)
@@ -27,10 +28,6 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
             var sceneInfoDataBuilder = new SceneInfoDataBuilder(sceneNames);
             sceneInfoDataBuilder.Process();
 
-            // Find SceneId file path
-            string destinationFilePath = AssetDatabaseExt.GetAssetFilePath($"{nameof(SceneId)}.cs");
-            Debug.Log($"About to rewrite file at '{destinationFilePath}'...");
-
             // Get template
             string templatePath = AssetDatabaseExt.GetAssetFilePath("SceneIdTemplate.txt");
             var parser = new TemplateParser(templatePath);
@@ -45,7 +42,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 
             ITemplate subtemplate = template.GetSubtemplate("enumMemberTemplate");
 
-            foreach (var data in sceneInfoDataBuilder.Data)
+            foreach (var data in sceneInfoDataBuilder.Data.OrderBy(d => d.SceneEnumMemberInteger))
             {
                 ISession subsession = subtemplate.CreateSession();
 
@@ -56,10 +53,16 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 
                 session.AppendSubsession("enumMemberTemplate", subsession);
             }
-            
+
             // Write template to file
+            string destinationFilePath = AssetDatabaseExt.GetAssetFilePath($"{nameof(SceneId)}.cs");
+            Debug.Log($"About to rewrite file at '{destinationFilePath}'...");
             SessionWriter writer = new SessionWriter();
             writer.WriteSession(session, destinationFilePath);
+
+            // Refresh
+            Debug.Log("Reloading scripts...");
+            AssetDatabase.Refresh();
         }
     }
 }

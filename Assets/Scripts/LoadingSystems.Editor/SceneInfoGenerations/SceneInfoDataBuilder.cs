@@ -13,11 +13,6 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 
         private readonly Regex _enumMemberReplacementRegex = new Regex(@"[^\w]"); // matches all non-word characters
 
-        private readonly Regex _gameplaySceneRegex = new Regex(@"^[\w-]*[Gg]ameplay$"); // Example of match: "0-Gameplay", "main_gameplay"
-        private readonly Regex _masterSceneRegex = new Regex(@"^\w+-Master$"); // Example of match: "Ice-Master"
-        private readonly Regex _testRoomSceneRegex = new Regex(@"^Test-\w+$"); // Example of match: "Test-abilities", "Test-BossRoom"
-        private readonly Regex _roomSceneRegex = new Regex(@"^[\w-]+$"); // Example of match: "Test-abilities", "Test-BossRoom"
-        
         public List<SceneInfoData> Data { get; } = new List<SceneInfoData>();
 
         private readonly HashSet<string> _remainingNamesToProcess;
@@ -35,10 +30,10 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
         public void Process()
         {
             ProcessUnchangedScenes();
-            ProcessNewScenes(_gameplaySceneRegex, SceneType.Gameplay);
-            ProcessNewScenes(_masterSceneRegex, SceneType.Master);
-            DiscardTestRooms();
-            ProcessNewScenes(_roomSceneRegex, SceneType.Room);
+            DiscardIgnoredScenes();
+            ProcessNewScenes(SceneNamingConvention.GameplaySceneRegex, SceneType.Gameplay);
+            ProcessNewScenes(SceneNamingConvention.MasterSceneRegex, SceneType.Master);
+            ProcessNewScenes(SceneNamingConvention.RoomSceneRegex, SceneType.Room);
 
             if (_remainingNamesToProcess.Any())
             {
@@ -115,11 +110,11 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
             }
         }
 
-        private void DiscardTestRooms()
+        private void DiscardIgnoredScenes()
         {
             foreach (var sceneName in new List<string>(_remainingNamesToProcess))
             {
-                if (_testRoomSceneRegex.IsMatch(sceneName))
+                if (SceneNamingConvention.IgnoredSceneRegex.IsMatch(sceneName))
                 {
                     _remainingNamesToProcess.Remove(sceneName);
                 }
