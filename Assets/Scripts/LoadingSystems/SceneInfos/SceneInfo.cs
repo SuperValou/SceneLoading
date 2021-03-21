@@ -38,7 +38,7 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
 
         public bool IsRoom()
         {
-            return this.Type == SceneType.Room || this.Type == SceneType.TestRoom;
+            return this.Type == SceneType.Room;
         }
 
         public override bool Equals(object obj)
@@ -176,7 +176,7 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
                                             $"Available scene names are: {string.Join(", ", all.Select(sc => sc.SceneName))}.");
             }
 
-            if (sceneInfo.Type != SceneType.Room && sceneInfo.Type != SceneType.TestRoom)
+            if (!sceneInfo.IsRoom())
             {
                 throw new ArgumentException($"'{gameobject.name}' should belong to a Room scene, not a '{sceneInfo.Type}' scene.");
             }

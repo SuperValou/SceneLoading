@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
 using Assets.Scripts.LoadingSystems.SceneInfos;
@@ -14,18 +13,19 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
         public void Generate()
         {
             // Get all scenes
-            var scenePaths = AssetDatabaseExt.GetAllScenePaths(relativeToAssetFolder: true);
+            var sceneNames = AssetDatabaseExt.GetAllScenePaths(relativeToAssetFolder: true)
+                                             .Select(Path.GetFileNameWithoutExtension).ToList();
             
-            var distinctNames = scenePaths.Select(path =>
-            {
-                string name = Path.GetFileNameWithoutExtension(path) ?? throw new InvalidOperationException($"Scene name cannot be null: '{path}'");
-                return name.ToLowerInvariant();
-            }).Distinct();
+            var distinctNames = sceneNames.Select(n => n.ToLowerInvariant()).Distinct();
 
-            if (distinctNames.Count() != scenePaths.Count)
+            if (distinctNames.Count() != sceneNames.Count)
             {
                 throw new InvalidOperationException("Two scenes share the same case-insensitive name.");
             }
+
+            // Gather data
+            var sceneInfoDataBuilder = new SceneInfoDataBuilder(sceneNames);
+            sceneInfoDataBuilder.Process();
 
             // Find SceneId file path
             string destinationFilePath = AssetDatabaseExt.GetAssetFilePath($"{nameof(SceneId)}.cs");
@@ -45,25 +45,15 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 
             ITemplate subtemplate = template.GetSubtemplate("enumMemberTemplate");
 
-            var sceneInfoDataGenerator = new SceneInfoDataGenerator();
-            var sceneTypeEnumMemberNames = Enum.GetNames(typeof(SceneType));
-            int i = 0;
-            foreach (var scenePath in scenePaths)
+            foreach (var data in sceneInfoDataBuilder.Data)
             {
                 ISession subsession = subtemplate.CreateSession();
 
-                string enumMemberName = sceneInfoDataGenerator.GetEnumMemberName(scenePath);
-                string sceneType = sceneInfoDataGenerator.GetSceneType(scenePath);
+                subsession.SetVariable("sceneName", data.SceneName);
+                subsession.SetVariable("sceneEnumMemberName", data.SceneEnumMemberName);
+                subsession.SetVariable("sceneType", data.SceneTypeName);
+                subsession.SetVariable("sceneEnumMemberValue", data.SceneEnumMemberInteger.ToString());
 
-                if (sceneType == string.Empty)
-                {
-                    Debug.LogWarning($"Skipping unknown scene type '{scenePath}'. Known types are {string.Join(", ", sceneTypeEnumMemberNames)}.");
-                }
-
-                subsession.SetVariable("sceneName", scenePath);
-                subsession.SetVariable("sceneEnumMemberName", enumMemberName);
-                subsession.SetVariable("sceneType", sceneType);
-                subsession.SetVariable("sceneEnumMemberValue", i++.ToString());
                 session.AppendSubsession("enumMemberTemplate", subsession);
             }
             

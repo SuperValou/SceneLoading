@@ -10,6 +10,11 @@ namespace Assets.Scripts.MainScenesScripts
         // -- Editor
 
         [Header("Values")]
+        public SceneId gameplayToLoad;
+
+        [RoomId]
+        public SceneId firstRoomToLoad;
+
         public string playerTag = "Player";
 
         [Header("References")]
@@ -19,12 +24,12 @@ namespace Assets.Scripts.MainScenesScripts
 
         IEnumerator Start()
         {
-            yield return sceneLoadingManager.LoadSubSenesAsync(SceneId.GameplayScene);
+            yield return sceneLoadingManager.LoadSubSenesAsync(gameplayToLoad);
 
             GameObject player = GameObject.FindGameObjectWithTag(playerTag);
             player.SetActive(false);
 
-            yield return sceneLoadingManager.LoadSubSenesAsync(SceneId.WakeUpRoomScene);
+            yield return sceneLoadingManager.LoadSubSenesAsync(firstRoomToLoad);
 
             player.SetActive(true);
         }
