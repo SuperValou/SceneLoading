@@ -39,7 +39,11 @@ namespace Assets.Scripts.LoadingSystems.Editor.PropertyDrawers
             int previousSelectedIndex = _optionIds.FindIndex(id => id == property.intValue);
             var guiContent = new GUIContent(property.displayName);
             int newSelectedIndex = EditorGUI.Popup(position, guiContent, previousSelectedIndex, _displayedOptions.Select(d => new GUIContent(d)).ToArray() );
-            property.intValue = _optionIds[newSelectedIndex];
+
+            if (newSelectedIndex >= 0 && newSelectedIndex < _optionIds.Count)
+            {
+                property.intValue = _optionIds[newSelectedIndex];
+            }
         }
     }
 }
