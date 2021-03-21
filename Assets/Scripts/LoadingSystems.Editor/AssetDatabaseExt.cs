@@ -9,11 +9,17 @@ namespace Assets.Scripts.LoadingSystems.Editor
 {
     public static class AssetDatabaseExt
     {
-        public static ICollection<string> GetAllScenePaths()
+        public static ICollection<string> GetAllScenePaths(bool relativeToAssetFolder = false)
         {
-            var scenesGuids = AssetDatabase.FindAssets("t:Scene");
-            var scenesPaths = scenesGuids.Select(AssetDatabase.GUIDToAssetPath).ToList();
-            return scenesPaths;
+            var sceneGuids = AssetDatabase.FindAssets("t:Scene");
+            var relativeScenePaths = sceneGuids.Select(AssetDatabase.GUIDToAssetPath);
+            if (relativeToAssetFolder)
+            {
+                return relativeScenePaths.ToList();
+            }
+
+            var absoluteScenePaths = relativeScenePaths.Select(GetAssetFullPath).ToList();
+            return absoluteScenePaths;
         }
 
         public static string GetAssetFilePath(string filename, bool relativeToAssetFolder = false)

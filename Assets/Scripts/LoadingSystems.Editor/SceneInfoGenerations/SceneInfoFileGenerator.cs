@@ -9,16 +9,20 @@ using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 {
-    public class SceneInfoGenerator
+    public class SceneInfoFileGenerator
     {
         public void Generate()
         {
             // Get all scenes
-            var scenePaths = AssetDatabaseExt.GetAllScenePaths();
-            var sceneNames = scenePaths.Select(Path.GetFileNameWithoutExtension).ToList();
+            var scenePaths = AssetDatabaseExt.GetAllScenePaths(relativeToAssetFolder: true);
+            
+            var distinctNames = scenePaths.Select(path =>
+            {
+                string name = Path.GetFileNameWithoutExtension(path) ?? throw new InvalidOperationException($"Scene name cannot be null: '{path}'");
+                return name.ToLowerInvariant();
+            }).Distinct();
 
-            var distinctNames = sceneNames.Select(name => name.ToLowerInvariant()).Distinct();
-            if (distinctNames.Count() != sceneNames.Count)
+            if (distinctNames.Count() != scenePaths.Count)
             {
                 throw new InvalidOperationException("Two scenes share the same case-insensitive name.");
             }
@@ -41,21 +45,22 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 
             ITemplate subtemplate = template.GetSubtemplate("enumMemberTemplate");
 
+            var sceneInfoDataGenerator = new SceneInfoDataGenerator();
             var sceneTypeEnumMemberNames = Enum.GetNames(typeof(SceneType));
             int i = 0;
-            foreach (var sceneName in sceneNames)
+            foreach (var scenePath in scenePaths)
             {
                 ISession subsession = subtemplate.CreateSession();
 
-                string enumMemberName = SceneNamingConvention.GetEnumMemberName(sceneName);
-                string sceneType = SceneNamingConvention.GetSceneType(sceneName);
+                string enumMemberName = sceneInfoDataGenerator.GetEnumMemberName(scenePath);
+                string sceneType = sceneInfoDataGenerator.GetSceneType(scenePath);
 
                 if (sceneType == string.Empty)
                 {
-                    Debug.LogWarning($"Skipping unknown scene type '{sceneName}'. Known types are {string.Join(", ", sceneTypeEnumMemberNames)}.");
+                    Debug.LogWarning($"Skipping unknown scene type '{scenePath}'. Known types are {string.Join(", ", sceneTypeEnumMemberNames)}.");
                 }
 
-                subsession.SetVariable("sceneName", sceneName);
+                subsession.SetVariable("sceneName", scenePath);
                 subsession.SetVariable("sceneEnumMemberName", enumMemberName);
                 subsession.SetVariable("sceneType", sceneType);
                 subsession.SetVariable("sceneEnumMemberValue", i++.ToString());

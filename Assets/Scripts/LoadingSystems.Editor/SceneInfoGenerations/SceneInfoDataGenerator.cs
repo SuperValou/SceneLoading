@@ -5,13 +5,13 @@ using Assets.Scripts.LoadingSystems.SceneInfos;
 
 namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 {
-    public static class SceneNamingConvention
+    public class SceneInfoDataGenerator
     {
-        private static readonly Regex _enumMemberReplacementRegex = new Regex(@"[^\w]"); // matches all non-word characters
+        private readonly Regex _enumMemberReplacementRegex = new Regex(@"[^\w]"); // matches all non-word characters
 
-        private static readonly Regex _gameplaySceneRegex = new Regex(@"^\d-Gameplay$", RegexOptions.None); // Example of match: "0-Gameplay"
+        private readonly Regex _gameplaySceneRegex = new Regex(@"^\d-Gameplay$", RegexOptions.None); // Example of match: "0-Gameplay"
         
-        public static string GetEnumMemberName(string sceneName)
+        public string GetEnumMemberName(string sceneName)
         {
             if (string.IsNullOrWhiteSpace(sceneName))
             {
@@ -27,7 +27,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
             return enumMemberName;
         }
 
-        public static string GetSceneType(string sceneName)
+        public string GetSceneType(string sceneName)
         {
             string sceneType = string.Empty;
             foreach (var sceneTypeEnumMemberName in Enum.GetNames(typeof(SceneType)).OrderByDescending(n => n))
@@ -40,5 +40,13 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 
             return sceneType;
         }
+    }
+
+    public class SceneInfoData
+    {
+        public string SceneName { get; set; }
+        public int SceneIdInteger { get; set; }
+        public string SceneIdName { get; set; }
+        public string SceneTypeName { get; set; }
     }
 }

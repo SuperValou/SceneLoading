@@ -15,7 +15,7 @@ namespace Assets.Scripts.LoadingSystems.Editor
         [MenuItem("Rooms/Generate " + nameof(SceneId) + " enumeration")]
         public static void ShowGenerateEnumerationWindow()
         {
-            var toto = new SceneInfoGenerator();
+            var toto = new SceneInfoFileGenerator();
             toto.Generate();
         }
     }
