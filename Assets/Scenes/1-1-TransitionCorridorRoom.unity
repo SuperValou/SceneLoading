@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 4
+  roomOnTheOtherSide: 20004
   triggeringTag: Player
   doorManagerProxy: {fileID: 1612411410}
   openingGap: 2
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 2
+  roomOnTheOtherSide: 20001
   triggeringTag: Player
   doorManagerProxy: {fileID: 1612411410}
   openingGap: 2

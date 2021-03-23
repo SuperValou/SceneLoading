@@ -12,7 +12,7 @@ namespace <$var:namespace>
 {
     public partial class SceneInfo
     {
-		private Dictionary<SceneId, SceneInfo> _registry = new Dictionary<SceneId, SceneInfo>()
+		private static Dictionary<SceneId, SceneInfo> _registry = new Dictionary<SceneId, SceneInfo>()
         {
 			<$subtemplate:item>{SceneId.<$var:sceneEnumMember>, new SceneInfo(SceneId.<$var:sceneEnumMember>, "<$var:sceneName>", SceneType.<$var:sceneType>)},
 			<$endsubtemplate>            

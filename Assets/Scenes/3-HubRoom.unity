@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 7
+  roomOnTheOtherSide: 20005
   triggeringTag: Player
   doorManagerProxy: {fileID: 503680133}
   openingGap: 2
@@ -1255,7 +1255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 3
+  roomOnTheOtherSide: 20000
   triggeringTag: Player
   doorManagerProxy: {fileID: 503680133}
   openingGap: 2
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 6
+  roomOnTheOtherSide: 20003
   triggeringTag: Player
   doorManagerProxy: {fileID: 503680133}
   openingGap: 2
@@ -1830,7 +1830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 5
+  roomOnTheOtherSide: 20002
   triggeringTag: Player
   doorManagerProxy: {fileID: 503680133}
   openingGap: 2

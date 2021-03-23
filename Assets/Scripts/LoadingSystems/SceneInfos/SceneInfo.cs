@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Assets.Scripts.LoadingSystems.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -79,50 +78,14 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
             return $"{Id.ToString()}<{SceneName}>";
         }
 
-        private static IReadOnlyCollection<SceneInfo>  _cache = null;
-
         public static IReadOnlyCollection<SceneInfo> GetAll()
         {
-            if (_cache != null)
-            {
-                return _cache;
-            }
-
-            var sceneIdType = typeof(SceneId);
-            var enumValues = Enum.GetValues(sceneIdType).Cast<SceneId>();
-
-            List<SceneInfo> list = new List<SceneInfo>();
-
-            foreach (SceneId sceneId in enumValues)
-            {
-                SceneInfoAttribute sceneInfoAttribute = sceneIdType.GetEnumMemberAttribute<SceneInfoAttribute>(sceneId.ToString());
-                var sceneInfo = new SceneInfo(sceneId, sceneInfoAttribute.SceneName, sceneInfoAttribute.SceneType);
-                list.Add(sceneInfo);
-            }
-
-            // check everything is ok
-            var uniqueSceneNames = list.Select(v => v.SceneName.ToLowerInvariant()).Distinct().ToList();
-            if (list.Count != uniqueSceneNames.Count)
-            {
-                throw new InvalidOperationException($"At least two scenes share the same case-insensitive name in the {nameof(SceneId)} enumeration.");
-            }
-
-            _cache = list;
-            return _cache;
+            return _registry.Values;
         }
 
         public static bool TryGet(SceneId sceneId, out SceneInfo sceneInfo)
         {
-            sceneInfo = null;
-            try
-            {
-                sceneInfo = GetOrThrow(sceneId);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return _registry.TryGetValue(sceneId, out sceneInfo);
         }
 
         public static SceneInfo GetOrThrow(SceneId sceneId)
@@ -132,20 +95,17 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
                 throw new InvalidEnumArgumentException(nameof(sceneId), (int)sceneId, typeof(SceneId));
             }
 
-            var all = GetAll();
-            SceneInfo sceneInfo = all.FirstOrDefault(si => si.Id == sceneId);
-            if (sceneInfo == null)
+            if (_registry.ContainsKey(sceneId))
             {
-                throw new ArgumentException($"Scene '{sceneId}' is unknown.");
+                return _registry[sceneId];
             }
 
-            return sceneInfo;
+            throw new ArgumentException($"Scene '{sceneId}' is unknown.");
         }
 
         public static SceneInfo GetFromScene(Scene scene)
         {
-            var all = GetAll();
-            var sceneInfo = all.FirstOrDefault(si => si.SceneName == scene.name);
+            var sceneInfo = _registry.Values.FirstOrDefault(si => si.SceneName == scene.name);
             if (sceneInfo == null)
             {
                 throw new InvalidOperationException($"Unable to identify scene with name '{scene.name}'. " +
@@ -167,13 +127,12 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
             {
                 throw new ArgumentNullException($"GameObject {gameobject.name} has a null scene name.");
             }
-
-            var all = GetAll();
-            SceneInfo sceneInfo = all.FirstOrDefault(sc => sc.SceneName == sceneName);
+            
+            SceneInfo sceneInfo = _registry.Values.FirstOrDefault(sc => sc.SceneName == sceneName);
             if (sceneInfo == null)
             {
                 throw new ArgumentException($"Unable to find {nameof(SceneInfo)} corresponding to scene '{sceneName}' for gameObject '{gameobject.name}'. " +
-                                            $"Available scene names are: {string.Join(", ", all.Select(sc => sc.SceneName))}.");
+                                            $"Available scene names are: {string.Join(", ", _registry.Values.Select(sc => sc.SceneName))}.");
             }
 
             if (!sceneInfo.IsRoom())
