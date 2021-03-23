@@ -77,10 +77,15 @@ namespace Assets.Scripts.LoadingSystems.Doors
                     else if (sceneLoadingManager.IsLoading(door.RoomIdOnTheOtherSide, out float progress))
                     {
                         door.NotifyLoadingProgress(progress);
+
+                        if (sceneLoadingManager.IsReadyToActivate(door.RoomIdOnTheOtherSide))
+                        {
+                            sceneLoadingManager.Activate(door.RoomIdOnTheOtherSide);
+                        }
                     }
                     else
                     {
-                        StartCoroutine(sceneLoadingManager.LoadSubSenesAsync(door.RoomIdOnTheOtherSide));
+                        StartCoroutine(sceneLoadingManager.LoadSubSceneAsync(door.RoomIdOnTheOtherSide));
                     }
                 }
 

@@ -26,14 +26,11 @@ namespace Assets.Scripts.MainScenesScripts
 
         IEnumerator Start()
         {
-            yield return sceneLoadingManager.LoadSubSenesAsync(gameplayToLoad);
+            yield return sceneLoadingManager.PreloadSubSceneAsync(gameplayToLoad);
+            yield return sceneLoadingManager.PreloadSubSceneAsync(firstRoomToLoad);
 
-            GameObject player = GameObject.FindGameObjectWithTag(playerTag);
-            player.SetActive(false);
-
-            yield return sceneLoadingManager.LoadSubSenesAsync(firstRoomToLoad);
-
-            player.SetActive(true);
+            sceneLoadingManager.Activate(gameplayToLoad);
+            sceneLoadingManager.Activate(firstRoomToLoad);
         }
     }
 }

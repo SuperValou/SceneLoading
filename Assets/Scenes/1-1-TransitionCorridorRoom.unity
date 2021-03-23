@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 749366730}
   - component: {fileID: 749366729}
   m_Layer: 0
-  m_Name: Door to Boss Room
+  m_Name: Door to 3-HubRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1072,7 +1072,7 @@ GameObject:
   - component: {fileID: 1841462056}
   - component: {fileID: 1841462058}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Door to 1-WakeUpRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
