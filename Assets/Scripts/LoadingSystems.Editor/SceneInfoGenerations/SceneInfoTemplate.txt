@@ -6,11 +6,16 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System.Collections.Generic;
+
 namespace <$var:namespace>
 {
-    public enum SceneId
+    public partial class SceneInfo
     {
-		<$subtemplate:enumMemberTemplate><$var:sceneEnumMemberName> = <$var:sceneEnumMemberValue>,
-		<$endsubtemplate>
+		private Dictionary<SceneId, SceneInfo> _registry = new Dictionary<SceneId, SceneInfo>()
+        {
+			<$subtemplate:item>{SceneId.<$var:sceneEnumMember>, new SceneInfo(SceneId.<$var:sceneEnumMember>, "<$var:sceneName>", SceneType.<$var:sceneType>)},
+			<$endsubtemplate>            
+        };
     }
 }
