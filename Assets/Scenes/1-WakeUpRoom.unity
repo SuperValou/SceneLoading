@@ -1350,7 +1350,7 @@ GameObject:
   - component: {fileID: 1221847411}
   - component: {fileID: 1221847412}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Door to 1-1-TransitionCorridorRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1397,7 +1397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 3
+  roomOnTheOtherSide: 20000
   triggeringTag: Player
   doorManagerProxy: {fileID: 858934575}
   openingGap: 2

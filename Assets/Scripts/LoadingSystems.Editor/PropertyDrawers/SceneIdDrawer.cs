@@ -1,37 +1,27 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.LoadingSystems.Editor.PropertyDrawers
 {
-    [CustomPropertyDrawer(typeof(RoomIdAttribute))]
-    public class RoomIdDrawer : PropertyDrawer
+    public class SceneIdDrawer : PropertyDrawer
     {
-        private static bool _initialized;
-        private static List<int> _optionIds;
-        private static GUIContent[] _displayedOptions;
+        private readonly List<int> _optionIds;
+        private readonly GUIContent[] _displayedOptions;
 
         private int _selectedIndex;
 
-        public RoomIdDrawer() : base()
+        protected SceneIdDrawer(SceneType type)
         {
-            if (_initialized)
+            var sceneInfos = SceneInfo.GetAll().Where(si => si.Type == type).ToList();
+            _optionIds = sceneInfos.Select(ri => (int) ri.Id).ToList();
+            _displayedOptions = sceneInfos.Select(si =>
             {
-                return;
-            }
-
-            var roomInfos = SceneInfo.GetAll().Where(si => si.IsRoom()).ToList();
-            _optionIds = roomInfos.Select(ri => (int) ri.Id).ToList();
-            _displayedOptions = roomInfos.Select(roomInfo =>
-            {
-                string displayedName = $"{roomInfo.SceneName} [{roomInfo.Id}={(int) roomInfo.Id}]";
+                string displayedName = $"{si.SceneName}\t[id={(int) si.Id}]";
                 return new GUIContent(displayedName);
             }).ToArray();
-            
-            _initialized = true;
         }
 
         // Here you can define the GUI for your property drawer. Called by Unity.
@@ -40,7 +30,11 @@ namespace Assets.Scripts
             int previousSelectedIndex = _optionIds.FindIndex(id => id == property.intValue);
             var guiContent = new GUIContent(property.displayName);
             int newSelectedIndex = EditorGUI.Popup(position, guiContent, previousSelectedIndex, _displayedOptions.Select(d => new GUIContent(d)).ToArray() );
-            property.intValue = _optionIds[newSelectedIndex];
+
+            if (newSelectedIndex >= 0 && newSelectedIndex < _optionIds.Count)
+            {
+                property.intValue = _optionIds[newSelectedIndex];
+            }
         }
     }
 }

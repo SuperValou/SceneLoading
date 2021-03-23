@@ -1,5 +1,6 @@
 using System;
 using Assets.Scripts.LoadingSystems.SceneInfos;
+using Assets.Scripts.LoadingSystems.SceneInfos.Attributes;
 using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Doors

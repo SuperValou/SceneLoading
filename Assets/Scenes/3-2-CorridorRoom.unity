@@ -655,7 +655,7 @@ PrefabInstance:
     - target: {fileID: 6876393410862562400, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
       propertyPath: m_Name
-      value: Door
+      value: Door to 3-HubRoom
       objectReference: {fileID: 0}
     - target: {fileID: 6876393410862562415, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
@@ -717,5 +717,10 @@ PrefabInstance:
       propertyPath: doorManagerProxy
       value: 
       objectReference: {fileID: 1612411410}
+    - target: {fileID: 6876393410862562413, guid: be836112725f6b14c8bf9f01b76507da,
+        type: 3}
+      propertyPath: roomOnTheOtherSide
+      value: 20004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be836112725f6b14c8bf9f01b76507da, type: 3}

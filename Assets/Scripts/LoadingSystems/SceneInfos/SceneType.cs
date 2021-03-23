@@ -2,10 +2,9 @@
 {
     public enum SceneType
     {
-        Master,
-        Gameplay,
-        Room,
-        Screen,
-        TestRoom
+        Gameplay = 0,
+        Master = 1,
+        Room = 2,
+        Screen = 3,
     }
 }

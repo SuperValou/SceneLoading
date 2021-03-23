@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 749366730}
   - component: {fileID: 749366729}
   m_Layer: 0
-  m_Name: Door to Boss Room
+  m_Name: Door to 3-HubRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 4
+  roomOnTheOtherSide: 20004
   triggeringTag: Player
   doorManagerProxy: {fileID: 1612411410}
   openingGap: 2
@@ -1072,7 +1072,7 @@ GameObject:
   - component: {fileID: 1841462056}
   - component: {fileID: 1841462058}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Door to 1-WakeUpRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 2
+  roomOnTheOtherSide: 20001
   triggeringTag: Player
   doorManagerProxy: {fileID: 1612411410}
   openingGap: 2
