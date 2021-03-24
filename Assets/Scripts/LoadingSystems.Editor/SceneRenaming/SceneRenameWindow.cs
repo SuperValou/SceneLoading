@@ -7,42 +7,74 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneRenaming
 {
     public class SceneRenameWindow : EditorWindow
     {
-        private string _sceneNameToRename;
+        private SceneInfo _sceneToRename = null;
 
-        private string[] _sceneNames;
+        private SceneInfo[] _sceneInfos;
         private GUIContent[] _displayedOptions;
         private int _selectedIndex = -1;
+
+        private string _newName = string.Empty;
 
         void Awake()
         {
             this.titleContent = new GUIContent(nameof(SceneRenameWindow));
 
-            var sceneInfos = SceneInfo.GetAll().ToArray();
-            _sceneNames = new string[sceneInfos.Length];
-            _displayedOptions = new GUIContent[sceneInfos.Length];
-            for (int i = 0; i < sceneInfos.Length; i++)
+            _sceneInfos = SceneInfo.GetAll().ToArray();
+            _displayedOptions = new GUIContent[_sceneInfos.Length];
+
+            for (int i = 0; i < _sceneInfos.Length; i++)
             {
-                var sceneInfo = sceneInfos[i];
+                var sceneInfo = _sceneInfos[i];
                 string displayedName = $"{sceneInfo.SceneName}\t[id={(int)sceneInfo.Id}]";
-                _sceneNames[i] = sceneInfo.SceneName;
                 _displayedOptions[i] = new GUIContent(displayedName);
             }
         }
 
         void OnGUI()
         {
-            GUILayout.Label("Select a room to rename.");
+            // Scene name selection
+            GUILayout.BeginHorizontal();
 
+            GUILayout.Label("Scene to rename");
             _selectedIndex = EditorGUILayout.Popup(_selectedIndex, _displayedOptions);
 
-            EditorGUI.BeginDisabledGroup(_selectedIndex < 0 || _selectedIndex >= _sceneNames.Length);
+            GUILayout.EndHorizontal();
 
+            // New name field
+            GUILayout.BeginHorizontal();
+
+            GUILayout.Label("New name");
+            _newName = GUILayout.TextField(_newName);
+
+            GUILayout.EndHorizontal();
+
+            bool renamingIsAllowed = CanRename();
+            EditorGUI.BeginDisabledGroup(!renamingIsAllowed);
+
+            if (renamingIsAllowed)
+            {
+                // Info
+                _sceneToRename = _sceneInfos[_selectedIndex];
+                
+                if (SceneNamingConvention.MasterSceneRegex.IsMatch(_newName) && _sceneToRename.Type != SceneType.Master)
+                {
+                    GUILayout.Label($"{_sceneToRename.SceneName} is currently a {_sceneToRename.Type.ToString()} scene. " +
+                                    $"After being renamed, it will be matched as a {SceneType.Master} scene.");
+                }
+            }
+            
+            // Button
             if (GUILayout.Button("Rename"))
             {
-                Debug.Log("Renaming " + _sceneNames[_selectedIndex]);
+                Debug.Log("Renaming '" + _sceneInfos[_selectedIndex].SceneName + "' to '" + _newName + "'...");
             }
 
             EditorGUI.EndDisabledGroup();
+        }
+
+        private bool CanRename()
+        {
+            return _selectedIndex >= 0 && _selectedIndex < _sceneInfos.Length;
         }
     }
 }
