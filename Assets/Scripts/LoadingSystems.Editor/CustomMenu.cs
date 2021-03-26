@@ -20,7 +20,9 @@ namespace Assets.Scripts.LoadingSystems.Editor
         public static void RenameScene()
         {
             Debug.Log($"Launching {nameof(RenameScene)} window...");
-            EditorWindow.GetWindow<SceneRenameWindow>();
+            UiElementsSceneRenameWindow window = EditorWindow.GetWindow<UiElementsSceneRenameWindow>();
+            window.titleContent = new GUIContent(nameof(UiElementsSceneRenameWindow));
+            window.Show();
         }
     }
 }
