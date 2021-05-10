@@ -10,7 +10,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
         // -- Editor
 
         [Header("Values")]
-        [RoomId]
+        [RestrictedSceneId(SceneType.Room)]
         public SceneId roomOnTheOtherSide;
         public string triggeringTag = "Player";
         
