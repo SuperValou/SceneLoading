@@ -113,8 +113,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
                 throw new InvalidOperationException($"Door '{name}' is in state '{State}' " +
                                                     $"and was not expecting to open.");
             }
-
-            // TODO: Use Closing state instead
+            
             State = DoorState.Open;
             OnOpen();
         }
