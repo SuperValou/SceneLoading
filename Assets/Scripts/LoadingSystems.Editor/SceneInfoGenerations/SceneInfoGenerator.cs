@@ -100,7 +100,35 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 
         private static void GenerateSceneType(ICollection<Tuple<string, int>> sceneTypes)
         {
-            //throw new NotImplementedException();
+            // Get templates
+            string templatePath = AssetDatabaseExt.GetAssetFilePath("SceneTypeTemplate.txt");
+            var parser = new TemplateParser(templatePath);
+
+            parser.Parse();
+            ITemplate template = parser.GetParsedTemplate();
+
+            // Build template session
+            ISession session = template.CreateSession();
+
+            session.SetVariable("toolName", nameof(SceneInfoGenerator));
+            session.SetVariable("namespace", typeof(SceneType).Namespace);
+
+            ITemplate subtemplate = template.GetSubtemplate("enumMemberTemplate");
+
+            foreach (var tuple in sceneTypes.OrderBy(t => t.Item2))
+            {
+                ISession subsession = subtemplate.CreateSession();
+
+                subsession.SetVariable("sceneTypeMemberName", tuple.Item1);
+                subsession.SetVariable("sceneTypeMemberValue", tuple.Item2.ToString());
+                session.AppendSubsession("enumMemberTemplate", subsession);
+            }
+
+            // Write template to file
+            string destinationFilePath = AssetDatabaseExt.GetAssetFilePath($"{nameof(SceneType)}.cs");
+            Debug.Log($"About to rewrite file at '{destinationFilePath}'...");
+            SessionWriter writer = new SessionWriter();
+            writer.WriteSession(session, destinationFilePath);
         }
 
         private static void GenerateSceneId(ICollection<SceneData> dataList)
