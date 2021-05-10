@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
+﻿namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
 {
     public class SceneData
     {

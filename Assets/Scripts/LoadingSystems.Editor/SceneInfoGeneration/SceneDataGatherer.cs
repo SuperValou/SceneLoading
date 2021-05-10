@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEditor;
 
-namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
+namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
 {
     public class SceneDataGatherer
     {

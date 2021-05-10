@@ -8,7 +8,7 @@ using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
+namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
 {
     public static class SceneInfoGenerator
     {

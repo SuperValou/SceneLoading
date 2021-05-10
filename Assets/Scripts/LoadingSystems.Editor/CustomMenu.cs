@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations;
+﻿using Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
 using UnityEngine;
