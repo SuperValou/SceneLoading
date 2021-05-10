@@ -3,35 +3,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
 
 namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 {
-    public class SceneDataGenerator
+    public class SceneDataGatherer
     {
         private const string SceneTypeLabelPrefix = "Scene-";
         
         private readonly Regex _enumMemberReplacementRegex = new Regex(@"[^\w]"); // matches all non-word characters
         
-        public SceneDataGenerator()
+        public ICollection<SceneData> GatherFromScenePaths(ICollection<string> scenePaths)
         {
-        }
-
-        public SceneData GenerateRenamedSceneData(SceneData oldNameSceneData, string renamedScenePath)
-        {
-            var newData = GenerateFromScenePath(renamedScenePath);
-            newData.SceneEnumMemberInteger = oldNameSceneData.SceneEnumMemberInteger;
-            return newData;
-        }
-
-        public ICollection<SceneData> GenerateFromScenePaths(ICollection<string> scenePaths)
-        {
-            var result = scenePaths.Select(GenerateFromScenePath).ToList();
+            var result = scenePaths.Select(GatherFromScenePath).ToList();
             return result;
         }
 
-        public SceneData GenerateFromScenePath(string scenePath)
+        public SceneData GatherFromScenePath(string scenePath)
         {
             // Get scene name
             string sceneName = Path.GetFileNameWithoutExtension(scenePath);
@@ -71,19 +59,6 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
                 SceneName = sceneName,
                 SceneEnumMemberName = enumMemberName,
                 SceneTypeName = sceneType
-            };
-
-            return data;
-        }
-
-        public SceneData GenerateFromSceneInfo(SceneInfo sceneInfo)
-        {
-            var data = new SceneData()
-            {
-                SceneName = sceneInfo.SceneName,
-                SceneEnumMemberName = sceneInfo.Id.ToString(),
-                SceneEnumMemberInteger = (int) sceneInfo.Id,
-                SceneTypeName = sceneInfo.Type.ToString()
             };
 
             return data;

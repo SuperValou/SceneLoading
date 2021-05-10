@@ -24,8 +24,8 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
                 .Select(sceneType => new Tuple<string, int>(sceneType.ToString(), (int)sceneType)).ToList();
 
             // Gather scene data, exclude scene without a type
-            var generator = new SceneDataGenerator();
-            var dataList = generator.GenerateFromScenePaths(scenePaths).ToList();
+            var generator = new SceneDataGatherer();
+            var dataList = generator.GatherFromScenePaths(scenePaths).ToList();
             dataList.RemoveAll(data => data.SceneTypeName == string.Empty);
             
             // Apply known scene ids, or generate a new one
