@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations;
 using Assets.Scripts.LoadingSystems.SceneInfos;
@@ -115,27 +116,29 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneRenaming
             var sceneNames = SceneInfo.GetAll().Select(si => si.SceneName).ToList();
             sceneNames.Remove(sceneToRename.SceneName);
             sceneNames.Add(newName);
-            var dataBuilder = new SceneInfoDataBuilder(sceneNames);
-            dataBuilder.Process();
-            var newData = dataBuilder.Data.First(d => d.SceneName == newName);
+            
+            throw new NotImplementedException();
+            //var dataBuilder = new SceneDataGenerator(sceneNames);
+            //dataBuilder.Process();
+            //var newData = dataBuilder.Data.First(d => d.SceneName == newName);
 
-            _warningLabel.style.display = DisplayStyle.Flex;
-            if (newData.SceneTypeName != sceneToRename.Type.ToString())
-            {
-                _warningLabel.SetValueWithoutNotify($"'{sceneToRename.SceneName}' is currently a {sceneToRename.Type.ToString()} scene, with id '{(int) sceneToRename.Id}'.\n" +
-                                                    $"After being renamed, it will be matched as a {newData.SceneTypeName} scene, with id '{newData.SceneEnumMemberInteger}'.");
-            }
-            else if (newData.SceneEnumMemberInteger != (int) sceneToRename.Id)
-            {
-                _warningLabel.SetValueWithoutNotify(
-                    $"'{sceneToRename.SceneName}' currently has the '{((int) sceneToRename.Id).ToString()}' id.\n" +
-                    $"After being renamed, it will hold the {newData.SceneEnumMemberInteger} id.");
-            }
-            else
-            {
-                _warningLabel.SetValueWithoutNotify(string.Empty);
-                _warningLabel.style.display = DisplayStyle.None;
-            }
+            //_warningLabel.style.display = DisplayStyle.Flex;
+            //if (newData.SceneTypeName != sceneToRename.Type.ToString())
+            //{
+            //    _warningLabel.SetValueWithoutNotify($"'{sceneToRename.SceneName}' is currently a {sceneToRename.Type.ToString()} scene, with id '{(int) sceneToRename.Id}'.\n" +
+            //                                        $"After being renamed, it will be matched as a {newData.SceneTypeName} scene, with id '{newData.SceneEnumMemberInteger}'.");
+            //}
+            //else if (newData.SceneEnumMemberInteger != (int) sceneToRename.Id)
+            //{
+            //    _warningLabel.SetValueWithoutNotify(
+            //        $"'{sceneToRename.SceneName}' currently has the '{((int) sceneToRename.Id).ToString()}' id.\n" +
+            //        $"After being renamed, it will hold the {newData.SceneEnumMemberInteger} id.");
+            //}
+            //else
+            //{
+            //    _warningLabel.SetValueWithoutNotify(string.Empty);
+            //    _warningLabel.style.display = DisplayStyle.None;
+            //}
         }
 
         private string ToDisplayString(SceneInfo sceneInfo)

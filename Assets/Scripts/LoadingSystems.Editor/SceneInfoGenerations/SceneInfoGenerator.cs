@@ -12,33 +12,98 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
 {
     public static class SceneInfoGenerator
     {
+        private const int SceneTypeMultiplier = 10_000;
+
         public static void Execute()
         {
-            // Get all scenes
-            var sceneNames = AssetDatabaseExt.GetAllScenePaths(relativeToAssetFolder: true)
-                                             .Select(Path.GetFileNameWithoutExtension).ToList();
-            
-            var distinctNames = sceneNames.Select(n => n.ToLowerInvariant()).Distinct();
+            var scenePaths = AssetDatabaseExt.GetAllScenePaths(relativeToAssetFolder: true);
+            ValidateNames(scenePaths);
 
-            if (distinctNames.Count() != sceneNames.Count)
+            // Gather existing scene types
+            var sceneTypes = Enum.GetValues(typeof(SceneType)).Cast<SceneType>()
+                .Select(sceneType => new Tuple<string, int>(sceneType.ToString(), (int)sceneType)).ToList();
+
+            // Gather scene data, exclude scene without a type
+            var generator = new SceneDataGenerator();
+            var dataList = generator.GenerateFromScenePaths(scenePaths).ToList();
+            dataList.RemoveAll(data => data.SceneTypeName == string.Empty);
+            
+            // Apply known scene ids, or generate a new one
+            var sceneInfos = SceneInfo.GetAll();
+            foreach (var sceneData in dataList)
             {
-                throw new InvalidOperationException("Two scenes share the same case-insensitive name.");
+                SceneInfo knownScene = sceneInfos.FirstOrDefault(si => si.SceneName == sceneData.SceneName);
+                if (knownScene != null)
+                {
+                    // reuse id of known scene
+                    sceneData.SceneEnumMemberInteger = (int) knownScene.Id;
+                    continue;
+                }
+
+                // generate an id for this new scene
+                int sceneTypeInt;
+                if (Enum.TryParse(sceneData.SceneTypeName, ignoreCase: false, out SceneType type))
+                {
+                    sceneTypeInt = (int) type;
+                }
+                else
+                {
+                    // new scene is of a new type
+                    sceneTypeInt = sceneTypes.Select(t => t.Item2).Max() + 1;
+                    sceneTypes.Add(new Tuple<string, int>(sceneData.SceneTypeName, sceneTypeInt));
+                    Debug.Log($"Identified new scene type: {sceneData.SceneTypeName} ({sceneTypeInt}).");
+                }
+
+                int id = sceneTypeInt * SceneTypeMultiplier + 1;
+                while (dataList.Select(d => d.SceneEnumMemberInteger).Contains(id))
+                {
+                    id++;
+                }
+
+                sceneData.SceneEnumMemberInteger = id;
             }
 
-            // Gather data
-            var sceneInfoDataBuilder = new SceneInfoDataBuilder(sceneNames);
-            sceneInfoDataBuilder.Process();
-
             // Generate files
-            GenerateSceneId(sceneInfoDataBuilder.Data);
-            GenerateSceneInfo(sceneInfoDataBuilder.Data);
+            GenerateSceneType(sceneTypes);
+            GenerateSceneId(dataList);
+            GenerateSceneInfo(dataList);
 
             // Refresh
             Debug.Log("Reloading scripts...");
             AssetDatabase.Refresh();
         }
 
-        private static void GenerateSceneId(ICollection<SceneInfoData> dataList)
+        private static void ValidateNames(ICollection<string> scenePaths)
+        {
+            if (scenePaths == null)
+            {
+                throw new ArgumentNullException(nameof(scenePaths));
+            }
+
+            HashSet<string> existingNames = new HashSet<string>();
+            foreach (var scenePath in scenePaths)
+            {
+                string name = Path.GetFileNameWithoutExtension(scenePath)?.ToLowerInvariant();
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    throw new InvalidOperationException("Scene name cannot be null, empty, or whitespace.");
+                }
+
+                if (existingNames.Contains(name))
+                {
+                    throw new InvalidOperationException($"A scene named '{name}' already exists. Rename scene at '{scenePath}'.");
+                }
+
+                existingNames.Add(name);
+            }
+        }
+
+        private static void GenerateSceneType(ICollection<Tuple<string, int>> sceneTypes)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private static void GenerateSceneId(ICollection<SceneData> dataList)
         {
             // Get templates
             string templatePath = AssetDatabaseExt.GetAssetFilePath("SceneIdTemplate.txt");
@@ -74,7 +139,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGenerations
             writer.WriteSession(session, destinationFilePath);
         }
 
-        private static void GenerateSceneInfo(ICollection<SceneInfoData> dataList)
+        private static void GenerateSceneInfo(ICollection<SceneData> dataList)
         {
             // Get templates
             string templatePath = AssetDatabaseExt.GetAssetFilePath("SceneInfoTemplate.txt");

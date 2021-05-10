@@ -8,12 +8,12 @@ namespace Assets.Scripts.LoadingSystems.Editor
 {
     public static class CustomMenu
     {
-        [MenuItem("Rooms/Generate " + nameof(SceneId) + " enumeration")]
-        public static void GenerateEnumeration()
+        [MenuItem("Rooms/Generate " + nameof(SceneInfo))]
+        public static void GenerateSceneInfo()
         {
-            Debug.Log($"Executing {nameof(GenerateEnumeration)} script...");
+            Debug.Log($"Executing {nameof(GenerateSceneInfo)} script...");
             SceneInfoGenerator.Execute();
-            Debug.Log($"Done executing {nameof(GenerateEnumeration)} script.");
+            Debug.Log($"Done executing {nameof(GenerateSceneInfo)} script.");
         }
 
         [MenuItem("Rooms/Rename Scene")]
