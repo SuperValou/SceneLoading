@@ -1,6 +1,6 @@
 ﻿namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens
 {
-    public enum TokeniserState
+    public enum TokenizerState
     {
         ReadingText,
         ReadingInstruction,

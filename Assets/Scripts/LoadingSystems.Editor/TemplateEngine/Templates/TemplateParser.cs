@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens;
-using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
 {
@@ -115,39 +114,6 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates
             }
 
             return _parsedTemplate;
-        }
-
-
-        public ITemplate Stub()
-        {
-            Template template = new Template();
-            ITemplateBuilding templateBuilding = template;
-
-            templateBuilding.AppendNode(new TextNode("namespace "));
-
-            templateBuilding.AppendNode(new VariableNode("namespace"));
-            templateBuilding.AppendNode(new TextNode(@"
-{
-    public enum SceneId
-    {
-		"));
-
-            // sub
-            Template subtemplate = new Template();
-            ITemplateBuilding subtemplateBuilding = subtemplate;
-
-            subtemplateBuilding.AppendNode(new VariableNode("sceneEnumMemberName"));
-            subtemplateBuilding.AppendNode(new TextNode(@",
-		"));
-
-            templateBuilding.AppendSubtemplate("enumMemberTemplate", subtemplate);
-
-            //
-            templateBuilding.AppendNode(new TextNode(@"
-    }
-}"));
-
-            return template;
         }
 
         private static ICollection<TokenType> GetExpectedFollowingTokens(TokenType tokenType)
