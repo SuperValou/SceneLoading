@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,14 +14,23 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
     {
         private const int SceneTypeMultiplier = 10_000;
 
+        private static readonly string[] DefaultSceneTypes = {"Master", "Gameplay", "Room", "Screen"};
+        
         public static void Execute()
         {
             var scenePaths = AssetDatabaseExt.GetAllScenePaths(relativeToAssetFolder: true);
             ValidateNames(scenePaths);
 
-            // Gather existing scene types
-            var sceneTypes = Enum.GetValues(typeof(SceneType)).Cast<SceneType>()
-                .Select(sceneType => new Tuple<string, int>(sceneType.ToString(), (int)sceneType)).ToList();
+            // Gather existing scene types (and add default ones)
+            var sceneTypeEnumMembers = Enum.GetValues(typeof(SceneType)).Cast<SceneType>()
+                .ToDictionary(sceneType => sceneType.ToString(), sceneType => (int) sceneType);
+
+            for (int i = 0; i < DefaultSceneTypes.Length; i++)
+            {
+                string enumMemberName = DefaultSceneTypes[i];
+                sceneTypeEnumMembers[enumMemberName] = i;
+                // TODO: if someone manually edited SceneType.cs to add a custom enum member with a value of 0, 1, 2 or 3, it will conflict with the default member values
+            }
 
             // Gather scene data, exclude scene without a type
             var generator = new SceneDataGatherer();
@@ -41,20 +50,20 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
                 }
 
                 // generate an id for this new scene
-                int sceneTypeInt;
-                if (Enum.TryParse(sceneData.SceneTypeName, ignoreCase: false, out SceneType type))
+                int sceneTypeEnumMemberValue;
+                if (sceneTypeEnumMembers.ContainsKey(sceneData.SceneTypeName))
                 {
-                    sceneTypeInt = (int) type;
+                    sceneTypeEnumMemberValue = sceneTypeEnumMembers[sceneData.SceneTypeName];
                 }
                 else
                 {
                     // new scene is of a new type
-                    sceneTypeInt = sceneTypes.Select(t => t.Item2).Max() + 1;
-                    sceneTypes.Add(new Tuple<string, int>(sceneData.SceneTypeName, sceneTypeInt));
-                    Debug.Log($"Identified new scene type: {sceneData.SceneTypeName} ({sceneTypeInt}).");
+                    sceneTypeEnumMemberValue = sceneTypeEnumMembers.Values.Max() + 1;
+                    sceneTypeEnumMembers.Add(sceneData.SceneTypeName, sceneTypeEnumMemberValue);
+                    Debug.Log($"Identified new scene type: {sceneData.SceneTypeName} ({sceneTypeEnumMemberValue}).");
                 }
 
-                int id = sceneTypeInt * SceneTypeMultiplier + 1;
+                int id = sceneTypeEnumMemberValue * SceneTypeMultiplier + 1;
                 while (dataList.Select(d => d.SceneEnumMemberInteger).Contains(id))
                 {
                     id++;
@@ -64,7 +73,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
             }
 
             // Generate files
-            GenerateSceneType(sceneTypes);
+            GenerateSceneType(sceneTypeEnumMembers);
             GenerateSceneId(dataList);
             GenerateSceneInfo(dataList);
 
@@ -98,7 +107,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
             }
         }
 
-        private static void GenerateSceneType(ICollection<Tuple<string, int>> sceneTypes)
+        private static void GenerateSceneType(IDictionary<string, int> sceneEnumMembers)
         {
             // Get templates
             string templatePath = AssetDatabaseExt.GetAssetFilePath("SceneTypeTemplate.txt");
@@ -115,17 +124,17 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
 
             ITemplate subtemplate = template.GetSubtemplate("enumMemberTemplate");
 
-            foreach (var tuple in sceneTypes.OrderBy(t => t.Item2))
+            foreach (var enumMember in sceneEnumMembers.OrderBy(em => em.Value))
             {
                 ISession subsession = subtemplate.CreateSession();
 
-                subsession.SetVariable("sceneTypeMemberName", tuple.Item1);
-                subsession.SetVariable("sceneTypeMemberValue", tuple.Item2.ToString());
+                subsession.SetVariable("sceneTypeMemberName", enumMember.Key);
+                subsession.SetVariable("sceneTypeMemberValue", enumMember.Value.ToString());
                 session.AppendSubsession("enumMemberTemplate", subsession);
             }
 
             // Write template to file
-            string destinationFilePath = AssetDatabaseExt.GetAssetFilePath($"{nameof(SceneType)}.cs");
+            string destinationFilePath = AssetDatabaseExt.GetAssetFilePath($"{nameof(SceneType)}.Generated.cs");
             Debug.Log($"About to rewrite file at '{destinationFilePath}'...");
             SessionWriter writer = new SessionWriter();
             writer.WriteSession(session, destinationFilePath);
