@@ -6,7 +6,7 @@ namespace Assets.Scripts.LoadingSystems.Editor
 {
     public static partial class CustomMenu
     {
-        [MenuItem("SceneLoading/Generate Scene data classes", priority = 0)]
+        [MenuItem("SceneLoading/Generate Scene classes", priority = 0)]
         public static void GenerateSceneInfo()
         {
             SceneInfoGenerator.Execute();
