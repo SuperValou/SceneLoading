@@ -10,15 +10,6 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
 {
     public enum SceneId
     {
-		_0_Gameplay = 0,
-		MasterScene = 10000,
-		_1_1_TransitionCorridorRoom = 20000,
-		_1_WakeUpRoom = 20001,
-		_3_1_CorridorRoom = 20002,
-		_3_2_CorridorRoom = 20003,
-		_3_HubRoom = 20004,
-		_4_1_LabAccessRoom = 20005,
-		_4_LabRoom = 20006,
 		
     }
 }
