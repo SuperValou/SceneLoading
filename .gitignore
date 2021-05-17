@@ -62,3 +62,10 @@ Library/
 Temp/
 obj/
 Builds/
+
+# Generated filese excluded from index
+# To include them again: git update-index --no-assume-unchanged path/to/file
+# git update-index --assume-unchanged Assets/Scripts/LoadingSystems/SceneInfos/SceneId.Generated.cs
+# git update-index --assume-unchanged Assets/Scripts/LoadingSystems/SceneInfos/SceneInfo.Generated.cs
+# git update-index --assume-unchanged Assets/Scripts/LoadingSystems/SceneInfos/SceneType.Generated.cs
+# git update-index --assume-unchanged Assets/Scripts/LoadingSystems.Editor/LoadSceneGeneration/CustomMenu.LoadScene.Generated.cs
