@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -161,7 +161,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
             }
 
             // Write template to file
-            string destinationFilePath = AssetDatabaseExt.GetAssetFilePath($"{nameof(SceneId)}.cs");
+            string destinationFilePath = AssetDatabaseExt.GetAssetFilePath($"{nameof(SceneId)}.Generated.cs");
             Debug.Log($"About to rewrite file at '{destinationFilePath}'...");
             SessionWriter writer = new SessionWriter();
             writer.WriteSession(session, destinationFilePath);

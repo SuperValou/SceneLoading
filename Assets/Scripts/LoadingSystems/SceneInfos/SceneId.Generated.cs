@@ -10,6 +10,6 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
 {
     public enum SceneId
     {
-		
+
     }
 }

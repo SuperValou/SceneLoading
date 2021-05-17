@@ -68,7 +68,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.LoadSceneGeneration
             }
             
             // Write template to file
-            string destinationFilePath = AssetDatabaseExt.GetAssetFilePath($"{nameof(CustomMenu)}.LoadScene.cs");
+            string destinationFilePath = AssetDatabaseExt.GetAssetFilePath($"{nameof(CustomMenu)}.LoadScene.Generated.cs");
             Debug.Log($"About to rewrite file at '{destinationFilePath}'...");
             SessionWriter writer = new SessionWriter();
             writer.WriteSession(session, destinationFilePath);
