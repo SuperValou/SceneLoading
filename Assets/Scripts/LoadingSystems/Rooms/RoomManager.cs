@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.LoadingSystems.Doors;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using Assets.Scripts.LoadingSystems.SceneLoadings;
-using Assets.Scripts.LoadingSystems.SharedSets;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.Doors
+namespace Assets.Scripts.LoadingSystems.Rooms
 {
-    public class DoorManager : MonoBehaviour
+    public class RoomManager : MonoBehaviour
     {
         // -- Editor
 
