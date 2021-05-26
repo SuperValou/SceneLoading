@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomOnTheOtherSide: 4
   triggeringTag: Player
-  doorManagerProxy: {fileID: 0}
+  doorSet: {fileID: 11400000, guid: f8dc166c053b8714894ca30c16f058fc, type: 2}
   openingGap: 2
   leftWing: {fileID: 6876393411425741772}
   rightWing: {fileID: 6876393410786289964}
