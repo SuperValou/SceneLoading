@@ -1,14 +1,14 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.LoadingSystems.Doors;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using Assets.Scripts.LoadingSystems.SceneLoadings;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.Doors
+namespace Assets.Scripts.LoadingSystems.Rooms
 {
-    public class DoorManager : MonoBehaviour
+    public class RoomManager : MonoBehaviour
     {
         // -- Editor
 
@@ -16,43 +16,48 @@ namespace Assets.Scripts.LoadingSystems.Doors
         public int maxLoadedRooms = 2;
 
         [Header("References")]
+        public DoorSet doorSet;
+        public PlayerCurrentRoom playerCurrentRoom;
         public SceneLoadingManager sceneLoadingManager;
 
         // -- Class
-        
-        private readonly IDictionary<IDoor, IDoor> _doors = new Dictionary<IDoor, IDoor>();
-        private readonly object _lock = new object();
+
+        private readonly ICollection<DoorState> _doorStates = new[] {DoorState.WaitingToOpen, DoorState.Open};
 
         private readonly Queue<SceneId> _roomIdsQueue = new Queue<SceneId>();
 
-        public SceneId PlayerCurrentRoomId { get; private set; } = (SceneId) ~0;
+        void Start()
+        {
+            var doors = doorSet.GetDoors(_doorStates);
+            if (doors.Count == 0)
+            {
+                return;
+            }
+
+            if (!Enum.IsDefined(typeof(SceneId), playerCurrentRoom.RoomId))
+            {
+                // Let's assume the first registered doors are from the room the player is in.
+                // It can potentially be the wrong room under certain conditions, but should be correct most of the time.
+                // Getting close to any door will correct it anyway.
+                playerCurrentRoom.RoomId = doors.First().Key.RoomId;
+            }
+            
+            _roomIdsQueue.Enqueue(playerCurrentRoom.RoomId);
+        }
 
         void Update()
         {
-            // copy doors to a new dictionnary to avoid thread concurency issues
-            var doors = new Dictionary<IDoor, IDoor>();
-            lock (_lock)
-            {
-                foreach (var d in _doors)
-                {
-                    if (d.Key.State == DoorState.WaitingToOpen
-                     || d.Key.State == DoorState.Open)
-                    {
-                        doors.Add(d.Key, d.Value);
-                    }
-                }
-            }
-
-            // actually handle doors now
+            var doors = doorSet.GetDoors(_doorStates);
+            
             foreach (var kvp in doors)
             {
                 IDoor door = kvp.Key;
                 IDoor doorOnTheOtherSide = kvp.Value; // can be null
 
                 // Track the room the player is in
-                if (door.PlayerIsAround && door.RoomId != PlayerCurrentRoomId)
+                if (door.PlayerIsAround && door.RoomId != playerCurrentRoom.RoomId)
                 {
-                    PlayerCurrentRoomId = door.RoomId;
+                    playerCurrentRoom.RoomId = door.RoomId;
                 }
 
                 // Opening door
@@ -111,7 +116,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
             if (_roomIdsQueue.Count > maxLoadedRooms)
             {
                 SceneId roomIdToUnload = _roomIdsQueue.Dequeue();
-                if (roomIdToUnload == PlayerCurrentRoomId)
+                if (roomIdToUnload == playerCurrentRoom.RoomId)
                 {
                     EnqueueRoom(roomIdToUnload);
                 }
@@ -121,80 +126,9 @@ namespace Assets.Scripts.LoadingSystems.Doors
                 }
             }
 
-            this.name = $"Current room: {PlayerCurrentRoomId.ToString()} ({string.Join(">", _roomIdsQueue.Select(id => id.ToString()))})";
+            this.name = $"Current room: {playerCurrentRoom.RoomId} ({string.Join(">", _roomIdsQueue.Select(id => id.ToString()))})";
         }
 
-        public void Register(IDoor newDoor)
-        {
-            if (newDoor == null)
-            {
-                throw new ArgumentNullException(nameof(newDoor));
-            }
-
-            lock(_lock)
-            {
-                if (_doors.ContainsKey(newDoor))
-                {
-                    throw new ArgumentException($"{newDoor} is already registered.");
-                }
-
-                // The very first door being registered will act as the starting point for the player
-                if (_doors.Count == 0)
-                {
-                    EnqueueRoom(newDoor.RoomId);
-                    PlayerCurrentRoomId = newDoor.RoomId;
-                }
-
-                // Find the room on the other side if applicable (the room may not be loaded yet)
-                IDoor doorOnTheOtherSide = null;
-                foreach (var registeredDoor in _doors.Keys)
-                {
-                    if (newDoor.Position == registeredDoor.Position)
-                    {
-                        doorOnTheOtherSide = registeredDoor;
-                        _doors[registeredDoor] = newDoor; // set the new door as the back side of the registered door
-                        break;
-                    }
-                }
-
-                // set the registered door (or null if it's not registered yet) as the back side of the new door
-                _doors.Add(newDoor, doorOnTheOtherSide);
-            }
-        }
-
-        public void Unregister(IDoor doorToRemove)
-        {
-            if (doorToRemove == null)
-            {
-                throw new ArgumentNullException(nameof(doorToRemove));
-            }
-
-            bool removed = false;
-            lock (_lock)
-            {
-                foreach (IDoor door in _doors.Keys.ToList())
-                {
-                    if (door == doorToRemove)
-                    {
-                        _doors.Remove(door);
-                        removed = true;
-                        continue;
-                    }
-
-                    var doorOnTheOtherSide = _doors[door];
-                    if (doorOnTheOtherSide == doorToRemove)
-                    {
-                        _doors[door] = null;
-                    }
-                }
-            }
-
-            if (!removed)
-            {
-                throw new ArgumentException($"{doorToRemove} was not registered in the first place.");
-            }
-        }
-        
         private void EnqueueRoom(SceneId roomId)
         {
             // remove the room id if it's already there

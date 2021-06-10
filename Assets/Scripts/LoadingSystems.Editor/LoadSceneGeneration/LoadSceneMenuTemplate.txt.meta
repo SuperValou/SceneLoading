@@ -1,8 +1,6 @@
 fileFormatVersion: 2
-guid: 39e4f78326bf4f44d833fd2995f48ee5
-labels:
-- Scene-Master
-DefaultImporter:
+guid: 90e61a7b8ad9d464cba6c7585468ab76
+TextScriptImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 

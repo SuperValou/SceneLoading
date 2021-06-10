@@ -9,7 +9,7 @@ namespace Assets.Scripts.LoadingSystems.Editor
 {
     public static class AssetDatabaseExt
     {
-        public static ICollection<string> GetAllScenePaths(bool relativeToAssetFolder = false)
+        public static ICollection<string> GetAllScenePaths(bool relativeToAssetFolder)
         {
             var sceneGuids = AssetDatabase.FindAssets("t:Scene");
             var relativeScenePaths = sceneGuids.Select(AssetDatabase.GUIDToAssetPath);

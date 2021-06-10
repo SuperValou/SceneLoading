@@ -1,18 +1,21 @@
-﻿using Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration;
-using Assets.Scripts.LoadingSystems.SceneInfos;
+﻿using Assets.Scripts.LoadingSystems.Editor.LoadSceneGeneration;
+using Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration;
 using UnityEditor;
-using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Editor
 {
-    public static class CustomMenu
+    public static partial class CustomMenu
     {
-        [MenuItem("Rooms/Generate " + nameof(SceneInfo))]
+        [MenuItem("SceneLoading/Generate Scene classes", priority = 0)]
         public static void GenerateSceneInfo()
         {
-            Debug.Log($"Executing {nameof(GenerateSceneInfo)} script...");
             SceneInfoGenerator.Execute();
-            Debug.Log($"Done executing {nameof(GenerateSceneInfo)} script.");
+        }
+
+        [MenuItem("SceneLoading/Load Scene/Generate Load Scene menu", priority = 1)]
+        public static void GenerateLoadMenu()
+        {
+            LoadSceneGenerator.Execute();
         }
     }
 }

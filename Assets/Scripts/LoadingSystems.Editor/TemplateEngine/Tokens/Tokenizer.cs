@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -12,7 +11,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens
 
         private string _remainingText;
 
-        private TokeniserState _state = TokeniserState.ReadingText;
+        private TokenizerState _state = TokenizerState.ReadingText;
 
         private readonly Regex _rawTextRegex = new Regex(@"(?<text>.*?)<\$", RegexOptions.Singleline);
 
@@ -31,7 +30,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens
             {
                 switch (_state)
                 {
-                    case TokeniserState.ReadingText:
+                    case TokenizerState.ReadingText:
                         var textMatch = _rawTextRegex.Match(_remainingText);
                         if (textMatch.Success)
                         {
@@ -44,7 +43,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens
                             
                             _tokens.Add(new Token(TokenType.InstructionBegin, "<$"));
                             _remainingText = _remainingText.Remove(0, textMatch.Length);
-                            _state = TokeniserState.ReadingInstruction;
+                            _state = TokenizerState.ReadingInstruction;
                         }
                         else
                         {
@@ -55,7 +54,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens
                         }
                         break;
 
-                    case TokeniserState.ReadingInstruction:
+                    case TokenizerState.ReadingInstruction:
                         var instructionMatch = _varInstructionRegex.Match(_remainingText);
                         if (instructionMatch.Success)
                         {
@@ -66,7 +65,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens
                             _tokens.Add(new Token(TokenType.InstructionEnd, ">"));
 
                             _remainingText = _remainingText.Remove(0, instructionMatch.Length);
-                            _state = TokeniserState.ReadingText;
+                            _state = TokenizerState.ReadingText;
                             continue;
                         }
 
@@ -80,7 +79,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens
                             _tokens.Add(new Token(TokenType.InstructionEnd, ">"));
 
                             _remainingText = _remainingText.Remove(0, instructionMatch.Length);
-                            _state = TokeniserState.ReadingText;
+                            _state = TokenizerState.ReadingText;
                             continue;
                         }
 
@@ -91,7 +90,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens
                             _tokens.Add(new Token(TokenType.InstructionEnd, ">"));
 
                             _remainingText = _remainingText.Remove(0, instructionMatch.Length);
-                            _state = TokeniserState.ReadingText;
+                            _state = TokenizerState.ReadingText;
                             continue;
                         }
 
