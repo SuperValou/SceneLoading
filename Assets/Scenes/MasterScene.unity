@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dec8a4e44e917949bf62e276fc08bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameplayToLoad: 0
-  firstRoomToLoad: 20001
+  gameplayToLoad: 10001
+  firstRoomToLoad: 20002
   playerTag: Player
   sceneLoadingManager: {fileID: 430226274}
 --- !u!1 &430226272
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 1754760536}
   - component: {fileID: 1754760535}
   m_Layer: 0
-  m_Name: DoorManager
+  m_Name: RoomManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,10 +359,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1754760534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c71bbfb59e41bdf4fbc00f15db8be1cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 25dbbcfa2fe471b479ac9ea2e8187763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxLoadedRooms: 2
+  doorSet: {fileID: 11400000, guid: f8dc166c053b8714894ca30c16f058fc, type: 2}
+  playerCurrentRoom: {fileID: 11400000, guid: 3bd1834e2ea68a4418f4095fbac88364, type: 2}
   sceneLoadingManager: {fileID: 430226274}
 --- !u!4 &1754760536
 Transform:

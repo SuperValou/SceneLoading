@@ -15,7 +15,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
         public string triggeringTag = "Player";
         
         [Header("References")]
-        public DoorManagerProxy doorManagerProxy;
+        public DoorSet doorSet;
 
         // -- Class
 
@@ -44,7 +44,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
             _initialName = $"Door to {sceneInfo.SceneName}";
             RoomIdOnTheOtherSide = roomOnTheOtherSide;
 
-            doorManagerProxy.Register(door: this);
+            doorSet.Register(newDoor: this);
         }
         
         void OnTriggerEnter(Collider collidingObject)
@@ -146,7 +146,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
 
         void OnDestroy()
         {
-            doorManagerProxy.Unregister(door: this);
+            doorSet.Unregister(doorToRemove: this);
         }
 
         // Called in the editor only when the script is loaded or a value is changed in the Inspector
