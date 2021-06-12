@@ -8,13 +8,6 @@ namespace Assets.Scripts.Doors
     {
         // -- Editor
 
-        [Header("Parts")]
-        public float openingGap = 2f;
-
-        [Header("Parts")]
-        public GameObject leftWing;
-        public GameObject rightWing;
-
         // -- Class
 
         private Animator _animator;

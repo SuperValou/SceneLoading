@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b489ecc34f854a8b6b2b5f7bd568e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomOnTheOtherSide: 4
+  _roomOnTheOtherSide: -1
   triggeringTag: Player
   doorSet: {fileID: 11400000, guid: f8dc166c053b8714894ca30c16f058fc, type: 2}
   openingGap: 2
