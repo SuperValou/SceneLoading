@@ -21,7 +21,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
         public string triggeringTag = "Player";
         
         [Header("References")]
-        public DoorSet doorSet;
+        public DoorPairing doorPairing;
 
         // -- Class
 
@@ -51,7 +51,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
                                             $"Are you sure you selected a valid room id?");
             }
 
-            doorSet.Register(newDoor: this);
+            doorPairing.Register(newDoor: this);
         }
         
         void OnTriggerEnter(Collider collidingObject)
@@ -151,7 +151,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
 
         void OnDestroy()
         {
-            doorSet.Unregister(doorToRemove: this);
+            doorPairing.Unregister(doorToRemove: this);
         }
 
 # if UNITY_EDITOR

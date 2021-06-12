@@ -17,7 +17,7 @@ namespace Assets.Scripts.LoadingSystems.Rooms
         public int maxLoadedRooms = 2;
 
         [Header("References")]
-        public DoorSet doorSet;
+        public DoorPairing doorPairing;
         public CrossSceneRoomId playerCurrentRoomId;
         public SceneLoadingManager sceneLoadingManager;
 
@@ -29,8 +29,8 @@ namespace Assets.Scripts.LoadingSystems.Rooms
 
         void Start()
         {
-            var doors = doorSet.GetDoors(_doorStates);
-            if (doors.Count == 0)
+            var doors = doorPairing.GetDoors(_doorStates);
+            if (!doors.Any())
             {
                 return;
             }
@@ -48,7 +48,7 @@ namespace Assets.Scripts.LoadingSystems.Rooms
 
         void Update()
         {
-            var doors = doorSet.GetDoors(_doorStates);
+            var doors = doorPairing.GetDoors(_doorStates);
             
             foreach (var kvp in doors)
             {
