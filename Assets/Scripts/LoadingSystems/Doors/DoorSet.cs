@@ -91,8 +91,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
             {
                 foreach (var d in _doors)
                 {
-                    if (d.Key.State == DoorState.WaitingToOpen
-                        || d.Key.State == DoorState.Open)
+                    if (doorStates.Contains(d.Key.State))
                     {
                         doors.Add(d.Key, d.Value);
                     }
@@ -112,6 +111,8 @@ namespace Assets.Scripts.LoadingSystems.Doors
                                    $"These doors are in {string.Join(", ", _doors.Keys.Select(d => d.RoomId).Distinct())}. " +
                                    $"Did you forgot some calls to the {nameof(Unregister)} method?");
                 }
+
+                _doors.Clear();
             }
         }
     }
