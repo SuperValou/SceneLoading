@@ -9,11 +9,13 @@ using AsyncOperation = UnityEngine.AsyncOperation;
 
 namespace Assets.Scripts.LoadingSystems.SceneLoadings
 {
+    /// <inheritdoc />
     public class SceneLoadingSystem : ISceneLoadingSystem
     {
         private readonly IDictionary<SceneInfo, AsyncOperation> _loadingScenes = new Dictionary<SceneInfo, AsyncOperation>();
         private readonly HashSet<SceneInfo> _loadedScenes = new HashSet<SceneInfo>();
 
+        /// <inheritdoc />
         public void Initialize()
         {
             int loadedSceneCount = SceneManager.sceneCount;
@@ -27,17 +29,19 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             }
         }
 
+        /// <inheritdoc />
         public void LoadSingle(SceneId sceneId, bool activateWhenReady)
         {
             Load(sceneId, LoadSceneMode.Single, activateWhenReady);
         }
 
+        /// <inheritdoc />
         public void LoadAdditive(SceneId sceneId, bool activateWhenReady)
         {
             Load(sceneId, LoadSceneMode.Additive, activateWhenReady);
         }
 
-        public void Load(SceneId sceneId, LoadSceneMode mode, bool activateWhenReady)
+        internal void Load(SceneId sceneId, LoadSceneMode mode, bool activateWhenReady)
         {
             if (!Enum.IsDefined(typeof(LoadSceneMode), mode))
             {
@@ -70,11 +74,13 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             _loadingScenes.Add(sceneInfo, asyncOperation);
         }
 
+        /// <inheritdoc />
         public bool IsLoading(SceneId sceneId)
         {
             return IsLoading(sceneId, out float _);
         }
 
+        /// <inheritdoc />
         public bool IsLoading(SceneId sceneId, out float progress)
         {
             progress = 0;
@@ -90,6 +96,7 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             return true;
         }
 
+        /// <inheritdoc />
         public bool IsReadyToActivate(SceneId sceneId)
         {
             SceneInfo sceneInfo = SceneInfo.GetOrThrow(sceneId);
@@ -109,6 +116,7 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             return asyncOperation.progress >= 0.9f; // see documentation: https://docs.unity3d.com/ScriptReference/AsyncOperation-allowSceneActivation.html
         }
 
+        /// <inheritdoc />
         public void Activate(SceneId sceneId)
         {
             SceneInfo sceneInfo = SceneInfo.GetOrThrow(sceneId);
@@ -128,12 +136,14 @@ namespace Assets.Scripts.LoadingSystems.SceneLoadings
             asyncOperation.allowSceneActivation = true;
         }
 
+        /// <inheritdoc />
         public bool IsLoaded(SceneId sceneId)
         {
             SceneInfo sceneInfo = SceneInfo.GetOrThrow(sceneId);
             return _loadedScenes.Contains(sceneInfo);
         }
 
+        /// <inheritdoc />
         public void Unload(SceneId sceneId)
         {
             SceneInfo sceneInfo = SceneInfo.GetOrThrow(sceneId);

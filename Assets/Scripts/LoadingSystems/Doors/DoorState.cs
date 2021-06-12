@@ -1,5 +1,8 @@
 ﻿namespace Assets.Scripts.LoadingSystems.Doors
 {
+    /// <summary>
+    /// State of a <see cref="Door"/>.
+    /// </summary>
     public enum DoorState
     {
         /// <summary>

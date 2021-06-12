@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Doors
 {
+    /// <summary>
+    /// Is in charge of pairing <see cref="Door"/>s from different scenes together.
+    /// </summary>
     [CreateAssetMenu(fileName = nameof(DoorPairing), menuName = nameof(LoadingSystems) + "/" + nameof(DoorPairing))]
     public class DoorPairing : ScriptableObject
     {
@@ -15,6 +18,10 @@ namespace Assets.Scripts.LoadingSystems.Doors
 #endif
         private readonly IDictionary<IDoor, IDoor> _doors = new Dictionary<IDoor, IDoor>();
 
+        /// <summary>
+        /// Register the given <see cref="Door"/>. Attempts to pair it with one of the other registered doors.
+        /// </summary>
+        /// <param name="newDoor">The door to register.</param>
         public void Register(IDoor newDoor)
         {
             if (newDoor == null)
@@ -62,6 +69,10 @@ namespace Assets.Scripts.LoadingSystems.Doors
 #endif
         }
 
+        /// <summary>
+        /// Unregister the given <see cref="Door"/>. Unpair it from any other registered doors.
+        /// </summary>
+        /// <param name="doorToRemove"></param>
         public void Unregister(IDoor doorToRemove)
         {
             if (doorToRemove == null)

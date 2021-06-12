@@ -9,6 +9,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Rooms
 {
+    /// <summary>
+    /// Is in charge of loading and unloading rooms.
+    /// </summary>
     public class RoomManager : MonoBehaviour
     {
         // -- Editor

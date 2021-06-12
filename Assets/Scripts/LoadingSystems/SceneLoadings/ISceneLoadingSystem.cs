@@ -2,8 +2,14 @@
 
 namespace Assets.Scripts.LoadingSystems.SceneLoadings
 {
+    /// <summary>
+    /// API of the loading system.
+    /// </summary>
     public interface ISceneLoadingSystem
     {
+        /// <summary>
+        /// Initializes the system with what is already loaded.
+        /// </summary>
         void Initialize();
 
         /// <summary>

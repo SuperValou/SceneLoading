@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Doors
 {
+    /// <summary>
+    /// Leads to another room.
+    /// </summary>
     public abstract class Door : MonoBehaviour, IDoor
     {
         // -- Editor
