@@ -69,7 +69,8 @@ namespace Assets.Scripts.LoadingSystems.Rooms
                         if (doorOnTheOtherSide == null)
                         {
                             // there is no door on the other side!
-                            Debug.LogError($"There is no opposite door for '{door}'.");
+                            Debug.LogError($"No back door was found on the other side of '{door}'. " +
+                                           $"Are you sure this door is supposed to lead to '{door.RoomIdOnTheOtherSide}'?");
                             door.OpenInSync();
                         }
                         else
@@ -101,7 +102,8 @@ namespace Assets.Scripts.LoadingSystems.Rooms
                 {
                     if (doorOnTheOtherSide == null)
                     {
-                        Debug.LogError($"There is no opposite door for '{door}'.");
+                        Debug.LogError($"No back door was found on the other side of '{door}'. " +
+                                       $"Are you sure this door is supposed to lead to '{door.RoomIdOnTheOtherSide}'?");
                         door.CloseInSync();
                     }
                     else if (doorOnTheOtherSide.State == DoorState.Open 

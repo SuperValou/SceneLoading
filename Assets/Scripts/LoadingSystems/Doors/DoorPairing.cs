@@ -8,6 +8,11 @@ namespace Assets.Scripts.LoadingSystems.Doors
     [CreateAssetMenu(fileName = nameof(DoorPairing), menuName = nameof(LoadingSystems) + "/" + nameof(DoorPairing))]
     public class DoorPairing : ScriptableObject
     {
+#if UNITY_EDITOR
+        [SerializeField]
+        private List<string> _debug = new List<string>();
+
+#endif
         private readonly IDictionary<IDoor, IDoor> _doors = new Dictionary<IDoor, IDoor>();
 
         public void Register(IDoor newDoor)
@@ -33,11 +38,28 @@ namespace Assets.Scripts.LoadingSystems.Doors
 
                 doorOnTheOtherSide = registeredDoor;
                 _doors[registeredDoor] = newDoor; // set the new door as the back side of the registered door
+
+                if (newDoor.RoomIdOnTheOtherSide != doorOnTheOtherSide.RoomId
+                    || newDoor.RoomId != doorOnTheOtherSide.RoomIdOnTheOtherSide)
+                {
+                    Debug.LogError("Destinations doesn't match between paired doors. " +
+                                   $"The door being added is from {newDoor.RoomId} and leads to {newDoor.RoomIdOnTheOtherSide}, " +
+                                   $"but its corresponding back door is from {doorOnTheOtherSide.RoomId} and leads to {doorOnTheOtherSide.RoomIdOnTheOtherSide}.");
+                }
+
                 break;
             }
 
             // set the registered door (or null if it's not registered yet) as the back side of the new door
             _doors.Add(newDoor, doorOnTheOtherSide);
+
+#if UNITY_EDITOR
+            _debug.Clear();
+            foreach (var kvp in _doors)
+            {
+                _debug.Add($"{kvp.Key.RoomId} => {kvp.Value?.RoomId}");
+            }
+#endif
         }
 
         public void Unregister(IDoor doorToRemove)
@@ -68,6 +90,14 @@ namespace Assets.Scripts.LoadingSystems.Doors
             {
                 throw new ArgumentException($"{doorToRemove} was not registered in the first place.");
             }
+
+#if UNITY_EDITOR
+            _debug.Clear();
+            foreach (var kvp in _doors)
+            {
+                _debug.Add($"{kvp.Key.RoomId} => {kvp.Value?.RoomId}");
+            }
+#endif
         }
 
         public IEnumerable<KeyValuePair<IDoor, IDoor>> GetDoors(ICollection<DoorState> doorStates)
