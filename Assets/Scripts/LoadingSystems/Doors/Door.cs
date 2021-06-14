@@ -43,7 +43,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
         
         public bool PlayerIsAround { get; private set; }
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             RoomId = SceneInfo.GetRoomIdForGameObject(this.gameObject);
 

@@ -12,9 +12,8 @@ namespace Assets.Scripts.Doors
 
         private Animator _animator;
 
-        protected override void Start()
+        void Start()
         {
-            base.Start();
             _animator = this.GetOrThrow<Animator>();
         }
 

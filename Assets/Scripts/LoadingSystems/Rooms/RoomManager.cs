@@ -20,8 +20,8 @@ namespace Assets.Scripts.LoadingSystems.Rooms
         public int maxLoadedRooms = 2;
 
         [Header("References")]
+        public AreaMemory areaMemory;
         public DoorPairing doorPairing;
-        public CrossSceneRoomId playerCurrentRoomId;
         public SceneLoadingManager sceneLoadingManager;
 
         // -- Class
@@ -38,15 +38,15 @@ namespace Assets.Scripts.LoadingSystems.Rooms
                 return;
             }
 
-            if (!Enum.IsDefined(typeof(SceneId), playerCurrentRoomId.RoomId))
+            if (!Enum.IsDefined(typeof(SceneId), areaMemory.PlayerCurrentRoomId))
             {
                 // Let's assume the first registered doors are from the room the player is in.
                 // It can potentially be the wrong room under certain conditions, but should be correct most of the time.
                 // Getting close to any door will correct it anyway.
-                playerCurrentRoomId.Set(doors.First().Key.RoomId);
+                areaMemory.SetCurrentRoom(doors.First().Key.RoomId);
             }
             
-            _roomIdsQueue.Enqueue(playerCurrentRoomId.RoomId);
+            _roomIdsQueue.Enqueue(areaMemory.PlayerCurrentRoomId);
         }
 
         void Update()
@@ -59,9 +59,9 @@ namespace Assets.Scripts.LoadingSystems.Rooms
                 IDoor doorOnTheOtherSide = kvp.Value; // can be null
 
                 // Track the room the player is in
-                if (door.PlayerIsAround && door.RoomId != playerCurrentRoomId.RoomId)
+                if (door.PlayerIsAround && door.RoomId != areaMemory.PlayerCurrentRoomId)
                 {
-                    playerCurrentRoomId.Set(door.RoomId);
+                    areaMemory.SetCurrentRoom(door.RoomId);
                 }
 
                 // Opening door
@@ -122,7 +122,7 @@ namespace Assets.Scripts.LoadingSystems.Rooms
             if (_roomIdsQueue.Count > maxLoadedRooms)
             {
                 SceneId roomIdToUnload = _roomIdsQueue.Dequeue();
-                if (roomIdToUnload == playerCurrentRoomId.RoomId)
+                if (roomIdToUnload == areaMemory.PlayerCurrentRoomId)
                 {
                     EnqueueRoom(roomIdToUnload);
                 }
@@ -132,7 +132,8 @@ namespace Assets.Scripts.LoadingSystems.Rooms
                 }
             }
 
-            this.name = $"Current room: {playerCurrentRoomId.RoomId} ({string.Join(">", _roomIdsQueue.Select(id => id.ToString()))})";
+            // TODO: delete this
+            this.name = $"{nameof(RoomManager)}({string.Join(">", _roomIdsQueue.Select(id => id.ToString()))})";
         }
 
         private void EnqueueRoom(SceneId roomId)

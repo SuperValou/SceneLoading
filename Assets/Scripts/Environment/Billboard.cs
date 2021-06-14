@@ -1,11 +1,17 @@
-﻿using TMPro;
+﻿using Assets.Scripts.LoadingSystems.CrossSceneObjects;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts.Environment
 {
     public class Billboard : MonoBehaviour
     {
+        // -- Editor
+
+        public CrossSceneQuaternion playerRotation;
         public TextMeshPro textMesh;
+
+        // -- Class
 
         void Update()
         {
@@ -14,8 +20,8 @@ namespace Assets.Scripts.Environment
 
         private string GetPlayerFacingDirection()
         {
-            var playerTransform = GetPlayerTransform();
-            Vector3 direction = Vector3.ProjectOnPlane(playerTransform.forward, Vector3.up).normalized;
+            Vector3 forward = playerRotation.Value * Vector3.forward;
+            Vector3 direction = Vector3.ProjectOnPlane(forward, Vector3.up).normalized;
             float angle = Vector3.Angle(direction, Vector3.forward);
             if (angle <= 45)
             {
@@ -35,12 +41,5 @@ namespace Assets.Scripts.Environment
 
             return "west";
         }
-
-        private Transform GetPlayerTransform()
-        {
-            // TODO
-            return this.transform;
-        }
-
     }
 }

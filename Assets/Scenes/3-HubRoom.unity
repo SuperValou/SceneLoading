@@ -1906,6 +1906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c8e7f65252c35a45b9df06cb7f87d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRotation: {fileID: 11400000, guid: ee53fb8c8d0ceb24ca63c331a16449de, type: 2}
   textMesh: {fileID: 789581726}
 --- !u!1001 &1838337124
 PrefabInstance:
