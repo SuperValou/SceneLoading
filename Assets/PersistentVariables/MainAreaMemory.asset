@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4597f3b4d08b77468120a5670612e43, type: 3}
-  m_Name: PlayerCurrentRoom
+  m_Script: {fileID: 11500000, guid: 02b29fdeae94be64c8d50ecfe615c398, type: 3}
+  m_Name: MainAreaMemory
   m_EditorClassIdentifier: 
-  roomId: -1
+  playerCurrentRoom: {fileID: 11400000, guid: 3bd1834e2ea68a4418f4095fbac88364, type: 2}
+  roomMemories: []

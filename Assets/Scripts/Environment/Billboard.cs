@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.LoadingSystems.CrossSceneObjects;
+﻿using Assets.Scripts.LoadingSystems.PersistentVariables;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ namespace Assets.Scripts.Environment
     {
         // -- Editor
 
-        public CrossSceneQuaternion playerRotation;
+        public PersistentQuaternion playerRotation;
         public TextMeshPro textMesh;
 
         // -- Class

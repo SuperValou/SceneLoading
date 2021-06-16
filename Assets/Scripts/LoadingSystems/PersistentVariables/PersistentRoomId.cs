@@ -3,10 +3,12 @@ using Assets.Scripts.LoadingSystems.SceneInfos;
 using Assets.Scripts.LoadingSystems.SceneInfos.Attributes;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.CrossSceneObjects
+namespace Assets.Scripts.LoadingSystems.PersistentVariables
 {
-    [CreateAssetMenu(fileName = nameof(CrossSceneRoomId), menuName = nameof(CrossSceneObjects) + "/" + nameof(CrossSceneRoomId))]
-    public class CrossSceneRoomId : ScriptableObject
+    [CreateAssetMenu(fileName = nameof(PersistentRoomId), menuName = nameof(LoadingSystems) + "/"
+                                                                + nameof(PersistentVariables) + "/"
+                                                                + nameof(PersistentRoomId))]
+    public class PersistentRoomId : Persistent<SceneId>
     {
         [SerializeField]
         [RestrictedSceneId(SceneType.Room)]
@@ -14,7 +16,7 @@ namespace Assets.Scripts.LoadingSystems.CrossSceneObjects
 
         public SceneId RoomId => _roomId;
 
-        public void Set(SceneId roomId)
+        protected override void Set(SceneId roomId)
         {
             var sceneInfo = SceneInfo.GetOrThrow(roomId);
             if (!sceneInfo.IsRoom())
@@ -23,7 +25,7 @@ namespace Assets.Scripts.LoadingSystems.CrossSceneObjects
                                             $"but was a {sceneInfo.Type} id instead.");
             }
 
-            _roomId = roomId;
+            base.Set(roomId);
         }
     }
 }

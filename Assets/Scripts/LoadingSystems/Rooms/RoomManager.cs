@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.LoadingSystems.CrossSceneObjects;
 using Assets.Scripts.LoadingSystems.Doors;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using Assets.Scripts.LoadingSystems.SceneLoadings;

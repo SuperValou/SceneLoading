@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.LoadingSystems.CrossSceneObjects;
+using Assets.Scripts.LoadingSystems.PersistentVariables;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Rooms
 {
-    [CreateAssetMenu(fileName = nameof(AreaMemory), menuName = nameof(CrossSceneObjects) + "/" + nameof(AreaMemory))]
+    [CreateAssetMenu(fileName = nameof(AreaMemory), menuName = nameof(LoadingSystems) + "/" 
+                                                            + nameof(AreaMemory))]
     public class AreaMemory : ScriptableObject
     {
         // -- Editor
 
-        public CrossSceneRoomId playerCurrentRoom;
+        public PersistentRoomId playerCurrentRoom;
         public List<RoomMemory> roomMemories = new List<RoomMemory>();
 
         // -- Class
@@ -37,7 +38,7 @@ namespace Assets.Scripts.LoadingSystems.Rooms
 
         public void SetCurrentRoom(SceneId roomId)
         {
-            playerCurrentRoom.Set(roomId);
+            playerCurrentRoom.Value = roomId;
             if (!_roomMemories.ContainsKey(roomId))
             {
                 Debug.LogError($"No {nameof(RoomMemory)} is associated to {nameof(SceneType.Room)} {roomId}.");

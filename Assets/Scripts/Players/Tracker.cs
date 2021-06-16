@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.LoadingSystems.CrossSceneObjects;
+﻿using Assets.Scripts.LoadingSystems.PersistentVariables;
 using UnityEngine;
 
 namespace Assets.Scripts.Players
@@ -7,8 +7,8 @@ namespace Assets.Scripts.Players
     {
         // -- Editor
 
-        public CrossSceneVector3 position;
-        public CrossSceneQuaternion rotation;
+        public PersistentVector3 position;
+        public PersistentQuaternion rotation;
 
         // -- Class
 

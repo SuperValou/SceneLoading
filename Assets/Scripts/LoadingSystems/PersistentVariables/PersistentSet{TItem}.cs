@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.LoadingSystems.Extensions;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.CrossSceneObjects
+namespace Assets.Scripts.LoadingSystems.PersistentVariables
 {
-    public abstract class CrossSceneSet<TItem> : ScriptableObject
+    public abstract class PersistentSet<TItem> : ScriptableObject
     {
         private readonly ICollection<TItem> _items = new HashSet<TItem>();
         
         public IEnumerable<TItem> Items => _items;
+
+        public event Action<TItem> ItemAdded;
+        public event Action<TItem> ItemRemoved;
 
         public void Add(TItem item)
         {
@@ -19,11 +23,12 @@ namespace Assets.Scripts.LoadingSystems.CrossSceneObjects
 
             if (_items.Contains(item))
             {
-                throw new InvalidOperationException($"Item '{item}' cannot be added to '{this.name}' ({nameof(CrossSceneSet<TItem>)}) " +
+                throw new InvalidOperationException($"Item '{item}' cannot be added to '{this.name}' ({nameof(PersistentSet<TItem>)}) " +
                                                     $"because it is already present.");
             }
 
             _items.Add(item);
+            ItemAdded.SafeInvoke(item);
         }
 
         public void Remove(TItem item)
@@ -35,14 +40,15 @@ namespace Assets.Scripts.LoadingSystems.CrossSceneObjects
 
             if (!_items.Contains(item))
             {
-                throw new InvalidOperationException($"Item '{item}' cannot be removed from '{this.name}' ({nameof(CrossSceneSet<TItem>)}) " +
+                throw new InvalidOperationException($"Item '{item}' cannot be removed from '{this.name}' ({nameof(PersistentSet<TItem>)}) " +
                                                     $"because it was not present in the first place. Did you forget a call to the {nameof(Add)} method?");
             }
 
             _items.Remove(item);
+            ItemRemoved.SafeInvoke(item);
         }
 
-        void OnDisable()
+        protected void OnDisable()
         {
             if (_items.Count == 0)
             {
