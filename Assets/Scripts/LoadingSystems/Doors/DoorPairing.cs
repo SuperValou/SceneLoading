@@ -110,7 +110,7 @@ namespace Assets.Scripts.LoadingSystems.Doors
             }
 #endif
         }
-
+        
         public IEnumerable<KeyValuePair<IDoor, IDoor>> GetDoors(ICollection<DoorState> doorStates)
         {
             return _doors.Where(d => doorStates.Contains(d.Key.State));

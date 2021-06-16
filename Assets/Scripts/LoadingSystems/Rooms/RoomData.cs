@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Rooms
 {
-    public class RoomMemory : ScriptableObject
+    public class RoomData : ScriptableObject
     {
         [SerializeField]
         [RestrictedSceneId(SceneType.Room)]

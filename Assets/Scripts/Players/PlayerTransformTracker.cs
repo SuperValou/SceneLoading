@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Players
 {
-    public class Tracker : MonoBehaviour
+    public class PlayerTransformTracker : MonoBehaviour
     {
         // -- Editor
 
