@@ -9,7 +9,7 @@ namespace Assets.Scripts.LoadingSystems.PersistentVariables
                                                                 + nameof(PersistentRoomId))]
     public class PersistentRoomId : Persistent<SceneId>
     {
-        protected override void Set(SceneId roomId)
+        public override void Set(SceneId roomId)
         {
             var sceneInfo = SceneInfo.GetOrThrow(roomId);
             if (!sceneInfo.IsRoom())

@@ -18,7 +18,7 @@ namespace Assets.Scripts.LoadingSystems.PersistentVariables
 
         public event Action<TStruct> ValueChanged;
 
-        protected virtual void Set(TStruct value)
+        public virtual void Set(TStruct value)
         {
             _value = value;
             ValueChanged.SafeInvoke(_value);
