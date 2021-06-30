@@ -1,5 +1,3 @@
-[![Generic badge](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://shields.io/)
-
 # Concepts
 
 The following concepts are inspired from how a classic Metroidvania game is usually broken down.
@@ -23,7 +21,7 @@ A given area is then divided into **Rooms** that the player can explore. A Room 
 ![Example of Rooms in an Area.](/resources/rooms_example.png)
 
 
-# Scene Types
+# Scenes
 
 From these concepts, Unity Scenes are divided into four different types:
 

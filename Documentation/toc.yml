@@ -1,6 +1,5 @@
-- name: Home
-  href: index.md
 - name: Manual
   href: manual/
+  homepage: index.md
 - name: Scripting API
   href: api/
