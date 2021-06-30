@@ -2,3 +2,5 @@
   href: Concepts.md
 - name: Editor Tools
   href: EditorTools.md
+- name: Coding Standards
+  href: CodingStandards.md

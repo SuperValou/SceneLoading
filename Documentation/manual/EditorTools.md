@@ -2,46 +2,19 @@
 
 [![Generic badge](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://shields.io/)
 
-## Caelumque vestigia
+## 	Generate Scene Classes
 
-Lorem markdownum quos stimulosque **altos**. Putat nubes molle Troiae vero dea. Vos de mihi, credidit: salibus et
-iacuit, volvitur sunt unda fronti deriguisse **refert**.
+Once your scenes are properly labelled (see "Register your scenes"),  go to...
 
-## Adflati qui
+## Load Scene
 
-Spiro conata supprimit diemque; ora oblitus ensem alti non quo lacrimis ferunt,
-**ageret** Cebrenida rutilis delendaque? Terras lata modus: nec fas, misi utque
-adpositis Iunonis. Fide vidit, ferox Schoeneia mundi, voce, tellus pariterque
-pedum, **sic Celadon** securior corpora partesque posito.
+To quickly load a scene without going back into the Project Window, you can auto-generate a menu listing all registered scenes in your project.
 
-> Potest faxo unda pendulaque ille rostro, haesit pars: formidine captat,
-> viseret simulaverat! Sequi est peragit flumineae pallent simulatas formae
-> avulsa, imagine undis; formam. Et nec sed adeunt, huic aequa et ignes nec,
-> medere terram. Move ipsum abnuat retemptat retinebat duabus diu Iovi est
-> pluma. **Tecum non** deducit Pelops Inachus: arcet aliquemque, regia telo.
+If you haven't registered your scene yet, follow the steps of the "Genere Scene Classes" section.
 
-## Tollens altore nec semel qui voce Palatinae
+Then, go to... 
 
-Apertis et **dei duo inquit**; luna secundo, fervida terret. In haec dextra
-septima Tydides tibi: congelat hospes nativum radice **tegumenque** membris
-Hesperio ne Libys, est vocabula siqua. Dumque [stet
-mulces](http://peparethos-ultus.org/), ut fontem dea atricolor, est pronos,
-clarissimus poterat cum intrare sidere templi.
+Once the menu is generated, you can go to...
 
-    cut_metadata(whitelistSequenceUnit.thick.of_bezel_cdma(
-            address_suffix_troubleshooting), sram_trojan(4, hdmi_network - 1));
-    flash.apache -= web_gps_plug;
-    if (offline.dac_bridge(scrollEbookRom,
-            parameter.internal_target_superscalar(2)) < qwerty + 2 -
-            ipvCgiContextual) {
-        certificateIdeAsp = overclocking + app;
-        supplyCard = siteRaster;
-    }
+Note: as this menu is based on a generated file, you have to regenerate the menu again every time a scene is added or removed into the project.
 
-Sagitta curvum quoque petisti opibusque proximitas in, illa vestrum, mihi domum
-nescia flexit sacra in. Magni *vive sim crescente* causam saxo voluit, mens,
-quod. Tela *ter ulterius similis* illos nato refugit ait verbaque nec fatigatum
-penates iaculatricemque cecidit pinnas, cum. Misso contigit *caelo* dedissent
-lumina; nympha ad vobis occidat, malo sacra utrumque cunctos Diomedeos addita.
-Virgineus autumnos, ait mitissima curru: fuit sed fessi se habebat hactenus
-Ultor; meus.

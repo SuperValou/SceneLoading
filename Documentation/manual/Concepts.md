@@ -1,19 +1,52 @@
-# Concepts
-
 [![Generic badge](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://shields.io/)
 
-## Opem ille
+# Concepts
 
-Lorem markdownum cavis exululat inutile. Illi quem caeli, vola patruo difficili
-Iuppiter Patraeque, est ardebant ingeniis Troica intus Amore tibi mirantem
-superfusis, multum.
+The following concepts are inspired from how a classic Metroidvania game is usually broken down.
 
-1. Ut Achilles
-2. Et sitim
-3. Tibi modo ait temptant crinita daret
-4. Pariter in removi offensasque Lenaeo damno terra
+The **World** of the game will be defined as the universe the game takes place in. It encompasses all locations, and can be thought of as the whole main game itself.
 
-Phoebes ut damnosa classis ignes templo; tua ulla capillos ultima. Videre
-percusso plectro templa fuit diva minimum debere, quid nomen Philomela animis.
-Verbis istis flagrat vulnera inpediique ignes. Gravi filo obvius arte Amphionis
-Panes emisitque iubet.
+The World is usually split into interconnected **Areas** defining the general structure and pacing of the game. An area can be thought of as a big section of the world, and going through an Area usually takes at least one full play session. As the player progresses through the game, new Areas become available to her and more connections between previous Areas open up to allow some form of fast-travel or easier back-tracking. 
+Note that travelling between areas often causes an acceptable downtine in gameplay due to the underlying loading happening in the background.
+
+![Example of interconnected Areas in the World.](/resources/areas_example.png)
+
+A given area is then divided into **Rooms** that the player can explore. A Room is a small, contained, physical location where one or more gameplay elements may happen, like an enemy to fight or a puzzle to solve.
+
+![Example of Rooms in an Area.](/resources/rooms_example.png)
+
+
+# Scene Types
+
+From these concepts, Unity Scenes are divided into four different types:
+
+### Master
+
+A **Master** scene is an entry point of the main game, and may correspond to an *Area*.
+
+The key idea is that a Master scene does not actually contain any geometry, mesh or any other physical objects, but is instead responsible for additively loading the player and the *Rooms* that can be found in the current Area. 
+
+GameObjects managing the game as a whole are supposed to be found in a Master Scene. Note that the world position of these GameObjects should not be relevant (they may stay at the origin at all time).
+
+### Gameplay
+
+A **Gameplay** scene contains everything related to the player. 
+
+GameObjects related to controls, player camera and UI are expected to be found in a Gameplay scene. No physical object bound to a specific location should be present in such a scene.
+
+### Room
+
+As the name implies, a **Room** scene corresponds to a *Room*, and is a physical location or level the player can explore and interact with. 
+
+Most of the familiar GameObjects like ground, walls, props, interactive items and entities such as enemies or bosses are expected to be found here.
+
+### Screen
+
+A **Screen** scene is a self-contained scene that doesn't belong to the diegetic World by itself, but instead acts like a menu of some sort. It handles player interaction, then loads a Master scene while unloading itself. 
+
+It is the expected type of scenes like Title Screen, Game Over, Character Selection, Save Slot Menu, etc.
+
+
+![Relation between Scene Types.](/resources/scene_types_example.png)
+
+
