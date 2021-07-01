@@ -1,8 +1,11 @@
-# Editor Tools
-
 [![Generic badge](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://shields.io/)
 
-## 	Generate Scene Classes
+# Editor Tools
+
+### 	Generate C# Types
+
+#### Register your scenes
+To register a scene into the list of managed scenes, you first have to add a label on it. The label has to start with "Scene-" and be followed by the type of the scene.
 
 Once your scenes are properly labelled (see "Register your scenes"),  go to...
 

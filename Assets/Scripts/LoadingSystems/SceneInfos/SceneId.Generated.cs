@@ -8,6 +8,9 @@
 //------------------------------------------------------------------------------
 namespace Assets.Scripts.LoadingSystems.SceneInfos
 {
+    /// <summary>
+    /// Enumeration identifying scenes in the system.
+    /// </summary>
     public enum SceneId
     {
 

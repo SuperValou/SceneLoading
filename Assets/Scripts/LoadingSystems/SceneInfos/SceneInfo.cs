@@ -7,10 +7,24 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.LoadingSystems.SceneInfos
 {
+    /// <summary>
+    /// Holds information about a Scene.
+    /// </summary>
     public partial class SceneInfo
     {
+        /// <summary>
+        /// The <see cref="SceneId"/> identifying the scene.
+        /// </summary>
         public SceneId Id { get; }
+
+        /// <summary>
+        /// The name of the .unity file corresponding to the scene.
+        /// </summary>
         public string SceneName { get; }
+
+        /// <summary>
+        /// The <see cref="SceneType"/> of the scene.
+        /// </summary>
         public SceneType Type { get; }
         
         private SceneInfo(SceneId id, string sceneName, SceneType type)
@@ -35,6 +49,9 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
             Type = type;
         }
 
+        /// <summary>
+        /// Returns whether or not it's a <see cref="SceneType.Room"/>.
+        /// </summary>
         public bool IsRoom()
         {
             return this.Type == SceneType.Room;
@@ -78,16 +95,31 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
             return $"{Id.ToString()}<{SceneName}>";
         }
 
+        /// <summary>
+        /// Returns a collection of all available <see cref="SceneInfo"/> objects.
+        /// </summary>
         public static IReadOnlyCollection<SceneInfo> GetAll()
         {
             return _registry.Values;
         }
 
+        /// <summary>
+        /// Same as <see cref="GetOrThrow"/>, but doesn't throw exception.
+        /// </summary>
+        /// <param name="sceneId">The <see cref="SceneId"/> identifying the scene.</param>
+        /// <param name="sceneInfo">The resulting <see cref="SceneInfo"/>.</param>
+        /// <returns>Whether or not the operation succedeed.</returns>
         public static bool TryGet(SceneId sceneId, out SceneInfo sceneInfo)
         {
             return _registry.TryGetValue(sceneId, out sceneInfo);
         }
 
+        /// <summary>
+        /// Gets the <see cref="SceneInfo"/> associated with the given <see cref="SceneId"/>.
+        /// Throws an exception if the <see cref="SceneId"/> is invalid.
+        /// </summary>
+        /// <param name="sceneId">The <see cref="SceneId"/> identifying the <see cref="SceneInfo"/> to get.</param>
+        /// <returns>The corresponding <see cref="SceneInfo"/>.</returns>
         public static SceneInfo GetOrThrow(SceneId sceneId)
         {
             if (!Enum.IsDefined(typeof(SceneId), sceneId))
@@ -103,6 +135,11 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
             throw new ArgumentException($"Scene '{sceneId}' is unknown.");
         }
 
+        /// <summary>
+        /// Gets the <see cref="SceneInfo"/> corresponding to the given Unity Scene.
+        /// </summary>
+        /// <param name="scene">The Unity Scene to get the <see cref="SceneInfo"/> from.</param>
+        /// <returns>The corresponding <see cref="SceneInfo"/>.</returns>
         public static SceneInfo GetFromScene(Scene scene)
         {
             var sceneInfo = _registry.Values.FirstOrDefault(si => si.SceneName == scene.name);

@@ -8,6 +8,9 @@
 //------------------------------------------------------------------------------
 namespace Assets.Scripts.LoadingSystems.SceneInfos
 {
+    /// <summary>
+    /// Type of a Scene.
+    /// </summary>
     public enum SceneType
     {
 		Master = 0,

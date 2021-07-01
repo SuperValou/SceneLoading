@@ -11,14 +11,14 @@ Note that travelling between Areas often causes an acceptable downtine in gamepl
 
 **Example of Areas:**
 
-![Example of interconnected Areas in the World.](/resources/areas_example.png)
+![Example of interconnected Areas in the World.](~/resources/areas_example.png)
 
 ### Room
 A given area is then divided into **Rooms** that the player can explore. A Room is a small, contained, physical location where one or more gameplay elements may happen, like an enemy to fight or a puzzle to solve.
 
 **Example of Rooms:**
 
-![Example of Rooms in an Area.](/resources/rooms_example.png)
+![Example of Rooms in an Area.](~/resources/rooms_example.png)
 
 
 # Scenes
@@ -53,6 +53,6 @@ It is the expected type of scenes like Title Screen, Game Over, Character Select
 
 **Relations between Scene Types:**
 
-![Relation between Scene Types.](/resources/scene_types_example.png)
+![Relation between Scene Types.](~/resources/scene_types_example.png)
 
 
