@@ -15,7 +15,7 @@ namespace Assets.Scripts.LoadingSystems.Editor
         [MenuItem("SceneLoading/Load Scene/Generate Load Scene menu", priority = 1)]
         public static void GenerateLoadMenu()
         {
-            LoadSceneGenerator.Execute();
+            LoadMenuGeneration.Execute();
         }
     }
 }
