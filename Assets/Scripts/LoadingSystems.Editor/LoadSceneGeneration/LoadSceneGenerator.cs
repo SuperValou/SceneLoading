@@ -39,7 +39,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.LoadSceneGeneration
                 string sceneFilePath = sceneFiles.FirstOrDefault(filePath => Path.GetFileNameWithoutExtension(filePath) == sceneInfo.SceneName);
                 if (sceneFilePath == null)
                 {
-                    Debug.LogError($"{sceneInfo} was not found on disk. Did you forget to call {nameof(SceneInfoGenerator)} beforehand?");
+                    Debug.LogError($"{sceneInfo} was not found on disk. Did you forget to call {nameof(SceneClassesGeneration)} beforehand?");
                     continue;
                 }
 
@@ -63,7 +63,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.LoadSceneGeneration
 
             if (sceneFiles.Count > 0)
             {
-                Debug.LogError($"Some scene files are unknown. Did you forget to call {nameof(SceneInfoGenerator)} beforehand? " +
+                Debug.LogError($"Some scene files are unknown. Did you forget to call {nameof(SceneClassesGeneration)} beforehand? " +
                                $"These scene files will be ignored: {string.Join(", ", sceneFiles)}.");
             }
             
