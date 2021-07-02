@@ -23,19 +23,19 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
 
             foreach (var sceneData in _dataList)
             {
-                if (sceneData.SceneEnumMemberInteger == newSceneData.SceneEnumMemberInteger)
-                {
-                    throw new InvalidOperationException(
-                        $"Scenes '{sceneData.SceneName}' and '{newSceneData.SceneName}' " +
-                        $"have the same conflicting id: '{sceneData.SceneEnumMemberInteger}'.");
-                }
-
                 if (sceneData.SceneEnumMemberName == newSceneData.SceneEnumMemberName)
                 {
                     throw new InvalidOperationException(
                         $"Scenes '{sceneData.SceneName} ({sceneData.SceneEnumMemberInteger})' " +
                         $"and '{newSceneData.SceneName} ({newSceneData.SceneEnumMemberInteger})' " +
                         $"have the same conflicting member name: '{sceneData.SceneEnumMemberName}'.");
+                }
+
+                if (sceneData.SceneEnumMemberInteger == newSceneData.SceneEnumMemberInteger)
+                {
+                    throw new InvalidOperationException(
+                        $"Scenes '{sceneData.SceneName}' and '{newSceneData.SceneName}' " +
+                        $"have the same conflicting id: '{sceneData.SceneEnumMemberInteger}'.");
                 }
             }
 
