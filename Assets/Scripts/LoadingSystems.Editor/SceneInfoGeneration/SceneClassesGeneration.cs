@@ -18,8 +18,25 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
             // Gather scene data
             var dataGatherer = new SceneDataGatherer();
             var sceneDataList = dataGatherer.GatherFromScenePaths(scenePaths).ToList();
-            sceneDataList.RemoveAll(sceneData => sceneData.SceneTypeName == string.Empty);
 
+            // Ignore unlabeled scenes
+            var unlabeledSceneData = sceneDataList.Where(sd => sd.SceneTypeName == string.Empty).ToList();
+            if (unlabeledSceneData.Count == sceneDataList.Count)
+            {
+                Debug.LogWarning($"No scene is labeled yet. " +
+                                 $"Please label your scene with '{string.Join("', '", Enum.GetNames(typeof(SceneType)).Select(typeName => $"{SceneDataGatherer.SceneTypeLabelPrefix}{typeName}"))}' to register them in the system.");
+                return;
+            }
+
+            if (unlabeledSceneData.Count > 0)
+            {
+                Debug.Log($"Ignoring unlabeled scene(s): {string.Join(", ", unlabeledSceneData.Select(sd => sd.SceneName))}.");
+                foreach (var sceneData in unlabeledSceneData)
+                {
+                    sceneDataList.Remove(sceneData);
+                }
+            }
+            
             // Initialize scene types
             var sceneTypeGenerator = new SceneTypeFileGenerator();
             foreach (SceneType sceneType in Enum.GetValues(typeof(SceneType)).Cast<SceneType>())

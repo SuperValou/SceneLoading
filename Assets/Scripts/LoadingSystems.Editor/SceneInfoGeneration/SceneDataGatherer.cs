@@ -9,7 +9,7 @@ namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
 {
     public class SceneDataGatherer
     {
-        private const string SceneTypeLabelPrefix = "Scene-";
+        public const string SceneTypeLabelPrefix = "Scene-";
         
         private readonly Regex _enumMemberReplacementRegex = new Regex(@"[^\w]"); // matches all non-word characters
         
