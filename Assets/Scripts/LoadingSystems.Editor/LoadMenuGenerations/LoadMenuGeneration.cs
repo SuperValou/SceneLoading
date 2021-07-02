@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration;
-using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.Editor.LoadSceneGeneration
+namespace Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations
 {
     public static class LoadMenuGeneration
     {

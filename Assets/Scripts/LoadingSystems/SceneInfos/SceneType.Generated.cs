@@ -17,5 +17,6 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
 		Gameplay = 1,
 		Room = 2,
 		Screen = 3,
+		
     }
 }

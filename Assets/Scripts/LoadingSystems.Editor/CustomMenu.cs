@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.LoadingSystems.Editor.LoadSceneGeneration;
-using Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration;
+﻿using Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations;
+using Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations;
 using UnityEditor;
 
 namespace Assets.Scripts.LoadingSystems.Editor

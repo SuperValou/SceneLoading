@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration;
+using Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor.SceneManagement;
 
-namespace Assets.Scripts.LoadingSystems.Editor.LoadSceneGeneration
+namespace Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations
 {
     public class LoadSceneMenuFileGenerator : FileGenerator
     {

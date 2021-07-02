@@ -5,7 +5,7 @@ using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 
-namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
+namespace Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations
 {
     public class SceneInfoGenerator : FileGenerator
     {

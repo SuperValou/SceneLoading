@@ -6,7 +6,7 @@ using Assets.Scripts.LoadingSystems.SceneInfos;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
+namespace Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations
 {
     public static class SceneClassesGeneration
     {

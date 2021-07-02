@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
+namespace Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations
 {
     public abstract class EnumFileGenerator : FileGenerator
     {

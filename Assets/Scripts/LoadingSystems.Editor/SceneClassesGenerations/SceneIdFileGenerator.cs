@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions;
 using Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates;
 using Assets.Scripts.LoadingSystems.SceneInfos;
-using UnityEngine;
 
-namespace Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration
+namespace Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations
 {
     public class SceneIdFileGenerator : EnumFileGenerator
     {

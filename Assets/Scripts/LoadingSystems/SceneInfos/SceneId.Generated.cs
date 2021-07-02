@@ -13,6 +13,5 @@ namespace Assets.Scripts.LoadingSystems.SceneInfos
     /// </summary>
     public enum SceneId
     {
-
     }
 }
