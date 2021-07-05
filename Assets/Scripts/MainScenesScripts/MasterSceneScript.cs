@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Assets.Scripts.LoadingSystems.PersistentVariables;
 using Assets.Scripts.LoadingSystems.SceneInfos;
 using Assets.Scripts.LoadingSystems.SceneInfos.Attributes;
 using Assets.Scripts.LoadingSystems.SceneLoadings;
@@ -20,6 +21,7 @@ namespace Assets.Scripts.MainScenesScripts
         public string playerTag = "Player";
 
         [Header("References")]
+        public PersistentRoomId playerCurrentRoom;
         public SceneLoadingManager sceneLoadingManager;
 
         // -- Class
@@ -31,6 +33,8 @@ namespace Assets.Scripts.MainScenesScripts
 
             sceneLoadingManager.Activate(gameplayToLoad);
             sceneLoadingManager.Activate(firstRoomToLoad);
+
+            playerCurrentRoom.Value = firstRoomToLoad;
         }
     }
 }

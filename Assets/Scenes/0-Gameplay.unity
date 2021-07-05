@@ -388,6 +388,7 @@ GameObject:
   - component: {fileID: 479099070}
   - component: {fileID: 479099068}
   - component: {fileID: 479099066}
+  - component: {fileID: 479099069}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -444,6 +445,20 @@ MonoBehaviour:
   maxUpPitchAngle: 60
   maxDownPitchAngle: -60
   inputManager: {fileID: 221488863}
+--- !u!114 &479099069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479099065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a862c98e3ca2d094eaa3914c9083b575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {fileID: 11400000, guid: 0054a1b7d670ae24d9629cf7b7d71ff5, type: 2}
+  rotation: {fileID: 11400000, guid: ee53fb8c8d0ceb24ca63c331a16449de, type: 2}
 --- !u!143 &479099070
 CharacterController:
   m_ObjectHideFlags: 0

@@ -29,6 +29,11 @@ A physical location in the game, usually small and contained. Environment like g
 
 This scene type is not fully defined yet. For now, let's assume it's the expected type of a Title Screen or Game Over scene.
 
+## Features
+*(work in progress)*
+
+- RestrictedSceneIdAttribute
+
 
 ## How to setup
 *(work in progress)*

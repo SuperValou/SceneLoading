@@ -72,3 +72,7 @@ Builds/
 
 # Text mesh pro
 Assets/TextMesh Pro/
+
+# Documentation
+Documentation/_site/*
+Documentation/api/*

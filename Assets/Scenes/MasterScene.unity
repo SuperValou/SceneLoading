@@ -167,6 +167,7 @@ MonoBehaviour:
   gameplayToLoad: 10001
   firstRoomToLoad: 20002
   playerTag: Player
+  playerCurrentRoom: {fileID: 11400000, guid: 3bd1834e2ea68a4418f4095fbac88364, type: 2}
   sceneLoadingManager: {fileID: 430226274}
 --- !u!1 &430226272
 GameObject:
@@ -344,7 +345,7 @@ GameObject:
   - component: {fileID: 1754760536}
   - component: {fileID: 1754760535}
   m_Layer: 0
-  m_Name: RoomManager
+  m_Name: RoomLoadingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,8 +364,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLoadedRooms: 2
-  doorSet: {fileID: 11400000, guid: f8dc166c053b8714894ca30c16f058fc, type: 2}
-  playerCurrentRoom: {fileID: 11400000, guid: 3bd1834e2ea68a4418f4095fbac88364, type: 2}
+  doorPairing: {fileID: 11400000, guid: f8dc166c053b8714894ca30c16f058fc, type: 2}
+  playerCurrentRoomId: {fileID: 11400000, guid: 3bd1834e2ea68a4418f4095fbac88364,
+    type: 2}
   sceneLoadingManager: {fileID: 430226274}
 --- !u!4 &1754760536
 Transform:
@@ -409,6 +411,53 @@ Transform:
   m_Children:
   - {fileID: 1754760536}
   - {fileID: 430226273}
+  - {fileID: 1896160714}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1896160713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1896160714}
+  - component: {fileID: 1896160715}
+  m_Layer: 0
+  m_Name: PlayerRoomTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1896160714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896160713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1767539865}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1896160715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896160713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5dedd417b6c6784ab7cf3d4e1a4ad05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPairing: {fileID: 11400000, guid: f8dc166c053b8714894ca30c16f058fc, type: 2}
+  playerCurrentRoomId: {fileID: 11400000, guid: 3bd1834e2ea68a4418f4095fbac88364,
+    type: 2}

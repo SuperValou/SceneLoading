@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.LoadingSystems.Editor.LoadSceneGeneration;
-using Assets.Scripts.LoadingSystems.Editor.SceneInfoGeneration;
+﻿using Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations;
+using Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations;
 using UnityEditor;
 
 namespace Assets.Scripts.LoadingSystems.Editor
@@ -9,13 +9,13 @@ namespace Assets.Scripts.LoadingSystems.Editor
         [MenuItem("SceneLoading/Generate Scene classes", priority = 0)]
         public static void GenerateSceneInfo()
         {
-            SceneInfoGenerator.Execute();
+            SceneClassesGeneration.Execute();
         }
 
         [MenuItem("SceneLoading/Load Scene/Generate Load Scene menu", priority = 1)]
         public static void GenerateLoadMenu()
         {
-            LoadSceneGenerator.Execute();
+            LoadMenuGeneration.Execute();
         }
     }
 }

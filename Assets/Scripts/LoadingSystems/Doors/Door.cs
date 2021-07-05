@@ -5,46 +5,56 @@ using UnityEngine;
 
 namespace Assets.Scripts.LoadingSystems.Doors
 {
+    /// <summary>
+    /// Leads to another room.
+    /// </summary>
     public abstract class Door : MonoBehaviour, IDoor
     {
         // -- Editor
 
         [Header("Values")]
+
+        [SerializeField]
         [RestrictedSceneId(SceneType.Room)]
-        public SceneId roomOnTheOtherSide;
+        private SceneId _roomOnTheOtherSide = (SceneId) ~0; // Undefined SceneId (all bits set to 1);
+
+        [SerializeField]
+        private DoorState _state = DoorState.Closed;
+
         public string triggeringTag = "Player";
         
         [Header("References")]
-        public DoorSet doorSet;
+        public DoorPairing doorPairing;
 
         // -- Class
 
-        private string _initialName;
-        
         private bool _shouldLock = false;
         
         public SceneId RoomId { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
-        public SceneId RoomIdOnTheOtherSide { get; private set; } = (SceneId) ~0; // Undefined SceneId (all bits set to 1)
-        public DoorState State { get; private set; } = DoorState.Closed;
+        public SceneId RoomIdOnTheOtherSide => _roomOnTheOtherSide;
+
+        public DoorState State
+        {
+            get => _state;
+            private set => _state = value;
+        }
+
         public Vector3 Position => this.transform.position;
         
         public bool PlayerIsAround { get; private set; }
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             RoomId = SceneInfo.GetRoomIdForGameObject(this.gameObject);
 
-            var sceneInfo = SceneInfo.GetOrThrow(roomOnTheOtherSide);
+            var sceneInfo = SceneInfo.GetOrThrow(_roomOnTheOtherSide);
             if (!sceneInfo.IsRoom())
             {
-                throw new ArgumentException($"Room id '{roomOnTheOtherSide}' on the other side of '{gameObject.name}' ({this.GetType().Name}) is not actually a Room. " +
+                throw new ArgumentException($"Room id '{_roomOnTheOtherSide}' on the other side of '{gameObject.name}' ({this.GetType().Name}) is not actually a Room. " +
                                             $"Are you sure you selected a valid room id?");
             }
 
-            _initialName = $"Door to {sceneInfo.SceneName}";
-            RoomIdOnTheOtherSide = roomOnTheOtherSide;
-
-            doorSet.Register(newDoor: this);
+            doorPairing.Register(newDoor: this);
         }
         
         void OnTriggerEnter(Collider collidingObject)
@@ -69,8 +79,6 @@ namespace Assets.Scripts.LoadingSystems.Doors
 
         protected virtual void Update()
         {
-            this.name = $"{_initialName} ({State.ToString()})";
-
             // Door is locked
             if (State == DoorState.Locked)
             {
@@ -146,20 +154,28 @@ namespace Assets.Scripts.LoadingSystems.Doors
 
         void OnDestroy()
         {
-            doorSet.Unregister(doorToRemove: this);
+            doorPairing.Unregister(doorToRemove: this);
         }
 
+# if UNITY_EDITOR
         // Called in the editor only when the script is loaded or a value is changed in the Inspector
         void OnValidate()
         {
-            if (SceneInfo.TryGet(roomOnTheOtherSide, out var sceneInfo))
+            if (!this.gameObject.activeInHierarchy)
             {
-                this.name = $"Door to {sceneInfo.SceneName}";
+                return;
+            }
+
+            if (SceneInfo.TryGet(_roomOnTheOtherSide, out var sceneInfo))
+            {
+                this.name = $"{this.GetType().Name} to {sceneInfo.SceneName}";
             }
             else
             {
-                this.name = $"[ERROR] Door to invalid destination: {roomOnTheOtherSide}";
+                this.name = $"[ERROR] Door to invalid destination: {_roomOnTheOtherSide}";
             }
         }
+#endif
+
     }
 }
