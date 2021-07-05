@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Scenes | Scene Loading Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Scenes | Scene Loading Documentation ">
+    <meta name="generator" content="docfx 2.58.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p><a href="https://shields.io/"><img src="https://img.shields.io/badge/Status-WIP-yellow.svg" alt="Generic badge"></a></p>
+<h1 id="scenes">Scenes</h1>
+<p>The following C# types are available to manage scenes from code.</p>
+<h3 id="scenetype-enum">SceneType enum</h3>
+<p>The <strong>SceneType</strong> enum represents the type of scenes that are available in the project. </p>
+<p>From the definitions of <a href="Concepts.html">this page</a>, default scene types are the following:</p>
+<pre><code class="lang-csharp">public enum SceneType
+{
+    Master = 0,
+    Gameplay = 1,
+    Room = 2,
+    Screen = 3  
+}
+</code></pre><h4 id="setting-the-type-of-a-scene">Setting the type of a scene</h4>
+<p>The type of a scene is actually defined by the <strong>label</strong> put on the .unity asset file. </p>
+<p>The label <strong>must</strong> start with <code>Scene-</code> to be acknowledged as a valid SceneType label.</p>
+<p>For example, a scene like &quot;BossArena.unity&quot; can be labeled with <code>Scene-Room</code> to identify this scene as a <code>Room</code>.</p>
+<p><img src="../resources/scene_label.png" alt="Labelling a scene"></p>
+<p>Note that the system will reject any scene having more than one <code>Scene-</code> label.</p>
+<h4 id="custom-scene-types">Custom scene types</h4>
+<p>You can add your own custom scene types: labelling a .unity file with <code>Scene-Playground</code> will make the scene be acknowledged as a <code>Playground</code> scene. </p>
+<p>However, it is recommended to write a strong definition of any new type of scene beforehand (see the <a href="Concepts.html">Concepts</a> page).</p>
+<hr>
+<h3 id="sceneid-enum">SceneId enum</h3>
+<p>The <strong>SceneId</strong> enum identifies all the scenes that were acknoledged by the system. Each scene have a corresponding unique enum member and enum value. </p>
+<p>The enum members are automatically generated (see <a href="EditorTools.html">Editor Tools</a> for more information about the generation itself).</p>
+<pre><code class="lang-csharp">public enum SceneId
+{
+    AreaMaster = 1,
+    SinglePlayerGamplay = 10001,
+    BigRoom = 20001,
+    BossChamber = 20002,
+    SmallRoom = 20003,
+    // etc.
+}
+</code></pre><p>Note there is a current limitation to 9,999 rooms before <code>SceneId</code> values start colliding. To put it in perspective, Castlevania Symphony of the Night contains a total of 1,890 rooms.</p>
+<p>Also note that any scene not marked with a <code>Scene-</code> label will not be listed in the enumeration. This way you can have as many test scenes as you want without clogging the enum.</p>
+<hr>
+<h3 id="sceneinfo-class">SceneInfo class</h3>
+<p>The <strong>SceneInfo</strong> class holds information about each scene in the system. The class also provide some methods to retrieve this data.</p>
+<pre><code class="lang-csharp">IReadOnlyCollection&lt;SceneInfo&gt; sceneInfos = SceneInfo.GetAll();
+foreach (SceneInfo sceneInfo in sceneInfos)
+{
+    Debug.Log($&quot;{sceneInfo.SceneName} is a {sceneInfo.Type} scene.&quot;);
+    // example: &quot;BossChamber is a Room scene.&quot;
+}
+</code></pre><p>For more information about this class, you can visit its <a href="../api/Assets.Scripts.LoadingSystems.SceneInfos.SceneInfo.html">API page</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/SuperValou/SceneLoading/blob/dev/Documentation/manual/MainTypes.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Scene Loading Documentation
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

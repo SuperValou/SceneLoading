@@ -1,0 +1,367 @@
+{
+  "api/Assets.Scripts.LoadingSystems.Doors.Door.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Doors.Door.html",
+    "title": "Class Door | Scene Loading Documentation",
+    "keywords": "Class Door Leads to another room. Inheritance Object Door Implements IDoor Namespace : Assets.Scripts.LoadingSystems.Doors Assembly : cs.temp.dll.dll Syntax public abstract class Door : MonoBehaviour, IDoor Fields doorPairing Declaration public DoorPairing doorPairing Field Value Type Description DoorPairing triggeringTag Declaration public string triggeringTag Field Value Type Description String Properties PlayerIsAround Declaration public bool PlayerIsAround { get; } Property Value Type Description Boolean Position Declaration public Vector3 Position { get; } Property Value Type Description Vector3 RoomId Declaration public SceneId RoomId { get; } Property Value Type Description SceneId RoomIdOnTheOtherSide Declaration public SceneId RoomIdOnTheOtherSide { get; } Property Value Type Description SceneId State Declaration public DoorState State { get; } Property Value Type Description DoorState Methods Awake() Declaration protected virtual void Awake() CloseInSync() Declaration public void CloseInSync() Lock() Declaration public void Lock() NotifyLoadingProgress(Single) Declaration public void NotifyLoadingProgress(float progress) Parameters Type Name Description Single progress OnClose() Declaration protected abstract void OnClose() OnLoading(Single) Declaration protected abstract void OnLoading(float progress) Parameters Type Name Description Single progress OnOpen() Declaration protected abstract void OnOpen() OpenInSync() Declaration public void OpenInSync() Unlock() Declaration public void Unlock() Update() Declaration protected virtual void Update() Implements IDoor"
+  },
+  "api/Assets.Scripts.LoadingSystems.Doors.DoorPairing.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Doors.DoorPairing.html",
+    "title": "Class DoorPairing | Scene Loading Documentation",
+    "keywords": "Class DoorPairing Is in charge of pairing Door s from different scenes together. Inheritance Object DoorPairing Namespace : Assets.Scripts.LoadingSystems.Doors Assembly : cs.temp.dll.dll Syntax public class DoorPairing : ScriptableObject Methods GetDoors(ICollection<DoorState>) Declaration public IEnumerable<KeyValuePair<IDoor, IDoor>> GetDoors(ICollection<DoorState> doorStates) Parameters Type Name Description ICollection < DoorState > doorStates Returns Type Description IEnumerable < KeyValuePair < IDoor , IDoor >> Register(IDoor) Register the given Door . Attempts to pair it with one of the other registered doors. Declaration public void Register(IDoor newDoor) Parameters Type Name Description IDoor newDoor The door to register. Unregister(IDoor) Unregister the given Door . Unpair it from any other registered doors. Declaration public void Unregister(IDoor doorToRemove) Parameters Type Name Description IDoor doorToRemove"
+  },
+  "api/Assets.Scripts.LoadingSystems.Doors.DoorState.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Doors.DoorState.html",
+    "title": "Enum DoorState | Scene Loading Documentation",
+    "keywords": "Enum DoorState State of a Door . Namespace : Assets.Scripts.LoadingSystems.Doors Assembly : cs.temp.dll.dll Syntax public enum DoorState Fields Name Description Closed Door is normally closed. Locked Door is closed and cannot be opened by the player in the current situation. Open Door is completely open. WaitingToOpen Door is closed, and the player wants to open it."
+  },
+  "api/Assets.Scripts.LoadingSystems.Doors.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Doors.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.Doors | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.Doors Classes Door Leads to another room. DoorPairing Is in charge of pairing Door s from different scenes together. Interfaces IDoor Minimal interface of a door. Enums DoorState State of a Door ."
+  },
+  "api/Assets.Scripts.LoadingSystems.Doors.IDoor.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Doors.IDoor.html",
+    "title": "Interface IDoor | Scene Loading Documentation",
+    "keywords": "Interface IDoor Minimal interface of a door. Namespace : Assets.Scripts.LoadingSystems.Doors Assembly : cs.temp.dll.dll Syntax public interface IDoor Properties PlayerIsAround True when the player wants the door to open. Declaration bool PlayerIsAround { get; } Property Value Type Description Boolean Position The world position of the door. Declaration Vector3 Position { get; } Property Value Type Description Vector3 RoomId The room the door is in. Declaration SceneId RoomId { get; } Property Value Type Description SceneId RoomIdOnTheOtherSide The room the door leads to. Declaration SceneId RoomIdOnTheOtherSide { get; } Property Value Type Description SceneId State The current DoorState the door is in. Declaration DoorState State { get; } Property Value Type Description DoorState Methods CloseInSync() Closes the door. The corresponding opposite door will also close. Declaration void CloseInSync() Lock() Requests the door to be Locked . A locked door can be closed, but cannot be open afterwards (unless Unlock() is called). Declaration void Lock() NotifyLoadingProgress(Single) Notifies the door about the loading of the room behind it. Declaration void NotifyLoadingProgress(float progress) Parameters Type Name Description Single progress OpenInSync() Opens the door. The corresponding opposite door will also open. Declaration void OpenInSync() Unlock() Allows a door to be open again. Declaration void Unlock()"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.AssetDatabaseExt.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.AssetDatabaseExt.html",
+    "title": "Class AssetDatabaseExt | Scene Loading Documentation",
+    "keywords": "Class AssetDatabaseExt Inheritance Object AssetDatabaseExt Namespace : Assets.Scripts.LoadingSystems.Editor Assembly : cs.temp.dll.dll Syntax public static class AssetDatabaseExt Methods GetAllScenePaths(Boolean) Declaration public static ICollection<string> GetAllScenePaths(bool relativeToAssetFolder) Parameters Type Name Description Boolean relativeToAssetFolder Returns Type Description ICollection < String > GetAssetFilePath(String, Boolean) Declaration public static string GetAssetFilePath(string filename, bool relativeToAssetFolder = false) Parameters Type Name Description String filename Boolean relativeToAssetFolder Returns Type Description String"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.CustomMenu.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.CustomMenu.html",
+    "title": "Class CustomMenu | Scene Loading Documentation",
+    "keywords": "Class CustomMenu Inheritance Object CustomMenu Namespace : Assets.Scripts.LoadingSystems.Editor Assembly : cs.temp.dll.dll Syntax public static class CustomMenu Methods GenerateLoadMenu() Declaration public static void GenerateLoadMenu() GenerateSceneInfo() Declaration public static void GenerateSceneInfo()"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.Editor | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.Editor Classes AssetDatabaseExt CustomMenu"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.CustomMenu.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.CustomMenu.html",
+    "title": "Class CustomMenu | Scene Loading Documentation",
+    "keywords": "Class CustomMenu Inheritance Object CustomMenu Namespace : Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations Assembly : cs.temp.dll.dll Syntax public static class CustomMenu"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations Classes CustomMenu LoadMenuGeneration LoadSceneMenuFileGenerator"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.LoadMenuGeneration.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.LoadMenuGeneration.html",
+    "title": "Class LoadMenuGeneration | Scene Loading Documentation",
+    "keywords": "Class LoadMenuGeneration Inheritance Object LoadMenuGeneration Namespace : Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations Assembly : cs.temp.dll.dll Syntax public static class LoadMenuGeneration Methods Execute() Declaration public static void Execute()"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.LoadSceneMenuFileGenerator.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.LoadSceneMenuFileGenerator.html",
+    "title": "Class LoadSceneMenuFileGenerator | Scene Loading Documentation",
+    "keywords": "Class LoadSceneMenuFileGenerator Inheritance Object LoadSceneMenuFileGenerator Namespace : Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations Assembly : cs.temp.dll.dll Syntax public class LoadSceneMenuFileGenerator : FileGenerator Properties OutputFile Declaration protected override string OutputFile { get; } Property Value Type Description String TemplateFile Declaration protected override string TemplateFile { get; } Property Value Type Description String Methods Append(SceneInfo, String) Declaration public void Append(SceneInfo sceneInfo, string path) Parameters Type Name Description SceneInfo sceneInfo String path BuildSession(ITemplate) Declaration protected override ISession BuildSession(ITemplate template) Parameters Type Name Description ITemplate template Returns Type Description ISession"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.PropertyDrawers.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.PropertyDrawers.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.Editor.PropertyDrawers | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.Editor.PropertyDrawers Classes SceneIdDrawer"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.PropertyDrawers.SceneIdDrawer.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.PropertyDrawers.SceneIdDrawer.html",
+    "title": "Class SceneIdDrawer | Scene Loading Documentation",
+    "keywords": "Class SceneIdDrawer Inheritance Object SceneIdDrawer Namespace : Assets.Scripts.LoadingSystems.Editor.PropertyDrawers Assembly : cs.temp.dll.dll Syntax public class SceneIdDrawer : PropertyDrawer Methods OnGUI(Rect, SerializedProperty, GUIContent) Declaration public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) Parameters Type Name Description Rect position SerializedProperty property GUIContent label"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.EnumFileGenerator.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.EnumFileGenerator.html",
+    "title": "Class EnumFileGenerator | Scene Loading Documentation",
+    "keywords": "Class EnumFileGenerator Inheritance Object FileGenerator EnumFileGenerator SceneIdFileGenerator SceneTypeFileGenerator Inherited Members FileGenerator.TemplateFile FileGenerator.OutputFile FileGenerator.GenerateFile() FileGenerator.BuildSession(ITemplate) Namespace : Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations Assembly : cs.temp.dll.dll Syntax public abstract class EnumFileGenerator : FileGenerator Fields EnumMembers Declaration protected readonly Dictionary<string, int> EnumMembers Field Value Type Description Dictionary < String , Int32 > Properties EnumName Declaration protected abstract string EnumName { get; } Property Value Type Description String Methods Append(String, Int32) Declaration public void Append(string enumMemberName, int enumMemberValue) Parameters Type Name Description String enumMemberName Int32 enumMemberValue"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.FileGenerator.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.FileGenerator.html",
+    "title": "Class FileGenerator | Scene Loading Documentation",
+    "keywords": "Class FileGenerator Inheritance Object FileGenerator EnumFileGenerator SceneInfoGenerator Namespace : Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations Assembly : cs.temp.dll.dll Syntax public abstract class FileGenerator Properties OutputFile Declaration protected abstract string OutputFile { get; } Property Value Type Description String TemplateFile Declaration protected abstract string TemplateFile { get; } Property Value Type Description String Methods BuildSession(ITemplate) Declaration protected abstract ISession BuildSession(ITemplate template) Parameters Type Name Description ITemplate template Returns Type Description ISession GenerateFile() Declaration public void GenerateFile()"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations Classes EnumFileGenerator FileGenerator SceneClassesGeneration SceneData SceneDataGatherer SceneIdFileGenerator SceneInfoGenerator SceneTypeFileGenerator"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneClassesGeneration.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneClassesGeneration.html",
+    "title": "Class SceneClassesGeneration | Scene Loading Documentation",
+    "keywords": "Class SceneClassesGeneration Inheritance Object SceneClassesGeneration Namespace : Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations Assembly : cs.temp.dll.dll Syntax public static class SceneClassesGeneration Methods Execute() Declaration public static void Execute()"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneData.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneData.html",
+    "title": "Class SceneData | Scene Loading Documentation",
+    "keywords": "Class SceneData Inheritance Object SceneData Namespace : Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations Assembly : cs.temp.dll.dll Syntax public class SceneData Properties SceneEnumMemberInteger Declaration public int SceneEnumMemberInteger { get; set; } Property Value Type Description Int32 SceneEnumMemberName Declaration public string SceneEnumMemberName { get; set; } Property Value Type Description String SceneName Declaration public string SceneName { get; set; } Property Value Type Description String SceneTypeName Declaration public string SceneTypeName { get; set; } Property Value Type Description String"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneDataGatherer.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneDataGatherer.html",
+    "title": "Class SceneDataGatherer | Scene Loading Documentation",
+    "keywords": "Class SceneDataGatherer Inheritance Object SceneDataGatherer Namespace : Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations Assembly : cs.temp.dll.dll Syntax public class SceneDataGatherer Fields SceneTypeLabelPrefix Declaration public const string SceneTypeLabelPrefix = \"Scene-\" Field Value Type Description String Methods GatherFromScenePath(String) Declaration public SceneData GatherFromScenePath(string scenePath) Parameters Type Name Description String scenePath Returns Type Description SceneData GatherFromScenePaths(ICollection<String>) Declaration public ICollection<SceneData> GatherFromScenePaths(ICollection<string> scenePaths) Parameters Type Name Description ICollection < String > scenePaths Returns Type Description ICollection < SceneData >"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneIdFileGenerator.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneIdFileGenerator.html",
+    "title": "Class SceneIdFileGenerator | Scene Loading Documentation",
+    "keywords": "Class SceneIdFileGenerator Inheritance Object FileGenerator EnumFileGenerator SceneIdFileGenerator Inherited Members EnumFileGenerator.EnumMembers EnumFileGenerator.Append(String, Int32) FileGenerator.GenerateFile() Namespace : Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations Assembly : cs.temp.dll.dll Syntax public class SceneIdFileGenerator : EnumFileGenerator Properties EnumName Declaration protected override string EnumName { get; } Property Value Type Description String Overrides EnumFileGenerator.EnumName OutputFile Declaration protected override string OutputFile { get; } Property Value Type Description String Overrides FileGenerator.OutputFile TemplateFile Declaration protected override string TemplateFile { get; } Property Value Type Description String Overrides FileGenerator.TemplateFile Methods BuildSession(ITemplate) Declaration protected override ISession BuildSession(ITemplate template) Parameters Type Name Description ITemplate template Returns Type Description ISession Overrides FileGenerator.BuildSession(ITemplate) GetNewValue(Int32) Declaration public int GetNewValue(int sceneTypeValue) Parameters Type Name Description Int32 sceneTypeValue Returns Type Description Int32"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneInfoGenerator.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneInfoGenerator.html",
+    "title": "Class SceneInfoGenerator | Scene Loading Documentation",
+    "keywords": "Class SceneInfoGenerator Inheritance Object FileGenerator SceneInfoGenerator Inherited Members FileGenerator.GenerateFile() Namespace : Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations Assembly : cs.temp.dll.dll Syntax public class SceneInfoGenerator : FileGenerator Properties OutputFile Declaration protected override string OutputFile { get; } Property Value Type Description String Overrides FileGenerator.OutputFile TemplateFile Declaration protected override string TemplateFile { get; } Property Value Type Description String Overrides FileGenerator.TemplateFile Methods Append(SceneData) Declaration public void Append(SceneData newSceneData) Parameters Type Name Description SceneData newSceneData BuildSession(ITemplate) Declaration protected override ISession BuildSession(ITemplate template) Parameters Type Name Description ITemplate template Returns Type Description ISession Overrides FileGenerator.BuildSession(ITemplate)"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneTypeFileGenerator.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneTypeFileGenerator.html",
+    "title": "Class SceneTypeFileGenerator | Scene Loading Documentation",
+    "keywords": "Class SceneTypeFileGenerator Inheritance Object FileGenerator EnumFileGenerator SceneTypeFileGenerator Inherited Members EnumFileGenerator.EnumMembers EnumFileGenerator.Append(String, Int32) FileGenerator.GenerateFile() Namespace : Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations Assembly : cs.temp.dll.dll Syntax public class SceneTypeFileGenerator : EnumFileGenerator Constructors SceneTypeFileGenerator() Declaration public SceneTypeFileGenerator() Properties EnumName Declaration protected override string EnumName { get; } Property Value Type Description String Overrides EnumFileGenerator.EnumName OutputFile Declaration protected override string OutputFile { get; } Property Value Type Description String Overrides FileGenerator.OutputFile TemplateFile Declaration protected override string TemplateFile { get; } Property Value Type Description String Overrides FileGenerator.TemplateFile Methods BuildSession(ITemplate) Declaration protected override ISession BuildSession(ITemplate template) Parameters Type Name Description ITemplate template Returns Type Description ISession Overrides FileGenerator.BuildSession(ITemplate) GetNewValue() Declaration public int GetNewValue() Returns Type Description Int32"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions Classes Session SessionWriter SubsessionChunk TextChunk VariableChunk Interfaces ISession ISessionChunk"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.ISession.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.ISession.html",
+    "title": "Interface ISession | Scene Loading Documentation",
+    "keywords": "Interface ISession Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions Assembly : cs.temp.dll.dll Syntax public interface ISession Methods AppendSubsession(String, ISession) Declaration void AppendSubsession(string subtemplateName, ISession subsession) Parameters Type Name Description String subtemplateName ISession subsession GetChunks() Declaration ICollection<ISessionChunk> GetChunks() Returns Type Description ICollection < ISessionChunk > GetVariableValue(String) Declaration string GetVariableValue(string variableName) Parameters Type Name Description String variableName Returns Type Description String SetVariable(String, String) Declaration void SetVariable(string variableName, string variableValue) Parameters Type Name Description String variableName String variableValue"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.ISessionChunk.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.ISessionChunk.html",
+    "title": "Interface ISessionChunk | Scene Loading Documentation",
+    "keywords": "Interface ISessionChunk Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions Assembly : cs.temp.dll.dll Syntax public interface ISessionChunk"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.Session.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.Session.html",
+    "title": "Class Session | Scene Loading Documentation",
+    "keywords": "Class Session Inheritance Object Session Implements ISession Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions Assembly : cs.temp.dll.dll Syntax public class Session : ISessionChunkBuilding, ISession Methods AppendSubsession(String, ISession) Declaration public void AppendSubsession(string subtemplateName, ISession subsession) Parameters Type Name Description String subtemplateName ISession subsession AppendSubsessionChunk(String) Declaration public void AppendSubsessionChunk(string subtemplateName) Parameters Type Name Description String subtemplateName AppendTextChunk(String) Declaration public void AppendTextChunk(string text) Parameters Type Name Description String text AppendVariableChunk(String) Declaration public void AppendVariableChunk(string variableName) Parameters Type Name Description String variableName GetChunks() Declaration public ICollection<ISessionChunk> GetChunks() Returns Type Description ICollection < ISessionChunk > GetVariableValue(String) Declaration public string GetVariableValue(string variableName) Parameters Type Name Description String variableName Returns Type Description String SetVariable(String, String) Declaration public void SetVariable(string variableName, string variableValue) Parameters Type Name Description String variableName String variableValue Implements ISession"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.SessionWriter.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.SessionWriter.html",
+    "title": "Class SessionWriter | Scene Loading Documentation",
+    "keywords": "Class SessionWriter Inheritance Object SessionWriter Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions Assembly : cs.temp.dll.dll Syntax public class SessionWriter Methods WriteSession(ISession, StreamWriter) Declaration public void WriteSession(ISession session, StreamWriter writer) Parameters Type Name Description ISession session StreamWriter writer WriteSession(ISession, String) Declaration public void WriteSession(ISession session, string filepath) Parameters Type Name Description ISession session String filepath"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.SubsessionChunk.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.SubsessionChunk.html",
+    "title": "Class SubsessionChunk | Scene Loading Documentation",
+    "keywords": "Class SubsessionChunk Inheritance Object SubsessionChunk Implements ISessionChunk Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions Assembly : cs.temp.dll.dll Syntax public class SubsessionChunk : ISessionChunk Constructors SubsessionChunk(String, ISession) Declaration public SubsessionChunk(string subtemplateName, ISession subsession) Parameters Type Name Description String subtemplateName ISession subsession Properties Subsession Declaration public ISession Subsession { get; } Property Value Type Description ISession SubtemplateName Declaration public string SubtemplateName { get; } Property Value Type Description String Implements ISessionChunk"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.TextChunk.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.TextChunk.html",
+    "title": "Class TextChunk | Scene Loading Documentation",
+    "keywords": "Class TextChunk Inheritance Object TextChunk Implements ISessionChunk Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions Assembly : cs.temp.dll.dll Syntax public class TextChunk : ISessionChunk Constructors TextChunk(String) Declaration public TextChunk(string text) Parameters Type Name Description String text Properties Text Declaration public string Text { get; } Property Value Type Description String Implements ISessionChunk"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.VariableChunk.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.VariableChunk.html",
+    "title": "Class VariableChunk | Scene Loading Documentation",
+    "keywords": "Class VariableChunk Inheritance Object VariableChunk Implements ISessionChunk Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions Assembly : cs.temp.dll.dll Syntax public class VariableChunk : ISessionChunk Constructors VariableChunk(String) Declaration public VariableChunk(string variableName) Parameters Type Name Description String variableName Properties VariableName Declaration public string VariableName { get; } Property Value Type Description String Implements ISessionChunk"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates Classes SubtemplateNode Template TemplateParser TextNode VariableNode Interfaces INode ITemplate ITemplateBuilding"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.INode.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.INode.html",
+    "title": "Interface INode | Scene Loading Documentation",
+    "keywords": "Interface INode Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates Assembly : cs.temp.dll.dll Syntax public interface INode"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.ITemplate.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.ITemplate.html",
+    "title": "Interface ITemplate | Scene Loading Documentation",
+    "keywords": "Interface ITemplate Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates Assembly : cs.temp.dll.dll Syntax public interface ITemplate Methods CreateSession() Declaration ISession CreateSession() Returns Type Description ISession GetSubtemplate(String) Declaration ITemplate GetSubtemplate(string subtemplateName) Parameters Type Name Description String subtemplateName Returns Type Description ITemplate"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.ITemplateBuilding.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.ITemplateBuilding.html",
+    "title": "Interface ITemplateBuilding | Scene Loading Documentation",
+    "keywords": "Interface ITemplateBuilding Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates Assembly : cs.temp.dll.dll Syntax public interface ITemplateBuilding Methods AppendNode(INode) Declaration void AppendNode(INode node) Parameters Type Name Description INode node AppendSubtemplate(String, ITemplate) Declaration void AppendSubtemplate(string subtemplateName, ITemplate subtemplate) Parameters Type Name Description String subtemplateName ITemplate subtemplate"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.SubtemplateNode.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.SubtemplateNode.html",
+    "title": "Class SubtemplateNode | Scene Loading Documentation",
+    "keywords": "Class SubtemplateNode Inheritance Object SubtemplateNode Implements INode Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates Assembly : cs.temp.dll.dll Syntax public class SubtemplateNode : INode Constructors SubtemplateNode(String) Declaration public SubtemplateNode(string subtemplateName) Parameters Type Name Description String subtemplateName Properties SubtemplateName Declaration public string SubtemplateName { get; } Property Value Type Description String Implements INode"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.Template.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.Template.html",
+    "title": "Class Template | Scene Loading Documentation",
+    "keywords": "Class Template Inheritance Object Template Implements ITemplate ITemplateBuilding Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates Assembly : cs.temp.dll.dll Syntax public class Template : ITemplate, ITemplateBuilding Methods AppendNode(INode) Declaration public void AppendNode(INode node) Parameters Type Name Description INode node AppendSubtemplate(String, ITemplate) Declaration public void AppendSubtemplate(string subtemplateName, ITemplate subtemplate) Parameters Type Name Description String subtemplateName ITemplate subtemplate CreateSession() Declaration public ISession CreateSession() Returns Type Description ISession GetSubtemplate(String) Declaration public ITemplate GetSubtemplate(string subtemplateName) Parameters Type Name Description String subtemplateName Returns Type Description ITemplate Implements ITemplate ITemplateBuilding"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.TemplateParser.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.TemplateParser.html",
+    "title": "Class TemplateParser | Scene Loading Documentation",
+    "keywords": "Class TemplateParser Inheritance Object TemplateParser Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates Assembly : cs.temp.dll.dll Syntax public class TemplateParser Constructors TemplateParser(String) Declaration public TemplateParser(string templateFilePath) Parameters Type Name Description String templateFilePath Methods GetParsedTemplate() Declaration public ITemplate GetParsedTemplate() Returns Type Description ITemplate Parse() Declaration public void Parse()"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.TextNode.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.TextNode.html",
+    "title": "Class TextNode | Scene Loading Documentation",
+    "keywords": "Class TextNode Inheritance Object TextNode Implements INode Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates Assembly : cs.temp.dll.dll Syntax public class TextNode : INode Constructors TextNode(String) Declaration public TextNode(string text) Parameters Type Name Description String text Properties Text Declaration public string Text { get; } Property Value Type Description String Implements INode"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.VariableNode.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.VariableNode.html",
+    "title": "Class VariableNode | Scene Loading Documentation",
+    "keywords": "Class VariableNode Inheritance Object VariableNode Implements INode Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates Assembly : cs.temp.dll.dll Syntax public class VariableNode : INode Constructors VariableNode(String) Declaration public VariableNode(string variableName) Parameters Type Name Description String variableName Properties VariableName Declaration public string VariableName { get; } Property Value Type Description String Implements INode"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens Classes Token Tokenizer Enums TokenizerState TokenType"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.Token.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.Token.html",
+    "title": "Class Token | Scene Loading Documentation",
+    "keywords": "Class Token Inheritance Object Token Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens Assembly : cs.temp.dll.dll Syntax public class Token Constructors Token(TokenType, String) Declaration public Token(TokenType type, string value) Parameters Type Name Description TokenType type String value Properties Type Declaration public TokenType Type { get; } Property Value Type Description TokenType Value Declaration public string Value { get; } Property Value Type Description String Methods ToString() Declaration public override string ToString() Returns Type Description String Overrides Object.ToString()"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.Tokenizer.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.Tokenizer.html",
+    "title": "Class Tokenizer | Scene Loading Documentation",
+    "keywords": "Class Tokenizer Inheritance Object Tokenizer Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens Assembly : cs.temp.dll.dll Syntax public class Tokenizer Constructors Tokenizer(String) Declaration public Tokenizer(string text) Parameters Type Name Description String text Methods GetTokens() Declaration public ICollection<Token> GetTokens() Returns Type Description ICollection < Token > Tokenize() Declaration public void Tokenize()"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.TokenizerState.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.TokenizerState.html",
+    "title": "Enum TokenizerState | Scene Loading Documentation",
+    "keywords": "Enum TokenizerState Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens Assembly : cs.temp.dll.dll Syntax public enum TokenizerState Fields Name Description ReadingInstruction ReadingText"
+  },
+  "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.TokenType.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.TokenType.html",
+    "title": "Enum TokenType | Scene Loading Documentation",
+    "keywords": "Enum TokenType Namespace : Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens Assembly : cs.temp.dll.dll Syntax public enum TokenType Fields Name Description Identifier InstructionBegin InstructionEnd RawText SubtemplateBegin SubtemplateEnd Variable"
+  },
+  "api/Assets.Scripts.LoadingSystems.PersistentVariables.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.PersistentVariables.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.PersistentVariables | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.PersistentVariables Classes Persistent<TStruct> PersistentBool PersistentFloat PersistentInt PersistentQuaternion PersistentRoomId PersistentSet<TItem> PersistentString PersistentVector3"
+  },
+  "api/Assets.Scripts.LoadingSystems.PersistentVariables.Persistent-1.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.PersistentVariables.Persistent-1.html",
+    "title": "Class Persistent<TStruct> | Scene Loading Documentation",
+    "keywords": "Class Persistent<TStruct> Inheritance Object Persistent<TStruct> PersistentBool PersistentFloat PersistentInt PersistentQuaternion PersistentRoomId PersistentVector3 Namespace : Assets.Scripts.LoadingSystems.PersistentVariables Assembly : cs.temp.dll.dll Syntax public abstract class Persistent<TStruct> : ScriptableObject where TStruct : struct Type Parameters Name Description TStruct Properties Value Declaration public TStruct Value { get; set; } Property Value Type Description TStruct Methods OnDisable() Declaration protected virtual void OnDisable() Set(TStruct) Declaration public virtual void Set(TStruct value) Parameters Type Name Description TStruct value Events ValueChanged Declaration public event Action<TStruct> ValueChanged Event Type Type Description Action <TStruct>"
+  },
+  "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentBool.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentBool.html",
+    "title": "Class PersistentBool | Scene Loading Documentation",
+    "keywords": "Class PersistentBool Inheritance Object Persistent < Boolean > PersistentBool Inherited Members Persistent<Boolean>.Value Persistent<Boolean>.ValueChanged Persistent<Boolean>.Set(Boolean) Persistent<Boolean>.OnDisable() Namespace : Assets.Scripts.LoadingSystems.PersistentVariables Assembly : cs.temp.dll.dll Syntax public class PersistentBool : Persistent<bool>"
+  },
+  "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentFloat.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentFloat.html",
+    "title": "Class PersistentFloat | Scene Loading Documentation",
+    "keywords": "Class PersistentFloat Inheritance Object Persistent < Single > PersistentFloat Inherited Members Persistent<Single>.Value Persistent<Single>.ValueChanged Persistent<Single>.Set(Single) Persistent<Single>.OnDisable() Namespace : Assets.Scripts.LoadingSystems.PersistentVariables Assembly : cs.temp.dll.dll Syntax public class PersistentFloat : Persistent<float>"
+  },
+  "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentInt.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentInt.html",
+    "title": "Class PersistentInt | Scene Loading Documentation",
+    "keywords": "Class PersistentInt Inheritance Object Persistent < Int32 > PersistentInt Inherited Members Persistent<Int32>.Value Persistent<Int32>.ValueChanged Persistent<Int32>.Set(Int32) Persistent<Int32>.OnDisable() Namespace : Assets.Scripts.LoadingSystems.PersistentVariables Assembly : cs.temp.dll.dll Syntax public class PersistentInt : Persistent<int>"
+  },
+  "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentQuaternion.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentQuaternion.html",
+    "title": "Class PersistentQuaternion | Scene Loading Documentation",
+    "keywords": "Class PersistentQuaternion Inheritance Object Persistent < Quaternion > PersistentQuaternion Inherited Members Persistent<Quaternion>.Value Persistent<Quaternion>.ValueChanged Persistent<Quaternion>.Set(Quaternion) Persistent<Quaternion>.OnDisable() Namespace : Assets.Scripts.LoadingSystems.PersistentVariables Assembly : cs.temp.dll.dll Syntax public class PersistentQuaternion : Persistent<Quaternion>"
+  },
+  "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentRoomId.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentRoomId.html",
+    "title": "Class PersistentRoomId | Scene Loading Documentation",
+    "keywords": "Class PersistentRoomId Inheritance Object Persistent < SceneId > PersistentRoomId Inherited Members Persistent<SceneId>.Value Persistent<SceneId>.ValueChanged Persistent<SceneId>.OnDisable() Namespace : Assets.Scripts.LoadingSystems.PersistentVariables Assembly : cs.temp.dll.dll Syntax public class PersistentRoomId : Persistent<SceneId> Methods Set(SceneId) Declaration public override void Set(SceneId roomId) Parameters Type Name Description SceneId roomId Overrides Assets.Scripts.LoadingSystems.PersistentVariables.Persistent<SceneId>.Set(SceneId)"
+  },
+  "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentSet-1.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentSet-1.html",
+    "title": "Class PersistentSet<TItem> | Scene Loading Documentation",
+    "keywords": "Class PersistentSet<TItem> Inheritance Object PersistentSet<TItem> Namespace : Assets.Scripts.LoadingSystems.PersistentVariables Assembly : cs.temp.dll.dll Syntax public abstract class PersistentSet<TItem> : ScriptableObject Type Parameters Name Description TItem Properties Items Declaration public IEnumerable<TItem> Items { get; } Property Value Type Description IEnumerable <TItem> Methods Add(TItem) Declaration public void Add(TItem item) Parameters Type Name Description TItem item OnDisable() Declaration protected void OnDisable() Remove(TItem) Declaration public void Remove(TItem item) Parameters Type Name Description TItem item Events ItemAdded Declaration public event Action<TItem> ItemAdded Event Type Type Description Action <TItem> ItemRemoved Declaration public event Action<TItem> ItemRemoved Event Type Type Description Action <TItem>"
+  },
+  "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentString.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentString.html",
+    "title": "Class PersistentString | Scene Loading Documentation",
+    "keywords": "Class PersistentString Inheritance Object PersistentString Namespace : Assets.Scripts.LoadingSystems.PersistentVariables Assembly : cs.temp.dll.dll Syntax public class PersistentString : ScriptableObject Properties Value Declaration public string Value { get; set; } Property Value Type Description String Methods OnDisable() Declaration protected virtual void OnDisable() Set(String) Declaration protected virtual void Set(string str) Parameters Type Name Description String str Events ValueChanged Declaration public event Action<string> ValueChanged Event Type Type Description Action < String >"
+  },
+  "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentVector3.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentVector3.html",
+    "title": "Class PersistentVector3 | Scene Loading Documentation",
+    "keywords": "Class PersistentVector3 Inheritance Object Persistent < Vector3 > PersistentVector3 Inherited Members Persistent<Vector3>.Value Persistent<Vector3>.ValueChanged Persistent<Vector3>.Set(Vector3) Persistent<Vector3>.OnDisable() Namespace : Assets.Scripts.LoadingSystems.PersistentVariables Assembly : cs.temp.dll.dll Syntax public class PersistentVector3 : Persistent<Vector3>"
+  },
+  "api/Assets.Scripts.LoadingSystems.Rooms.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Rooms.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.Rooms | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.Rooms Classes PlayerRoomTracker RoomLoadingManager Is in charge of loading and unloading rooms."
+  },
+  "api/Assets.Scripts.LoadingSystems.Rooms.PlayerRoomTracker.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Rooms.PlayerRoomTracker.html",
+    "title": "Class PlayerRoomTracker | Scene Loading Documentation",
+    "keywords": "Class PlayerRoomTracker Inheritance Object PlayerRoomTracker Namespace : Assets.Scripts.LoadingSystems.Rooms Assembly : cs.temp.dll.dll Syntax public class PlayerRoomTracker : MonoBehaviour Fields doorPairing Declaration public DoorPairing doorPairing Field Value Type Description DoorPairing playerCurrentRoomId Declaration public PersistentRoomId playerCurrentRoomId Field Value Type Description PersistentRoomId"
+  },
+  "api/Assets.Scripts.LoadingSystems.Rooms.RoomLoadingManager.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.Rooms.RoomLoadingManager.html",
+    "title": "Class RoomLoadingManager | Scene Loading Documentation",
+    "keywords": "Class RoomLoadingManager Is in charge of loading and unloading rooms. Inheritance Object RoomLoadingManager Namespace : Assets.Scripts.LoadingSystems.Rooms Assembly : cs.temp.dll.dll Syntax public class RoomLoadingManager : MonoBehaviour Fields doorPairing Declaration public DoorPairing doorPairing Field Value Type Description DoorPairing maxLoadedRooms Declaration public int maxLoadedRooms Field Value Type Description Int32 playerCurrentRoomId Declaration public PersistentRoomId playerCurrentRoomId Field Value Type Description PersistentRoomId sceneLoadingManager Declaration public SceneLoadingManager sceneLoadingManager Field Value Type Description SceneLoadingManager"
+  },
+  "api/Assets.Scripts.LoadingSystems.SceneInfos.Attributes.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.SceneInfos.Attributes.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.SceneInfos.Attributes | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.SceneInfos.Attributes Classes RestrictedSceneIdAttribute"
+  },
+  "api/Assets.Scripts.LoadingSystems.SceneInfos.Attributes.RestrictedSceneIdAttribute.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.SceneInfos.Attributes.RestrictedSceneIdAttribute.html",
+    "title": "Class RestrictedSceneIdAttribute | Scene Loading Documentation",
+    "keywords": "Class RestrictedSceneIdAttribute Inheritance Object RestrictedSceneIdAttribute Namespace : Assets.Scripts.LoadingSystems.SceneInfos.Attributes Assembly : cs.temp.dll.dll Syntax public class RestrictedSceneIdAttribute : PropertyAttribute Constructors RestrictedSceneIdAttribute(SceneType) Declaration public RestrictedSceneIdAttribute(SceneType sceneIdType) Parameters Type Name Description SceneType sceneIdType Properties SceneIdType Declaration public SceneType SceneIdType { get; } Property Value Type Description SceneType"
+  },
+  "api/Assets.Scripts.LoadingSystems.SceneInfos.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.SceneInfos.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.SceneInfos | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.SceneInfos Classes SceneInfo Holds information about a Scene. Enums SceneId Enumeration identifying scenes in the system. SceneType Type of a Scene."
+  },
+  "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneId.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneId.html",
+    "title": "Enum SceneId | Scene Loading Documentation",
+    "keywords": "Enum SceneId Enumeration identifying scenes in the system. Namespace : Assets.Scripts.LoadingSystems.SceneInfos Assembly : cs.temp.dll.dll Syntax public enum SceneId"
+  },
+  "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneInfo.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneInfo.html",
+    "title": "Class SceneInfo | Scene Loading Documentation",
+    "keywords": "Class SceneInfo Holds information about a Scene. Inheritance Object SceneInfo Namespace : Assets.Scripts.LoadingSystems.SceneInfos Assembly : cs.temp.dll.dll Syntax public class SceneInfo Properties Id The SceneId identifying the scene. Declaration public SceneId Id { get; } Property Value Type Description SceneId SceneName The name of the .unity file corresponding to the scene. Declaration public string SceneName { get; } Property Value Type Description String Type The SceneType of the scene. Declaration public SceneType Type { get; } Property Value Type Description SceneType Methods Equals(SceneInfo) Declaration public bool Equals(SceneInfo otherSceneInfo) Parameters Type Name Description SceneInfo otherSceneInfo Returns Type Description Boolean Equals(Object) Declaration public override bool Equals(object obj) Parameters Type Name Description Object obj Returns Type Description Boolean Overrides Object.Equals(Object) GetAll() Returns a collection of all available SceneInfo objects. Declaration public static IReadOnlyCollection<SceneInfo> GetAll() Returns Type Description IReadOnlyCollection < SceneInfo > GetFromScene(Scene) Gets the SceneInfo corresponding to the given Unity Scene. Declaration public static SceneInfo GetFromScene(Scene scene) Parameters Type Name Description Scene scene The Unity Scene to get the SceneInfo from. Returns Type Description SceneInfo The corresponding SceneInfo . GetHashCode() Declaration public override int GetHashCode() Returns Type Description Int32 Overrides Object.GetHashCode() GetOrThrow(SceneId) Gets the SceneInfo associated with the given SceneId . Throws an exception if the SceneId is invalid. Declaration public static SceneInfo GetOrThrow(SceneId sceneId) Parameters Type Name Description SceneId sceneId The SceneId identifying the SceneInfo to get. Returns Type Description SceneInfo The corresponding SceneInfo . GetRoomIdForGameObject(GameObject) Declaration public static SceneId GetRoomIdForGameObject(GameObject gameobject) Parameters Type Name Description GameObject gameobject Returns Type Description SceneId IsRoom() Returns whether or not it's a Room . Declaration public bool IsRoom() Returns Type Description Boolean ToString() Declaration public override string ToString() Returns Type Description String Overrides Object.ToString() TryGet(SceneId, out SceneInfo) Same as GetOrThrow(SceneId) , but doesn't throw exception. Declaration public static bool TryGet(SceneId sceneId, out SceneInfo sceneInfo) Parameters Type Name Description SceneId sceneId The SceneId identifying the scene. SceneInfo sceneInfo The resulting SceneInfo . Returns Type Description Boolean Whether or not the operation succedeed. Operators Equality(SceneInfo, SceneInfo) Declaration public static bool operator ==(SceneInfo left, SceneInfo right) Parameters Type Name Description SceneInfo left SceneInfo right Returns Type Description Boolean Inequality(SceneInfo, SceneInfo) Declaration public static bool operator !=(SceneInfo left, SceneInfo right) Parameters Type Name Description SceneInfo left SceneInfo right Returns Type Description Boolean"
+  },
+  "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneType.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneType.html",
+    "title": "Enum SceneType | Scene Loading Documentation",
+    "keywords": "Enum SceneType Type of a Scene. Namespace : Assets.Scripts.LoadingSystems.SceneInfos Assembly : cs.temp.dll.dll Syntax public enum SceneType Fields Name Description Gameplay Master Room Screen"
+  },
+  "api/Assets.Scripts.LoadingSystems.SceneLoadings.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.SceneLoadings.html",
+    "title": "Namespace Assets.Scripts.LoadingSystems.SceneLoadings | Scene Loading Documentation",
+    "keywords": "Namespace Assets.Scripts.LoadingSystems.SceneLoadings Classes SceneLoadingManager The game object to put into a scene to handle the loading/unloading of other scenes. SceneLoadingSystem API of the loading system. Interfaces ISceneLoadingSystem API of the loading system."
+  },
+  "api/Assets.Scripts.LoadingSystems.SceneLoadings.ISceneLoadingSystem.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.SceneLoadings.ISceneLoadingSystem.html",
+    "title": "Interface ISceneLoadingSystem | Scene Loading Documentation",
+    "keywords": "Interface ISceneLoadingSystem API of the loading system. Namespace : Assets.Scripts.LoadingSystems.SceneLoadings Assembly : cs.temp.dll.dll Syntax public interface ISceneLoadingSystem Methods Activate(SceneId) Allow the given scene to complete its loading and activate itself (i.e. call the Start methods and such) Declaration void Activate(SceneId sceneId) Parameters Type Name Description SceneId sceneId Initialize() Initializes the system with what is already loaded. Declaration void Initialize() IsLoaded(SceneId) Returns wether or not the given scene is fully loaded. Declaration bool IsLoaded(SceneId sceneId) Parameters Type Name Description SceneId sceneId Returns Type Description Boolean IsLoading(SceneId) Returns wether or not the given scene is still loading. Declaration bool IsLoading(SceneId sceneId) Parameters Type Name Description SceneId sceneId Returns Type Description Boolean IsLoading(SceneId, out Single) Returns wether or not the given scene is still loading. Provides the loading progress (between 0 and 1). Declaration bool IsLoading(SceneId sceneId, out float progress) Parameters Type Name Description SceneId sceneId Single progress Returns Type Description Boolean IsReadyToActivate(SceneId) Returns wether or not the given scene is almost loaded and is waiting for activation. Declaration bool IsReadyToActivate(SceneId sceneId) Parameters Type Name Description SceneId sceneId Returns Type Description Boolean LoadAdditive(SceneId, Boolean) Loads the given scene if needed. If is set to false, you will have to manually call the Activate(SceneId) method. Declaration void LoadAdditive(SceneId sceneId, bool activateWhenReady) Parameters Type Name Description SceneId sceneId Boolean activateWhenReady LoadSingle(SceneId, Boolean) Loads the given scene and unload everything else. If is set to false, you will have to manually call the Activate(SceneId) method. Declaration void LoadSingle(SceneId sceneId, bool activateWhenReady) Parameters Type Name Description SceneId sceneId Boolean activateWhenReady Unload(SceneId) Unloads the given scene. Declaration void Unload(SceneId sceneId) Parameters Type Name Description SceneId sceneId"
+  },
+  "api/Assets.Scripts.LoadingSystems.SceneLoadings.SceneLoadingManager.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.SceneLoadings.SceneLoadingManager.html",
+    "title": "Class SceneLoadingManager | Scene Loading Documentation",
+    "keywords": "Class SceneLoadingManager The game object to put into a scene to handle the loading/unloading of other scenes. Inheritance Object SceneLoadingManager Namespace : Assets.Scripts.LoadingSystems.SceneLoadings Assembly : cs.temp.dll.dll Syntax public class SceneLoadingManager : MonoBehaviour Methods Activate(SceneId) Activate the given scene. Will throw if the scene is not ready to be activated. Declaration public void Activate(SceneId sceneId) Parameters Type Name Description SceneId sceneId Identifier of the scene to activate. IsLoaded(SceneId) Returns whether or not the given scene is fully loaded and activated. Declaration public bool IsLoaded(SceneId sceneId) Parameters Type Name Description SceneId sceneId Identifier of the scene to check. Returns Type Description Boolean True if the scene is loaded and activated. IsLoading(SceneId, out Single) Returns whether or not the given scene is loading (including if its waiting to be activated). Declaration public bool IsLoading(SceneId sceneId, out float progress) Parameters Type Name Description SceneId sceneId Identifier of the scene to check. Single progress The progress of the loading, between 0 (beginning to load) and 1 (loaded and activated). Undefined if the scene is not loaded or is already activated. Returns Type Description Boolean True if the scene is loading IsReadyToActivate(SceneId) Returns whether or not the given scene is ready to be activated. Declaration public bool IsReadyToActivate(SceneId sceneId) Parameters Type Name Description SceneId sceneId Identifier of the scene to check. Returns Type Description Boolean True if a call to Activate(SceneId) can be made. LoadSubSceneAsync(SceneId) Loads the given scene additively. Declaration public IEnumerator LoadSubSceneAsync(SceneId sceneId) Parameters Type Name Description SceneId sceneId Identifier of the scene to load. It's usually a scene. Returns Type Description IEnumerator IEnumerator to yield. PreloadMainSceneAsync(SceneId) Loads the given scene and unload everything else, but doesn't activate until a manual call to Activate(SceneId) is made. Declaration public IEnumerator PreloadMainSceneAsync(SceneId sceneId) Parameters Type Name Description SceneId sceneId Identifier of the scene to preload. It's usually a scene. Returns Type Description IEnumerator IEnumerator to yield. PreloadSubSceneAsync(SceneId) Loads the given scene additively, but doesn't activate it until a manual call to Activate(SceneId) is made. Declaration public IEnumerator PreloadSubSceneAsync(SceneId sceneId) Parameters Type Name Description SceneId sceneId Identifier of the scene to preload. It's usually a scene. Returns Type Description IEnumerator IEnumerator to yield. Unload(SceneId) Unloads the given scene. Declaration public void Unload(SceneId sceneId) Parameters Type Name Description SceneId sceneId Identifier of the scene to unload."
+  },
+  "api/Assets.Scripts.LoadingSystems.SceneLoadings.SceneLoadingSystem.html": {
+    "href": "api/Assets.Scripts.LoadingSystems.SceneLoadings.SceneLoadingSystem.html",
+    "title": "Class SceneLoadingSystem | Scene Loading Documentation",
+    "keywords": "Class SceneLoadingSystem API of the loading system. Inheritance Object SceneLoadingSystem Implements ISceneLoadingSystem Namespace : Assets.Scripts.LoadingSystems.SceneLoadings Assembly : cs.temp.dll.dll Syntax public class SceneLoadingSystem : ISceneLoadingSystem Methods Activate(SceneId) Allow the given scene to complete its loading and activate itself (i.e. call the Start methods and such) Declaration public void Activate(SceneId sceneId) Parameters Type Name Description SceneId sceneId Initialize() Initializes the system with what is already loaded. Declaration public void Initialize() IsLoaded(SceneId) Returns wether or not the given scene is fully loaded. Declaration public bool IsLoaded(SceneId sceneId) Parameters Type Name Description SceneId sceneId Returns Type Description Boolean IsLoading(SceneId) Returns wether or not the given scene is still loading. Declaration public bool IsLoading(SceneId sceneId) Parameters Type Name Description SceneId sceneId Returns Type Description Boolean IsLoading(SceneId, out Single) Returns wether or not the given scene is still loading. Provides the loading progress (between 0 and 1). Declaration public bool IsLoading(SceneId sceneId, out float progress) Parameters Type Name Description SceneId sceneId Single progress Returns Type Description Boolean IsReadyToActivate(SceneId) Returns wether or not the given scene is almost loaded and is waiting for activation. Declaration public bool IsReadyToActivate(SceneId sceneId) Parameters Type Name Description SceneId sceneId Returns Type Description Boolean LoadAdditive(SceneId, Boolean) Loads the given scene if needed. If is set to false, you will have to manually call the Activate(SceneId) method. Declaration public void LoadAdditive(SceneId sceneId, bool activateWhenReady) Parameters Type Name Description SceneId sceneId Boolean activateWhenReady LoadSingle(SceneId, Boolean) Loads the given scene and unload everything else. If is set to false, you will have to manually call the Activate(SceneId) method. Declaration public void LoadSingle(SceneId sceneId, bool activateWhenReady) Parameters Type Name Description SceneId sceneId Boolean activateWhenReady Unload(SceneId) Unloads the given scene. Declaration public void Unload(SceneId sceneId) Parameters Type Name Description SceneId sceneId Implements ISceneLoadingSystem"
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "SceneLoading | Scene Loading Documentation",
+    "keywords": "SceneLoading Management of scene loading in Unity."
+  },
+  "manual/CodingStandards.html": {
+    "href": "manual/CodingStandards.html",
+    "title": "C# Coding Standards | Scene Loading Documentation",
+    "keywords": "C# Coding Standards Introduction The aim of this section is to explain the set of C# coding standards used in this project. TODO"
+  },
+  "manual/Concepts.html": {
+    "href": "manual/Concepts.html",
+    "title": "Concepts | Scene Loading Documentation",
+    "keywords": "Concepts The following concepts are inspired from how a classic Metroidvania game is usually broken down. World The World of the game will be defined as the universe the game takes place in. It encompasses all locations, and can be thought of as the whole main game itself. Area The world is usually split into interconnected Areas defining the general structure and pacing of the game. An Area can be thought of as a big sequence, as going through an Area usually takes at least one full play session. As the player progresses through the game, new Areas become available to her and more connections between previous Areas open up to allow some form of fast-travel or easier back-tracking. Note that travelling between Areas often causes an acceptable downtine in gameplay due to the underlying loading happening in the background. Example of Areas: Room A given area is then divided into Rooms that the player can explore. A Room is a small, contained, physical location where one or more gameplay elements may happen, like an enemy to fight or a puzzle to solve. Example of Rooms: Scenes From these concepts, Unity Scenes are divided into four different types: Master A Master scene is an entry point of the main game, and may correspond to an area. The key idea is that a Master scene does not actually contain any geometry, mesh or any other physical objects, but is instead responsible for additively loading the player and the rooms of the current area. GameObjects managing the game as a whole are supposed to be found in a Master Scene. Gameplay A Gameplay scene contains everything related to the player. GameObjects related to controls, player camera and UI are expected to be found in a Gameplay scene. No physical object bound to a specific location should be present in such a scene. Room As the name implies, a Room scene corresponds to a room, and is a physical location (or level) the player can explore and interact with. Most of the familiar GameObjects like ground, walls, props, interactive items and entities such as enemies or bosses are expected to be found here. Screen A Screen scene is a self-contained scene that doesn't belong to the diegetic world by itself, but instead acts like a menu of some sort. It handles player interaction, then loads a Master scene while unloading itself. It is the expected type of scenes like Title Screen, Game Over, Character Selection, Save Slot Menu, etc. Relations between Scene Types:"
+  },
+  "manual/EditorTools.html": {
+    "href": "manual/EditorTools.html",
+    "title": "Editor Tools | Scene Loading Documentation",
+    "keywords": "Editor Tools Generate C# Types Register your scenes To register a scene into the list of managed scenes, you first have to add a label on it. The label has to start with \"Scene-\" and be followed by the type of the scene. Once your scenes are properly labelled (see \"Register your scenes\"), go to... Load Scene To quickly load a scene without going back into the Project Window, you can auto-generate a menu listing all registered scenes in your project. If you haven't registered your scene yet, follow the steps of the \"Genere Scene Classes\" section. Then, go to... Once the menu is generated, you can go to... Note: as this menu is based on a generated file, you have to regenerate the menu again every time a scene is added or removed into the project."
+  },
+  "manual/MainTypes.html": {
+    "href": "manual/MainTypes.html",
+    "title": "Scenes | Scene Loading Documentation",
+    "keywords": "Scenes The following C# types are available to manage scenes from code. SceneType enum The SceneType enum represents the type of scenes that are available in the project. From the definitions of this page , default scene types are the following: public enum SceneType { Master = 0, Gameplay = 1, Room = 2, Screen = 3 } Setting the type of a scene The type of a scene is actually defined by the label put on the .unity asset file. The label must start with Scene- to be acknowledged as a valid SceneType label. For example, a scene like \"BossArena.unity\" can be labeled with Scene-Room to identify this scene as a Room . Note that the system will reject any scene having more than one Scene- label. Custom scene types You can add your own custom scene types: labelling a .unity file with Scene-Playground will make the scene be acknowledged as a Playground scene. However, it is recommended to write a strong definition of any new type of scene beforehand (see the Concepts page). SceneId enum The SceneId enum identifies all the scenes that were acknoledged by the system. Each scene have a corresponding unique enum member and enum value. The enum members are automatically generated (see Editor Tools for more information about the generation itself). public enum SceneId { AreaMaster = 1, SinglePlayerGamplay = 10001, BigRoom = 20001, BossChamber = 20002, SmallRoom = 20003, // etc. } Note there is a current limitation to 9,999 rooms before SceneId values start colliding. To put it in perspective, Castlevania Symphony of the Night contains a total of 1,890 rooms. Also note that any scene not marked with a Scene- label will not be listed in the enumeration. This way you can have as many test scenes as you want without clogging the enum. SceneInfo class The SceneInfo class holds information about each scene in the system. The class also provide some methods to retrieve this data. IReadOnlyCollection<SceneInfo> sceneInfos = SceneInfo.GetAll(); foreach (SceneInfo sceneInfo in sceneInfos) { Debug.Log($\"{sceneInfo.SceneName} is a {sceneInfo.Type} scene.\"); // example: \"BossChamber is a Room scene.\" } For more information about this class, you can visit its API page ."
+  }
+}
