@@ -1,0 +1,14 @@
+# How to generate documentation website
+- Be sure [docfx](https://dotnet.github.io/docfx/) is installed
+- Be sure SceneLoading repository is on **master** branch
+- Open a terminal
+- Execute `cd .../SceneLoading/Documentation/`
+- Execute `docfx`
+- Be sure there is no issue with the generated site (execute `docfx --serve` to look at the result on localhost)
+- Copy the `SceneLoading/Documentation/_site/` folder and paste it anywhere outside of the repository (like `.../Temp/_site`)
+- In git, use `git checkout` to go from master to **docs** branch
+- On docs branch, delete the old `docs/` folder
+- Cut and paste the newly generated `_site/` folder (from `.../Temp/_site/` to `.../SceneLoading/_site/`)
+- Rename `_site/` to `docs/`
+- Commit the changes
+- Push to github
