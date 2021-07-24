@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/4-LabRoom.unity
     guid: 1dcd3b97ff109fb46825a4f20fc99b5a
+  - enabled: 1
+    path: Assets/Scenes/EastCorridor.unity
+    guid: 8c16f30f0b551e24e92548d67205944f
   m_configObjects: {}
