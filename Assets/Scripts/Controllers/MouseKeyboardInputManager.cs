@@ -4,26 +4,26 @@ namespace Assets.Scripts.Controllers
 {
     public class MouseKeyboardInputManager : AbstractInputManager
     {
+        // -- Inspector
+
         [Header("Mouse")]
         public CursorLockMode cursorLockMode = CursorLockMode.Locked;
-        public float mouseSensitivity = 12;
+        public float mouseSensitivity = 10;
         
         [Header("Keyboard")]
         public float keyboardSensitivity = 1f;
 
-        // Mouse
+
+        // -- Class
+        
         private const string MouseHorizontalAxisName = "Mouse X";
         private const string MouseVerticalAxisName = "Mouse Y";
-        private const int MouseFireButton = 0;
-
-        // Keyboard
+        
         private const string KeyboardHorizontalAxisName = "Horizontal";
         private const string KeyboardVerticalAxisName = "Vertical";
-
-        private const string KeyboardRunButtonName = "Run";
         private const string KeyboardJumpButtonName = "Jump";
-
-
+        private const string KeyboardSwitchViewButtonName = "SwitchView";
+        
         void Start()
         {
             Cursor.lockState = cursorLockMode;
@@ -47,39 +47,14 @@ namespace Assets.Scripts.Controllers
             return keyboardSensitivity * new Vector2(x, y);
         }
 
-        public override bool FireButtonDown()
-        {
-            return Input.GetMouseButtonDown(MouseFireButton);
-        }
-        
-        public override bool FireButton()
-        {
-            return Input.GetMouseButton(MouseFireButton);
-        }
-
-        public override bool FireButtonUp()
-        {
-            return Input.GetMouseButtonUp(MouseFireButton);
-        }
-
-        public override bool RunButtonDown()
-        {
-            return Input.GetButtonDown(KeyboardRunButtonName);
-        }
-
-        public override bool RunButton()
-        {
-            return Input.GetButton(KeyboardRunButtonName);
-        }
-
-        public override bool JumpButton()
-        {
-            return Input.GetButton(KeyboardJumpButtonName);
-        }
-
         public override bool JumpButtonDown()
         {
             return Input.GetButtonDown(KeyboardJumpButtonName);
+        }
+
+        public override bool SwitchViewButtonDown()
+        {
+            return Input.GetButtonDown(KeyboardSwitchViewButtonName);
         }
     }
 }

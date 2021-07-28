@@ -437,14 +437,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f30baa090e582a4e82285802c00233e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeedFactor: 10
-  jumpSpeed: 11
-  jumpGravity: 25
-  fallGravity: 8
-  fallingThreshold: 10
-  headTransform: {fileID: 350737311}
+  walkSpeed: 7.25
+  jumpSpeed: 4
+  gravitySpeed: 10
   maxUpPitchAngle: 60
   maxDownPitchAngle: -60
+  headTransform: {fileID: 350737311}
   inputManager: {fileID: 221488863}
 --- !u!114 &479099069
 MonoBehaviour:
@@ -813,7 +811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!20 &1769808486
 Camera:
   m_ObjectHideFlags: 0
@@ -845,7 +843,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 7201
+    m_Bits: 3105
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
