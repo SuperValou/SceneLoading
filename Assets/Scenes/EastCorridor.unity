@@ -3396,7 +3396,7 @@ GameObject:
   - component: {fileID: 1365683393}
   m_Layer: 0
   m_Name: Origin
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4043,8 +4043,8 @@ Transform:
   - {fileID: 586119676}
   - {fileID: 100592029}
   - {fileID: 2063449144}
-  - {fileID: 1619849409}
   - {fileID: 2058932255}
+  - {fileID: 1619849409}
   m_Father: {fileID: 1499443636}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
