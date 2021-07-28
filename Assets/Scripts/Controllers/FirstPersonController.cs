@@ -6,35 +6,39 @@ namespace Assets.Scripts.Controllers
     [RequireComponent(typeof(CharacterController))]
     public class FirstPersonController : MonoBehaviour
     {
-        [Header("Values")]
-        [Tooltip("How fast the player moves.")]
-        public float walkSpeedFactor = 10f;
+        // -- Inspector
 
-        [Tooltip("How high the player jumps when hitting the jump button.")]
+        [Header("Values")]
+        [Tooltip("How fast the player moves (meters per second).")]
+        public float walkSpeed = 2f;
+
+        [Tooltip("How fast the player jumps when hitting the jump button (meters per second).")]
         public float jumpSpeed = 11f;
 
-        [Tooltip("How fast the player falls after jumping.")]
+        [Tooltip("How fast the player falls after jumping (meters per second).")]
         public float jumpGravity = 25f;
 
-        [Tooltip("How fast the player falls when not standing on anything.")]
+        [Tooltip("How fast the player falls when not standing on anything (meters per second).")]
         public float fallGravity = 8f;
         
-        [Tooltip("Units that player can fall before a falling function is run.")]
-        [SerializeField]
-        private float fallingThreshold = 10.0f;
+        [Tooltip("Units that player can fall before a falling function is run (meters).")]
+        public float fallingThreshold = 10.0f;
+        
+        [Tooltip("How far up can you look? (degrees)")]
+        public float maxUpPitchAngle = 60;
+
+        [Tooltip("How far down can you look? (degrees)")]
+        public float maxDownPitchAngle = -60;
+
 
         [Header("Parts")]
         public Transform headTransform;
-
-        [Tooltip("How far up can you look?")]
-        public float maxUpPitchAngle = 60;
-
-        [Tooltip("How far down can you look?")]
-        public float maxDownPitchAngle = -60;
-
-        [Header("External")]
+        
+        [Header("References")]
         public AbstractInputManager inputManager;
 
+
+        // -- Class
 
         private Transform _transform;
         private CharacterController _controller;
@@ -48,13 +52,11 @@ namespace Assets.Scripts.Controllers
 
         private float _headPitch = 0; // rotation to look up or down
 
-
         void Start()
         {
             _transform = this.GetOrThrow<Transform>();
             _controller = this.GetOrThrow<CharacterController>();
         }
-
 
         void Update()
         {
@@ -114,7 +116,7 @@ namespace Assets.Scripts.Controllers
 
             Vector3 localInputSpeedVector = new Vector3(x: inputMovement.x, y: 0, z: inputMovement.y);
             Vector3 globalInputSpeedVector = _transform.TransformDirection(localInputSpeedVector);
-            Vector3 inputSpeedVector = globalInputSpeedVector * walkSpeedFactor;
+            Vector3 inputSpeedVector = globalInputSpeedVector * walkSpeed;
 
             _velocityVector.x = inputSpeedVector.x;
             _velocityVector.z = inputSpeedVector.z;
