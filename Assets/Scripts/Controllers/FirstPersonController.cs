@@ -10,20 +10,14 @@ namespace Assets.Scripts.Controllers
 
         [Header("Values")]
         [Tooltip("How fast the player moves (meters per second).")]
-        public float walkSpeed = 2f;
+        public float walkSpeed = 10f;
 
         [Tooltip("How fast the player jumps when hitting the jump button (meters per second).")]
-        public float jumpSpeed = 11f;
+        public float jumpSpeed = 5f;
 
-        [Tooltip("How fast the player falls after jumping (meters per second).")]
-        public float jumpGravity = 25f;
+        [Tooltip("How fast the player falls (meters per second).")]
+        public float gravitySpeed = 10f;
 
-        [Tooltip("How fast the player falls when not standing on anything (meters per second).")]
-        public float fallGravity = 8f;
-        
-        [Tooltip("Units that player can fall before a falling function is run (meters).")]
-        public float fallingThreshold = 10.0f;
-        
         [Tooltip("How far up can you look? (degrees)")]
         public float maxUpPitchAngle = 60;
 
@@ -44,9 +38,6 @@ namespace Assets.Scripts.Controllers
         private CharacterController _controller;
 
         private bool _isGrounded;
-        private bool _isJumping;
-        private bool _isFalling;
-        private float _fallStartHeigth;
         
         private Vector3 _velocityVector = Vector3.zero;
 
@@ -64,11 +55,6 @@ namespace Assets.Scripts.Controllers
             UpdateLookAround();
         }
         
-        void OnControllerColliderHit(ControllerColliderHit hit)
-        {
-            // touched something
-        }
-        
         private void UpdateLookAround()
         {
             // horizontal look
@@ -84,34 +70,9 @@ namespace Assets.Scripts.Controllers
         {
             Vector3 inputMovement = inputManager.GetMoveVector();
 
-            if (_isGrounded)
+            if (_isGrounded && inputManager.JumpButtonDown())
             {
-                // If we were falling, and we fell a vertical distance greater than the threshold, run a falling damage routine
-                if (_isFalling)
-                {
-                    _isFalling = false;
-                    if (_transform.position.y < _fallStartHeigth - fallingThreshold)
-                    {
-                        OnFell(_fallStartHeigth - _transform.position.y);
-                    }
-                }
-
-                // Jump
-                _isJumping = false;
-                if (inputManager.JumpButtonDown())
-                {
-                    _velocityVector.y = jumpSpeed;
-                    _isJumping = true;
-                }
-            }
-            else
-            {
-                // If we stepped over a cliff or something, set the height at which we started falling
-                if (!_isFalling)
-                {
-                    _isFalling = true;
-                    _fallStartHeigth = _transform.position.y;
-                }
+                _velocityVector.y = jumpSpeed;
             }
 
             Vector3 localInputSpeedVector = new Vector3(x: inputMovement.x, y: 0, z: inputMovement.y);
@@ -121,9 +82,8 @@ namespace Assets.Scripts.Controllers
             _velocityVector.x = inputSpeedVector.x;
             _velocityVector.z = inputSpeedVector.z;
 
-            // Apply gravity
-            float gravity = _isJumping ? jumpGravity : fallGravity;
-            _velocityVector.y -= gravity * Time.deltaTime;
+            // Apply "gravity"
+            _velocityVector.y -= gravitySpeed * Time.deltaTime;
 
             // Check ceilling
             if (_controller.collisionFlags.HasFlag(CollisionFlags.Above))
@@ -134,11 +94,6 @@ namespace Assets.Scripts.Controllers
             // Actually move the controller
             _controller.Move(_velocityVector * Time.deltaTime);
             _isGrounded = _controller.isGrounded;
-        }
-        
-        private void OnFell(float fallDistance)
-        {
-            // fell and touched the ground
         }
     }
 }
