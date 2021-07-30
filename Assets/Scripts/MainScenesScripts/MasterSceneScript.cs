@@ -28,11 +28,9 @@ namespace Assets.Scripts.MainScenesScripts
 
         IEnumerator Start()
         {
-            yield return sceneLoadingManager.PreloadSubSceneAsync(gameplayToLoad);
-            yield return sceneLoadingManager.PreloadSubSceneAsync(firstRoomToLoad);
-
-            sceneLoadingManager.Activate(gameplayToLoad);
-            sceneLoadingManager.Activate(firstRoomToLoad);
+            yield return sceneLoadingManager.LoadSubSceneAsync(firstRoomToLoad);
+            yield return null;
+            yield return sceneLoadingManager.LoadSubSceneAsync(gameplayToLoad);
 
             playerCurrentRoom.Value = firstRoomToLoad;
         }
