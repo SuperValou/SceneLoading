@@ -6,8 +6,7 @@ namespace Assets.Scripts.Entities
     public class TransformTracker : MonoBehaviour
     {
         // -- Inspector
-        [Header("Values")]
-        public TrackingMode mode;
+        [Header("Values")] public TrackingMode mode;
 
         public bool positionX = true;
         public bool positionY = true;
@@ -15,13 +14,12 @@ namespace Assets.Scripts.Entities
 
         public bool rotationXYZ = true;
 
-        [Header("Parts")]
-        public PersistentVector3 position;
+        [Header("Parts")] public PersistentVector3 position;
         public PersistentQuaternion rotation;
 
         // -- Class
 
-        void Update()
+        void LateUpdate()
         {
             if (mode == TrackingMode.WriteToPersistent)
             {
@@ -39,7 +37,8 @@ namespace Assets.Scripts.Entities
                 var rotationToWrite = this.rotationXYZ ? this.transform.rotation : rotation.Value;
                 this.rotation.Value = rotationToWrite;
             }
-            else
+
+            else if (mode == TrackingMode.ReadFromPersistent)
             {
                 // read position
                 Vector3 positionToRead = new Vector3

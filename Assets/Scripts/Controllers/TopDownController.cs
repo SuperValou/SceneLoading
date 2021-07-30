@@ -26,18 +26,13 @@ namespace Assets.Scripts.Controllers
         {
             _controller = this.GetOrThrow<CharacterController>();
         }
-
+        
         void Update()
         {
             Vector3 inputMovement = inputManager.GetMoveVector();
             
-            Vector3 localInputSpeedVector = new Vector3(x: inputMovement.x, y: 0, z: inputMovement.y);
-            Vector3 globalInputSpeedVector = this.transform.TransformDirection(localInputSpeedVector);
-            Vector3 inputSpeedVector = globalInputSpeedVector * walkSpeed;
-
-            _velocityVector.x = inputSpeedVector.x;
-            _velocityVector.z = inputSpeedVector.z;
-            
+            Vector3 globalInputSpeedVector = new Vector3(x: inputMovement.x, y: 0, z: inputMovement.y);
+            _velocityVector = globalInputSpeedVector * walkSpeed;
             _controller.Move(_velocityVector * Time.deltaTime);
         }
     }
