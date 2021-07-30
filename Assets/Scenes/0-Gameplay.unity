@@ -213,7 +213,7 @@ RectTransform:
   m_Children:
   - {fileID: 1974736467}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -457,6 +457,7 @@ GameObject:
   - component: {fileID: 479099067}
   - component: {fileID: 479099070}
   - component: {fileID: 479099068}
+  - component: {fileID: 479099071}
   - component: {fileID: 479099066}
   - component: {fileID: 479099069}
   m_Layer: 0
@@ -492,7 +493,7 @@ Transform:
   - {fileID: 350737311}
   - {fileID: 1604198502}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &479099068
 MonoBehaviour:
@@ -525,6 +526,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a862c98e3ca2d094eaa3914c9083b575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 0
+  positionX: 1
+  positionY: 1
+  positionZ: 1
+  rotationXYZ: 1
   position: {fileID: 11400000, guid: 0054a1b7d670ae24d9629cf7b7d71ff5, type: 2}
   rotation: {fileID: 11400000, guid: ee53fb8c8d0ceb24ca63c331a16449de, type: 2}
 --- !u!143 &479099070
@@ -545,6 +551,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &479099071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479099065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c7da181d3484f4d9f03560bddaa2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 7.25
+  inputManager: {fileID: 221488863}
 --- !u!1 &712503468
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +595,7 @@ Transform:
   - {fileID: 221488864}
   - {fileID: 1460444359}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &787505861
 GameObject:
@@ -684,7 +704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -875,6 +895,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1037706806}
   - component: {fileID: 1037706807}
+  - component: {fileID: 1037706808}
   m_Layer: 0
   m_Name: TopDownVirtualCamera
   m_TagString: Untagged
@@ -935,6 +956,25 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 787505862}
+--- !u!114 &1037706808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037706805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a862c98e3ca2d094eaa3914c9083b575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  positionX: 1
+  positionY: 0
+  positionZ: 1
+  rotationXYZ: 0
+  position: {fileID: 11400000, guid: 0054a1b7d670ae24d9629cf7b7d71ff5, type: 2}
+  rotation: {fileID: 11400000, guid: ee53fb8c8d0ceb24ca63c331a16449de, type: 2}
 --- !u!1 &1460444358
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,8 +984,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1460444359}
+  - component: {fileID: 1460444360}
   m_Layer: 0
-  m_Name: CameraManager
+  m_Name: ControllerSwitcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -965,6 +1006,24 @@ Transform:
   m_Father: {fileID: 712503469}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1460444360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460444358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6819ed9ada5be554988b99075a2b1670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchTime: 0
+  firstPersonController: {fileID: 479099068}
+  topDownController: {fileID: 479099071}
+  firstPersonCamera: {fileID: 465828741}
+  topDownCamera: {fileID: 1037706807}
+  inputManager: {fileID: 221488863}
 --- !u!1 &1604198501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,7 +1132,7 @@ Transform:
   - {fileID: 1037706806}
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1905877524
 GameObject:

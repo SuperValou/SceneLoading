@@ -16,13 +16,11 @@ namespace Assets.Scripts.Controllers
 
         // -- Class
         
-        private const string MouseHorizontalAxisName = "Mouse X";
-        private const string MouseVerticalAxisName = "Mouse Y";
+        private const string MouseHorizontalAxisName = "MouseX";
+        private const string MouseVerticalAxisName = "MouseY";
         
         private const string KeyboardHorizontalAxisName = "Horizontal";
         private const string KeyboardVerticalAxisName = "Vertical";
-        private const string KeyboardJumpButtonName = "Jump";
-        private const string KeyboardSwitchViewButtonName = "SwitchView";
         
         void Start()
         {
@@ -49,12 +47,12 @@ namespace Assets.Scripts.Controllers
 
         public override bool JumpButtonDown()
         {
-            return Input.GetButtonDown(KeyboardJumpButtonName);
+            return Input.GetKeyDown(KeyCode.Space);
         }
 
         public override bool SwitchViewButtonDown()
         {
-            return Input.GetButtonDown(KeyboardSwitchViewButtonName);
+            return Input.GetKeyDown(KeyCode.LeftShift);
         }
     }
 }
