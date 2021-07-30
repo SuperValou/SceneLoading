@@ -1,4 +1,5 @@
-﻿using Cinemachine;
+﻿using System;
+using Cinemachine;
 using UnityEngine;
 
 namespace Assets.Scripts.Controllers
@@ -8,17 +9,17 @@ namespace Assets.Scripts.Controllers
         // -- Inspector
 
         [Header("Values")]
-        public float switchTime;
+        public LayerMask firstPersonCullingMask;
+        public LayerMask topDownCullingMask;
 
-        [Header("Parts")]
-        public FirstPersonController firstPersonController;
+        [Header("Parts")] public FirstPersonController firstPersonController;
         public TopDownController topDownController;
 
+        public Camera mainCamera;
         public CinemachineVirtualCamera firstPersonCamera;
         public CinemachineVirtualCamera topDownCamera;
 
-        [Header("References")]
-        public AbstractInputManager inputManager;
+        [Header("References")] public AbstractInputManager inputManager;
 
 
         // -- Class
@@ -28,8 +29,7 @@ namespace Assets.Scripts.Controllers
         void Start()
         {
             _isTopDown = topDownCamera.Priority > firstPersonCamera.Priority;
-            topDownController.enabled = _isTopDown;
-            firstPersonController.enabled = !_isTopDown;
+            Apply();
         }
 
         void Update()
@@ -40,18 +40,26 @@ namespace Assets.Scripts.Controllers
             }
 
             _isTopDown = !_isTopDown;
+            Apply();
+        }
 
+        private void Apply()
+        {
             if (_isTopDown)
             {
                 // Back to top down
                 topDownCamera.Priority = int.MaxValue;
                 firstPersonCamera.Priority = 0;
+
+                mainCamera.cullingMask = topDownCullingMask;
             }
             else
             {
                 // Back to first person
                 topDownCamera.Priority = 0;
                 firstPersonCamera.Priority = int.MaxValue;
+
+                mainCamera.cullingMask = firstPersonCullingMask;
             }
 
             topDownController.enabled = _isTopDown;
