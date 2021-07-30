@@ -3,7 +3,7 @@ using Assets.Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.Environments
+namespace Assets.Scripts.Environment
 {
     public class Trigger : MonoBehaviour
     {
@@ -13,7 +13,6 @@ namespace Assets.Scripts.Environments
 
         [Header("Events")]
         public UnityEvent onTriggerEnter;
-
         public UnityEvent onTriggerExit;
 
         // -- Class

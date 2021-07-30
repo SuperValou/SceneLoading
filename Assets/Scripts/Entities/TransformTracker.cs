@@ -1,12 +1,12 @@
 ﻿using Assets.Scripts.LoadingSystems.PersistentVariables;
 using UnityEngine;
 
-namespace Assets.Scripts.Players
+namespace Assets.Scripts.Entities
 {
-    public class PlayerTransformTracker : MonoBehaviour
+    public class TransformTracker : MonoBehaviour
     {
-        // -- Editor
-
+        // -- Inspector
+        
         public PersistentVector3 position;
         public PersistentQuaternion rotation;
 
@@ -14,8 +14,8 @@ namespace Assets.Scripts.Players
 
         void Update()
         {
-            position.Value = this.transform.position;
-            rotation.Value = this.transform.rotation;
+            this.position.Value = this.transform.position;
+            this.rotation.Value = this.transform.rotation;
         }
     }
 }

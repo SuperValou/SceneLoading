@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 513f2d368965c464ea5e4b3515a63068, type: 3}
-  m_Name: SwitchState
+  m_Name: WestGeneratorState
   m_EditorClassIdentifier: 
   _value: 0

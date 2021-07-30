@@ -6,7 +6,7 @@ namespace Assets.Scripts.Environment
 {
     public class Billboard : MonoBehaviour
     {
-        // -- Editor
+        // -- Inspector
 
         public PersistentQuaternion playerRotation;
         public TextMeshPro textMesh;
