@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Cinemachine;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ namespace Assets.Scripts.Controllers
         // -- Inspector
 
         [Header("Values")]
+        public float transitionTime = 0.5f;
+
         public LayerMask firstPersonCullingMask;
         public LayerMask topDownCullingMask;
 
@@ -26,10 +29,10 @@ namespace Assets.Scripts.Controllers
 
         private bool _isTopDown;
 
-        void Start()
+        IEnumerator Start()
         {
             _isTopDown = topDownCamera.Priority > firstPersonCamera.Priority;
-            Apply();
+            yield return Apply();
         }
 
         void Update()
@@ -40,10 +43,10 @@ namespace Assets.Scripts.Controllers
             }
 
             _isTopDown = !_isTopDown;
-            Apply();
+            StartCoroutine(Apply());
         }
 
-        private void Apply()
+        private IEnumerator Apply()
         {
             if (_isTopDown)
             {
@@ -51,7 +54,10 @@ namespace Assets.Scripts.Controllers
                 topDownCamera.Priority = int.MaxValue;
                 firstPersonCamera.Priority = 0;
 
+                firstPersonController.enabled = false;
                 mainCamera.cullingMask = topDownCullingMask;
+                yield return new WaitForSeconds(transitionTime);
+                topDownController.enabled = true;
             }
             else
             {
@@ -59,11 +65,11 @@ namespace Assets.Scripts.Controllers
                 topDownCamera.Priority = 0;
                 firstPersonCamera.Priority = int.MaxValue;
 
+                topDownController.enabled = false;
+                yield return new WaitForSeconds(transitionTime);
                 mainCamera.cullingMask = firstPersonCullingMask;
+                firstPersonController.enabled = true;
             }
-
-            topDownController.enabled = _isTopDown;
-            firstPersonController.enabled = !_isTopDown;
         }
     }
 }
