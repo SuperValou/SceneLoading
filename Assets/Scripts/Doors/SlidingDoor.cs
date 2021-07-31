@@ -4,9 +4,16 @@ using UnityEngine;
 
 namespace Assets.Scripts.Doors
 {
-    public class PrototypeDoor : Door
+    public class SlidingDoor : Door
     {
         // -- Editor
+
+        [Header("Animator constants")]
+        [SerializeField]
+        private string OnOpenTriggerName = "OnOpen";
+
+        [SerializeField]
+        private string OnCloseTriggerName = "OnClose";
 
         // -- Class
 
@@ -24,12 +31,14 @@ namespace Assets.Scripts.Doors
 
         protected override void OnOpen()
         {
-            _animator.SetTrigger("OnOpen");
+            _animator.ResetTrigger(OnCloseTriggerName);
+            _animator.SetTrigger(OnOpenTriggerName);
         }
 
         protected override void OnClose()
         {
-            _animator.SetTrigger("OnClose");
+            _animator.ResetTrigger(OnOpenTriggerName);
+            _animator.SetTrigger(OnCloseTriggerName);
         }
     }
 }
