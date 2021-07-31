@@ -815,7 +815,7 @@ PrefabInstance:
     - target: {fileID: 6876393410862562400, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
       propertyPath: m_Name
-      value: PrototypeDoor to OpenSpace
+      value: SlidingDoor to OpenSpace
       objectReference: {fileID: 0}
     - target: {fileID: 6876393410862562415, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
@@ -875,7 +875,7 @@ PrefabInstance:
     - target: {fileID: 6876393410862562413, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
       propertyPath: _roomOnTheOtherSide
-      value: 20008
+      value: 20006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be836112725f6b14c8bf9f01b76507da, type: 3}

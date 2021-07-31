@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayToLoad: 10001
-  firstRoomToLoad: 20012
+  firstRoomToLoad: 20003
   playerTag: Player
   playerCurrentRoom: {fileID: 11400000, guid: 3bd1834e2ea68a4418f4095fbac88364, type: 2}
   sceneLoadingManager: {fileID: 430226274}

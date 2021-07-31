@@ -798,7 +798,7 @@ PrefabInstance:
     - target: {fileID: 6876393410862562400, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
       propertyPath: m_Name
-      value: PrototypeDoor to Entrance
+      value: SlidingDoor to Entrance
       objectReference: {fileID: 0}
     - target: {fileID: 6876393410862562415, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
@@ -858,7 +858,7 @@ PrefabInstance:
     - target: {fileID: 6876393410862562413, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
       propertyPath: _roomOnTheOtherSide
-      value: 20012
+      value: 20003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be836112725f6b14c8bf9f01b76507da, type: 3}
@@ -2198,7 +2198,7 @@ PrefabInstance:
     - target: {fileID: 6876393410862562400, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
       propertyPath: m_Name
-      value: PrototypeDoor to WestCorridor
+      value: SlidingDoor to WestCorridor
       objectReference: {fileID: 0}
     - target: {fileID: 6876393410862562415, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
@@ -2258,7 +2258,7 @@ PrefabInstance:
     - target: {fileID: 6876393410862562413, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
       propertyPath: _roomOnTheOtherSide
-      value: 20001
+      value: 20007
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be836112725f6b14c8bf9f01b76507da, type: 3}
@@ -2788,7 +2788,7 @@ PrefabInstance:
     - target: {fileID: 6876393410862562400, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
       propertyPath: m_Name
-      value: PrototypeDoor to LabAccess
+      value: SlidingDoor to LabAccess
       objectReference: {fileID: 0}
     - target: {fileID: 6876393410862562415, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
@@ -2848,7 +2848,7 @@ PrefabInstance:
     - target: {fileID: 6876393410862562413, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
       propertyPath: _roomOnTheOtherSide
-      value: 20005
+      value: 20004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be836112725f6b14c8bf9f01b76507da, type: 3}
@@ -5632,7 +5632,7 @@ PrefabInstance:
     - target: {fileID: 6876393410862562400, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
       propertyPath: m_Name
-      value: PrototypeDoor to EastCorridor
+      value: SlidingDoor to EastCorridor
       objectReference: {fileID: 0}
     - target: {fileID: 6876393410862562415, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
@@ -5692,7 +5692,7 @@ PrefabInstance:
     - target: {fileID: 6876393410862562413, guid: be836112725f6b14c8bf9f01b76507da,
         type: 3}
       propertyPath: _roomOnTheOtherSide
-      value: 20003
+      value: 20001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be836112725f6b14c8bf9f01b76507da, type: 3}
