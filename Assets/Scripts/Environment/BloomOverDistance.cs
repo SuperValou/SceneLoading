@@ -17,13 +17,10 @@ namespace Assets.Scripts.Environment
         public PersistentVector3 playerPosition;
         public PostProcessProfile postProcessProfile;
 
-        [Header("Debug")]
-        public  AnimationCurve debugBloom;
 
         // -- Class
-
-        [SerializeField]
-        private AnimationCurve _factorOverSquaredDistance = new AnimationCurve();
+        
+        private readonly AnimationCurve _factorOverSquaredDistance = new AnimationCurve();
 
         private Bloom _bloom;
         private float _initialBloomIntensity;
@@ -76,7 +73,6 @@ namespace Assets.Scripts.Environment
 
         void Update()
         {
-            debugBloom.AddKey(Time.realtimeSinceStartup, _bloom.intensity.value);
             if (_maxSquaredDistance <= 0)
             {
                 return;
