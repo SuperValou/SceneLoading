@@ -104,6 +104,11 @@ namespace Assets.Scripts.Environment
 
         void OnDestroy()
         {
+            if (_bloom == null)
+            {
+                return;
+            }
+
             _bloom.intensity.value = _initialBloomIntensity;
         }
     }
