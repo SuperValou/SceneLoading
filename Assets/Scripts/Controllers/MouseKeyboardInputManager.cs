@@ -7,7 +7,6 @@ namespace Assets.Scripts.Controllers
         // -- Inspector
 
         [Header("Mouse")]
-        public CursorLockMode cursorLockMode = CursorLockMode.Locked;
         public float mouseSensitivity = 10;
         
         [Header("Keyboard")]
@@ -22,11 +21,6 @@ namespace Assets.Scripts.Controllers
         private const string KeyboardHorizontalAxisName = "Horizontal";
         private const string KeyboardVerticalAxisName = "Vertical";
         
-        void Start()
-        {
-            Cursor.lockState = cursorLockMode;
-        }
-
         public override Vector2 GetLookVector()
         {
             float x = Input.GetAxis(MouseHorizontalAxisName) * mouseSensitivity * Time.deltaTime;
@@ -52,7 +46,7 @@ namespace Assets.Scripts.Controllers
 
         public override bool SwitchViewButtonDown()
         {
-            return Input.GetKeyDown(KeyCode.LeftShift);
+            return Input.GetMouseButtonDown(0);
         }
     }
 }
