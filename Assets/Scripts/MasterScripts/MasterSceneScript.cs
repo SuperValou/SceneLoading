@@ -5,7 +5,7 @@ using Assets.Scripts.LoadingSystems.SceneInfos.Attributes;
 using Assets.Scripts.LoadingSystems.SceneLoadings;
 using UnityEngine;
 
-namespace Assets.Scripts.MainScenesScripts
+namespace Assets.Scripts.MasterScripts
 {
     public class MasterSceneScript : MonoBehaviour
     {
