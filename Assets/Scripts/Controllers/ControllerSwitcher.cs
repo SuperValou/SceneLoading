@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Cinemachine;
 using UnityEngine;
 
@@ -22,7 +21,8 @@ namespace Assets.Scripts.Controllers
         public CinemachineVirtualCamera firstPersonCamera;
         public CinemachineVirtualCamera topDownCamera;
 
-        [Header("References")] public AbstractInputManager inputManager;
+        [Header("References")]
+        public AbstractInputManager inputManager;
 
 
         // -- Class
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Controllers
 
         IEnumerator Start()
         {
-            _isTopDown = topDownCamera.Priority > firstPersonCamera.Priority;
+            _isTopDown = false;
             yield return Apply();
         }
 

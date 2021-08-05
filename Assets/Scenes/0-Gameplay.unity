@@ -436,7 +436,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7781737, y: 1}
+    m_SensorSize: {x: 1.7782608, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -870,7 +870,7 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 4
+    m_Style: 2
     m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
@@ -911,7 +911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037706805}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 40, z: 0}
+  m_LocalPosition: {x: 0, y: 43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 787505862}
@@ -939,7 +939,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 479099067}
   m_Follow: {fileID: 479099067}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 50
     OrthographicSize: 10
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -947,7 +947,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7781737, y: 1}
+    m_SensorSize: {x: 1.7782608, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
