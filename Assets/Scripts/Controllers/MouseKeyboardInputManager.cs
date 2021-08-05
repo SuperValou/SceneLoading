@@ -46,7 +46,7 @@ namespace Assets.Scripts.Controllers
 
         public override bool SwitchViewButtonDown()
         {
-            return Input.GetMouseButtonDown(0);
+            return Input.GetMouseButtonDown(1);
         }
     }
 }

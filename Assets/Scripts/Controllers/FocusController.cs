@@ -4,22 +4,42 @@ namespace Assets.Scripts.Controllers
 {
     public class FocusController : MonoBehaviour
     {
+        public bool Locked { get; private set; }
+
         void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            Lock();
         }
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Locked && Input.GetKeyDown(KeyCode.Escape))
             {
-                Cursor.lockState = CursorLockMode.None;
+                Unlock();
             }
+            else if (!Locked && Input.GetMouseButtonDown(0))
+            {
+                Lock();
+            }
+        }
 
-            if (Input.anyKeyDown)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
+        public void Lock()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Locked = true;
+        }
+
+        public void Unlock()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Locked = false;
+        }
+
+        void OnDestroy()
+        {
+            Unlock();
         }
     }
 }
