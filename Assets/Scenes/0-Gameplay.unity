@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6819ed9ada5be554988b99075a2b1670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionTime: 0.5
+  transitionTime: 0.45
   firstPersonCullingMask:
     serializedVersion: 2
     m_Bits: 15921
