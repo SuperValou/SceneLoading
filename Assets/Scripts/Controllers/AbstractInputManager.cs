@@ -15,23 +15,13 @@ namespace Assets.Scripts.Controllers
         public abstract Vector2 GetMoveVector();
 
         /// <summary>
-        /// Returns true during the frame where the Fire button is pressed.
+        /// Returns true during the frame where the Jump button is getting pressed.
         /// </summary>
-        public abstract bool FireButtonDown();
-
-        /// <summary>
-        /// Returns wheter or not the Fire button is held down.
-        /// </summary>
-        public abstract bool FireButton();
-
-        /// <summary>
-        /// Returns true during the frame where the Fire button is released.
-        /// </summary>
-        public abstract bool FireButtonUp();
-
-        public abstract bool RunButtonDown();
-        public abstract bool RunButton();
-        public abstract bool JumpButton();
         public abstract bool JumpButtonDown();
+
+        /// <summary>
+        /// Returns true during the frame where the Switch view button is getting pressed.
+        /// </summary>
+        public abstract bool SwitchViewButtonDown();
     }
 }

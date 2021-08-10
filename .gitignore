@@ -76,3 +76,7 @@ Assets/TextMesh Pro/
 # Documentation
 Documentation/_site/*
 Documentation/api/*
+
+Build/*
+
+Recordings/
