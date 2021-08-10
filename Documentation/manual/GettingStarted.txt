@@ -1,0 +1,25 @@
+
+[![Generic badge](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://shields.io/)
+
+First, you have to put the correct labels on your scene files. Lets assume you have the following unity scene files:
+- Initialization.unity being your Master scene
+- Gameplay.unity being your Gameplay scene
+- Forest.unity being a Room scene
+- Beach.unity being a Room scene
+- TitleScreen.unity being the main menu scene
+- GameOver.unity being the game over screen
+
+From the Editor, add the following labels on your scenes:
+- Scene-Master on Initialization.unity
+- Scene-Gameplay on Gameplay.unity
+- Scene-Room on Forest.unity
+- Scene-Room on Beach.unity
+- Scene-Screen on TitleScreen.unity
+- Scene-Screen on GameOver.unity
+
+Once this is done, go to SceneLoading > Generate Scene classes. You'll now have the SceneId enumeration and the SceneInfo class available to load scene from your code.
+
+Note that you can add your own types of scene if you want. Putting a "Scene-Foo" label on a scene file will register it as being of the type "Foo".
+
+You can also go to SceneLoading > Load Scene > Generate Load Scene Menu to have a shortcut to load all your scene in the editor from the SceneLoading > Load Scene menu.
+
