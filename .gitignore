@@ -70,8 +70,6 @@ Builds/
 # git update-index --assume-unchanged Assets/Scripts/LoadingSystems/SceneInfos/SceneType.Generated.cs
 # git update-index --assume-unchanged Assets/Scripts/LoadingSystems.Editor/LoadSceneGeneration/CustomMenu.LoadScene.Generated.cs
 
-# Text mesh pro
-Assets/TextMesh Pro/
 
 # Documentation
 Documentation/_site/*
