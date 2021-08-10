@@ -6,30 +6,39 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenuScreen.unity
+    guid: e56a61d5b06c43540b7a24c7e87634c2
+  - enabled: 1
     path: Assets/Scenes/MasterScene.unity
     guid: 39e4f78326bf4f44d833fd2995f48ee5
   - enabled: 1
     path: Assets/Scenes/0-Gameplay.unity
     guid: 0421630ed87b4e848acbc4713237b8ed
   - enabled: 1
-    path: Assets/Scenes/1-WakeUpRoom.unity
-    guid: 4fa0d86d0d4765d468dc048a33b4c031
+    path: Assets/Scenes/Entrance.unity
+    guid: 4344208b4cbbc1c478017fc25fffac9a
   - enabled: 1
-    path: Assets/Scenes/1-1-TransitionCorridorRoom.unity
-    guid: 5a2de916d1b5a264698dbbbabd3d2620
+    path: Assets/Scenes/OpenSpace.unity
+    guid: 47feb80d2d12f714c90770c123bca216
   - enabled: 1
-    path: Assets/Scenes/3-HubRoom.unity
-    guid: 034300a56fb3784438f2b5b04bde96b6
+    path: Assets/Scenes/WestCorridor.unity
+    guid: 8c16f30f0b551e24e92548d67205944f
   - enabled: 1
-    path: Assets/Scenes/3-1-CorridorRoom.unity
-    guid: df7fc34f86d2cfd4692dc600d5f6e26f
+    path: Assets/Scenes/WestGenerator.unity
+    guid: abfd945bc26ea6c449ab494d74c539fd
   - enabled: 1
-    path: Assets/Scenes/3-2-CorridorRoom.unity
-    guid: 95ea1f6afccb3e44d9e8287152199357
+    path: Assets/Scenes/EastCorridor.unity
+    guid: 92ce6d9ea1ca80f44a8715b371ed257a
   - enabled: 1
-    path: Assets/Scenes/4-1-LabAccessRoom.unity
-    guid: 247cf848f25194b46849e0f82393958a
+    path: Assets/Scenes/EastGenerator.unity
+    guid: 4f30a413f1f40f34fa098bc3f66fa2f9
   - enabled: 1
-    path: Assets/Scenes/4-LabRoom.unity
-    guid: 1dcd3b97ff109fb46825a4f20fc99b5a
+    path: Assets/Scenes/LabAccess.unity
+    guid: 11383dfdb204cc4419793e6aea48b4ff
+  - enabled: 1
+    path: Assets/Scenes/Lab.unity
+    guid: c6b56ca910ea36b4aa6d860aa837ebb0
+  - enabled: 1
+    path: Assets/Scenes/EndGameScreen.unity
+    guid: 9f7cd51ba84baa147886ba2011ef47bc
   m_configObjects: {}
