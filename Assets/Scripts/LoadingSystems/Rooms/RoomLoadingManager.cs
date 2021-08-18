@@ -32,12 +32,6 @@ namespace Assets.Scripts.LoadingSystems.Rooms
 
         void Start()
         {
-            var doors = doorPairing.GetDoors(_doorStates);
-            if (!doors.Any())
-            {
-                return;
-            }
-
             if (Enum.IsDefined(typeof(SceneId), playerCurrentRoomId.Value))
             {
                 _roomIdsQueue.Enqueue(playerCurrentRoomId.Value);
