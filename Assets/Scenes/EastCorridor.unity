@@ -96,7 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-  m_LightingDataAsset: {fileID: 112000000, guid: 9bdf4138577af96448ec9620e029482c,
+  m_LightingDataAsset: {fileID: 112000016, guid: ef0766f4f8887e44f89c0596513916fa,
     type: 2}
   m_UseShadowmask: 0
 --- !u!196 &4
