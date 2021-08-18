@@ -14,7 +14,7 @@ namespace Assets.Scripts.LoadingSystems.Rooms
     /// </summary>
     public class RoomLoadingManager : MonoBehaviour
     {
-        // -- Editor
+        // -- Inspector
 
         [Tooltip("Max number of rooms loaded at the same time.")]
         public int maxLoadedRooms = 2;
@@ -29,6 +29,10 @@ namespace Assets.Scripts.LoadingSystems.Rooms
         private readonly ICollection<DoorState> _doorStates = new[] {DoorState.WaitingToOpen, DoorState.Open};
 
         private readonly Queue<SceneId> _roomIdsQueue = new Queue<SceneId>();
+
+#if UNITY_EDITOR
+        public IReadOnlyCollection<SceneId> Queue => _roomIdsQueue;
+#endif
 
         void Start()
         {
@@ -114,9 +118,6 @@ namespace Assets.Scripts.LoadingSystems.Rooms
                     sceneLoadingManager.Unload(roomIdToUnload);
                 }
             }
-
-            // TODO: delete this
-            this.name = $"{nameof(RoomLoadingManager)}({string.Join(">", _roomIdsQueue.Select(id => id.ToString()))})";
         }
 
         private void EnqueueRoom(SceneId roomId)
