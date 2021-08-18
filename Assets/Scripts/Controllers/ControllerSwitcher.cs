@@ -14,14 +14,16 @@ namespace Assets.Scripts.Controllers
         public LayerMask firstPersonCullingMask;
         public LayerMask topDownCullingMask;
 
-        [Header("Parts")] public FirstPersonController firstPersonController;
+        [Header("References")]
+        public FirstPersonController firstPersonController;
         public TopDownController topDownController;
 
         public Camera mainCamera;
         public CinemachineVirtualCamera firstPersonCamera;
         public CinemachineVirtualCamera topDownCamera;
 
-        [Header("References")]
+        public GameObject currentRoomMessage;
+        
         public AbstractInputManager inputManager;
 
 
@@ -58,6 +60,8 @@ namespace Assets.Scripts.Controllers
                 mainCamera.cullingMask = topDownCullingMask;
                 yield return new WaitForSeconds(transitionTime);
                 topDownController.enabled = true;
+
+                currentRoomMessage.SetActive(true);
             }
             else
             {
@@ -65,10 +69,14 @@ namespace Assets.Scripts.Controllers
                 topDownCamera.Priority = 0;
                 firstPersonCamera.Priority = int.MaxValue;
 
+                currentRoomMessage.SetActive(false);
+
                 topDownController.enabled = false;
                 yield return new WaitForSeconds(transitionTime);
                 mainCamera.cullingMask = firstPersonCullingMask;
                 firstPersonController.enabled = true;
+
+                
             }
         }
     }
