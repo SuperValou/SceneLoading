@@ -1,6 +1,6 @@
-[![Generic badge](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://shields.io/)
-
 # Editor Tools
+
+[![Generic badge](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://shields.io/)
 
 ### 	Generate C# Types
 

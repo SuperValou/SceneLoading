@@ -17,22 +17,23 @@ namespace Assets.Scripts.MasterScripts
 
         [RestrictedSceneId(SceneType.Room)]
         public SceneId firstRoomToLoad;
-
-        public string playerTag = "Player";
-
+        
         [Header("References")]
         public PersistentRoomId playerCurrentRoom;
         public SceneLoadingManager sceneLoadingManager;
 
         // -- Class
 
+        void Awake()
+        {
+            playerCurrentRoom.Value = firstRoomToLoad;
+        }
+
         IEnumerator Start()
         {
             yield return sceneLoadingManager.LoadSubSceneAsync(firstRoomToLoad);
             yield return null;
             yield return sceneLoadingManager.LoadSubSceneAsync(gameplayToLoad);
-
-            playerCurrentRoom.Value = firstRoomToLoad;
         }
     }
 }
