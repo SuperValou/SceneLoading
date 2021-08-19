@@ -472,6 +472,31 @@ references:
   isSpec: "True"
   fullName: Assets.Scripts.LoadingSystems.Editor.AssetDatabaseExt.GetAssetFilePath
   nameWithType: AssetDatabaseExt.GetAssetFilePath
+- uid: Assets.Scripts.LoadingSystems.Editor.CustomEditors
+  name: Assets.Scripts.LoadingSystems.Editor.CustomEditors
+  href: api/Assets.Scripts.LoadingSystems.Editor.CustomEditors.html
+  commentId: N:Assets.Scripts.LoadingSystems.Editor.CustomEditors
+  fullName: Assets.Scripts.LoadingSystems.Editor.CustomEditors
+  nameWithType: Assets.Scripts.LoadingSystems.Editor.CustomEditors
+- uid: Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor
+  name: RoomLoadingManagerEditor
+  href: api/Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.html
+  commentId: T:Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor
+  fullName: Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor
+  nameWithType: RoomLoadingManagerEditor
+- uid: Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.OnInspectorGUI
+  name: OnInspectorGUI()
+  href: api/Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.html#Assets_Scripts_LoadingSystems_Editor_CustomEditors_RoomLoadingManagerEditor_OnInspectorGUI
+  commentId: M:Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.OnInspectorGUI
+  fullName: Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.OnInspectorGUI()
+  nameWithType: RoomLoadingManagerEditor.OnInspectorGUI()
+- uid: Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.OnInspectorGUI*
+  name: OnInspectorGUI
+  href: api/Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.html#Assets_Scripts_LoadingSystems_Editor_CustomEditors_RoomLoadingManagerEditor_OnInspectorGUI_
+  commentId: Overload:Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.OnInspectorGUI
+  isSpec: "True"
+  fullName: Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.OnInspectorGUI
+  nameWithType: RoomLoadingManagerEditor.OnInspectorGUI
 - uid: Assets.Scripts.LoadingSystems.Editor.CustomMenu
   name: CustomMenu
   href: api/Assets.Scripts.LoadingSystems.Editor.CustomMenu.html
