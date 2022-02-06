@@ -1,0 +1,14 @@
+{
+  "name": "com.supervalou.sceneloading",
+  "version": "2.0.0",
+  "displayName": "Scene Loading",
+  "description": "Management of scene loading in a Metroidvania fashion for Unity.",
+  "unity": "2019.4", 
+  "author": {
+    "name": "SuperValou",    
+    "url": "https://github.com/SuperValou" 
+  },
+  "dependencies": {
+    "com.supervalou.unikit": "1.2.0"
+ }
+}

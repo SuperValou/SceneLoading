@@ -1,0 +1,17 @@
+{
+    "name": "SuperValou.SceneLoading.Editor",
+    "references": [
+        "GUID:c6040c4f1fb348a4ab3dcc31c33ae7b2"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
