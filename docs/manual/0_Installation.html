@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>SceneLoading | Scene Loading Documentation </title>
+    <title>Installation | Scene Loading Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="SceneLoading | Scene Loading Documentation ">
+    <meta name="title" content="Installation | Scene Loading Documentation ">
     <meta name="generator" content="docfx 2.58.0.0">
     
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles/docfx.vendor.css">
-    <link rel="stylesheet" href="styles/docfx.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <meta property="docfx:navrel" content="toc.html">
-    <meta property="docfx:tocrel" content="manual/toc.html">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
-    <meta property="docfx:rel" content="">
+    <meta property="docfx:rel" content="../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -34,8 +34,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="index.html">
-                <img id="logo" class="svg" src="logo.svg" alt="">
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -77,17 +77,29 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="sceneloading">SceneLoading</h1>
+<h1 id="installation">Installation</h1>
 
-<p>Management of scene loading in a Metroidvania fashion for Unity.</p>
-<p><img src="resources/sceneloading.png" alt="SceneLoading"></p>
-<h3 id="table-of-content">Table of content</h3>
+<h2 id="install-sceneloading-20">Install SceneLoading 2.0</h2>
+<p>SceneLoading relies on the <strong><a href="https://github.com/SuperValou/UniKit#unikit">UniKit</a></strong> package, so you will need to install UniKit first, then SceneLoading:</p>
 <ul>
-<li><a href="manual/0_Installation.html">Installation</a></li>
-<li><a href="manual/1_Concepts.html">Concepts</a></li>
-<li><a href="manual/2_MainTypes.html">Main Components</a></li>
-<li><a href="manual/4_EditorTools.html">Editor Tools</a></li>
+<li>In your Unity project, open the <strong>PackageManager</strong> (<em>Window &gt; PackageManager</em>)</li>
+<li>Click on the <strong>+</strong> sign on the top left, then select <em>Add package from git URL</em></li>
 </ul>
+<p><img src="../resources/install_addFromGitUrl.png" alt="Add package from git URL"></p>
+<ul>
+<li>Paste this URL to get <strong>UniKit</strong>: <code>https://github.com/SuperValou/UniKit.git#1.2.0</code></li>
+<li>Click <strong>Add</strong> then wait for UniKit to be installed</li>
+<li>Once UniKit is installed, click on the + sign and <em>Add package from git URL</em> again</li>
+<li>Paste this URL to get <strong>SceneLoading</strong>: <code>https://github.com/SuperValou/SceneLoading.git#2.0.0</code></li>
+<li>Click <strong>Add</strong> then wait for SceneLoading to be installed</li>
+</ul>
+<p><img src="../resources/install_done.png" alt="Add package from git URL"></p>
+<ul>
+<li>You&#39;re good to go!</li>
+</ul>
+<h2 id="organizing-your-scenes">Organizing your scenes</h2>
+<p>Before doing anything else, it&#39;s important to split your scenes properly. </p>
+<p>Head over the <a href="1_Concepts.html">Concepts</a> page to see how to you can organize your scenes to make the most of SceneLoading.</p>
 </article>
           </div>
           
@@ -96,7 +108,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/SuperValou/SceneLoading-private/blob/dev/Documentation/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/SuperValou/SceneLoading-private/blob/dev/Documentation/manual/0_Installation.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -123,8 +135,8 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="styles/docfx.js"></script>
-    <script type="text/javascript" src="styles/main.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

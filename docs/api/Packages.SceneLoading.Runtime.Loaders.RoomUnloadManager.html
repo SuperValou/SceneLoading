@@ -5,9 +5,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Editor Tools | Scene Loading Documentation </title>
+    <title>Class RoomUnloadManager
+   | Scene Loading Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Editor Tools | Scene Loading Documentation ">
+    <meta name="title" content="Class RoomUnloadManager
+   | Scene Loading Documentation ">
     <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -76,38 +78,99 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
-<h1 id="editor-tools">Editor Tools</h1>
-
-<h2 id="generate-sceneinfo-assets">Generate SceneInfo assets</h2>
-<ul>
-<li><em>In Unity menu bar, under SceneLoading &gt; Generate SceneInfo assets</em></li>
-</ul>
-<p><img src="../resources/generate_assets.png" alt="Generate SceneInfo assets"></p>
-<p>This menu allows you to generate scriptable objects corresponding to your scene files, provided that you labeled these scenes properly beforehand. </p>
-<p>For example, a scene file like &quot;BossArena.unity&quot; can be labeled with <code>Scene-Room</code> to identify this scene as a <code>Room</code>.</p>
-<p><img src="../resources/scene_label.png" alt="Labelling a scene"></p>
-<p>Running the tool will then create a <code>RoomInfo</code> asset called &quot;BossArena.asset&quot; in your <code>Assets/</code> folder. You can then move it anywhere you like.</p>
-<p><strong>Additionnal notes</strong></p>
-<ul>
-<li>The label put on the .unity file <strong>must</strong> start with <code>Scene-</code> to be acknowledged by the tool.</li>
-<li>A custom label like <code>Scene-MyOwnSceneType</code> will also work, as long as you defined a <code>MyOwnSceneType</code> C# class inheriting from <code>SceneInfo</code> beforehand.</li>
-<li>Scenes having more than one <code>Scene-</code> label will be ignored and issue a warning in the console.</li>
-<li>Running the tool creates the corresponding scriptable object at the <strong>root</strong> of the <code>Assets/</code> folder. If an asset file with the same name already exists here (at the root), it will be overwritten. Existing Assets located in subfolders are ignored.</li>
-</ul>
-<h2 id="generate-load-scene-menu">Generate &#39;Load Scene&#39; Menu</h2>
-<ul>
-<li><em>In Unity menu bar, under SceneLoading &gt; Generate &#39;Load Scene&#39; Menu</em></li>
-</ul>
-<p><img src="../resources/generate_load.png" alt="Generate &#39;Load Scene&#39; Menu"></p>
-<p>This menu generates a script file that will append a new &#39;Load Scene&#39; menu to the toolbar. This generated menu allows you to quickly load a scene in the Editor without going back into the Project Window.</p>
-<p><img src="../resources/load_scene_menu.png" alt="Load Scene menu"></p>
-<p><strong>Additionnal notes</strong></p>
-<ul>
-<li>The tool uses the <code>SceneInfo</code> assets found in the project, not the <code>.unity</code> files.</li>
-<li>The tool generates a menu item for any ScriptableObject inheriting from the <code>SceneInfo</code> class, meaning your own subclasses will also be taken into account.</li>
-<li>You may want to run this tool every time a scene is added to (or removed from) the project in order to update the generated menu.</li>
-</ul>
+            <article class="content wrap" id="_content" data-uid="Packages.SceneLoading.Runtime.Loaders.RoomUnloadManager">
+  
+  
+  <h1 id="Packages_SceneLoading_Runtime_Loaders_RoomUnloadManager" data-uid="Packages.SceneLoading.Runtime.Loaders.RoomUnloadManager" class="text-break">Class RoomUnloadManager
+  </h1>
+  <div class="markdown level0 summary"><p>Manager in charge of unloading old rooms.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">RoomUnloadManager</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Packages.SceneLoading.Runtime.Loaders.html">Packages.SceneLoading.Runtime.Loaders</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="Packages_SceneLoading_Runtime_Loaders_RoomUnloadManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RoomUnloadManager : MonoBehaviour</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="Packages_SceneLoading_Runtime_Loaders_RoomUnloadManager_managedRooms" data-uid="Packages.SceneLoading.Runtime.Loaders.RoomUnloadManager.managedRooms">managedRooms</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RoomInfoList managedRooms</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RoomInfoList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Packages_SceneLoading_Runtime_Loaders_RoomUnloadManager_maxLoadedRooms" data-uid="Packages.SceneLoading.Runtime.Loaders.RoomUnloadManager.maxLoadedRooms">maxLoadedRooms</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int maxLoadedRooms</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="Packages_SceneLoading_Runtime_Loaders_RoomUnloadManager_playerCurrentRoom" data-uid="Packages.SceneLoading.Runtime.Loaders.RoomUnloadManager.playerCurrentRoom">playerCurrentRoom</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PersistentString playerCurrentRoom</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">PersistentString</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -115,9 +178,6 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/SuperValou/SceneLoading-private/blob/dev/Documentation/manual/EditorTools.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

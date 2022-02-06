@@ -1,452 +1,140 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Doors.Door.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.Doors.Door.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Doors.DoorPairing.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.Doors.DoorPairing.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Doors.DoorState.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.Doors.DoorState.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Doors.IDoor.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.Doors.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Doors.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.Loaders.MainSceneLoader.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.AssetDatabaseExt.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.Loaders.RoomLoader.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.Loaders.RoomUnloadManager.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.CustomEditors.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.Loaders.SceneManagerExt.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.CustomMenu.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.Loaders.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.CustomMenu.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.SceneInfos.GameplayInfo.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.LoadMenuGeneration.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.SceneInfos.MainSceneInfo.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.LoadSceneMenuFileGenerator.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.SceneInfos.RoomInfo.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.SceneInfos.RoomInfoList.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.PropertyDrawers.SceneIdDrawer.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.SceneInfos.SceneInfo.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.PropertyDrawers.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.SceneInfos.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.EnumFileGenerator.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.SceneRefs.SceneReference.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.FileGenerator.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneClassesGeneration.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneData.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneDataGatherer.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneIdFileGenerator.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneInfoGenerator.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneTypeFileGenerator.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.ISession.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.ISessionChunk.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.Session.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.SessionWriter.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.SubsessionChunk.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.TextChunk.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.VariableChunk.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.INode.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.ITemplate.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.ITemplateBuilding.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.SubtemplateNode.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.Template.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.TemplateParser.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.TextNode.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.VariableNode.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.Token.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.Tokenizer.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.TokenizerState.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.TokenType.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Editor.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.PersistentVariables.Persistent-1.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentBool.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentFloat.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentInt.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentQuaternion.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentRoomId.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentSet-1.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentString.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentVector3.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.PersistentVariables.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Rooms.PlayerRoomTracker.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Rooms.RoomLoadingManager.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.Rooms.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.SceneInfos.Attributes.RestrictedSceneIdAttribute.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.SceneInfos.Attributes.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.SceneInfos.SceneId.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.SceneInfos.SceneInfo.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.SceneInfos.SceneType.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.SceneInfos.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.SceneLoadings.ISceneLoadingSystem.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.SceneLoadings.SceneLoadingManager.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.SceneLoadings.SceneLoadingSystem.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://supervalou.github.io/SceneLoading/api/Assets.Scripts.LoadingSystems.SceneLoadings.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/api/Packages.SceneLoading.Runtime.SceneRefs.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://supervalou.github.io/SceneLoading/index.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/manual/CodingConventions.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/manual/0_Installation.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/manual/Concepts.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/manual/1_Concepts.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/manual/EditorTools.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/manual/2_MainTypes.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://supervalou.github.io/SceneLoading/manual/MainTypes.html</loc>
-    <lastmod>2021-08-19T11:13:37+02:00</lastmod>
+    <loc>https://supervalou.github.io/SceneLoading/manual/3_GettingStarted.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://supervalou.github.io/SceneLoading/manual/4_EditorTools.html</loc>
+    <lastmod>2022-02-06T02:02:17+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

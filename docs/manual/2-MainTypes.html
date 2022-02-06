@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Main Components | Scene Loading Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Main Components | Scene Loading Documentation ">
+    <meta name="generator" content="docfx 2.58.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="main-components">Main Components</h1>
+
+<p><a href="https://shields.io/"><img src="https://img.shields.io/badge/Status-WIP-yellow.svg" alt="Generic badge"></a></p>
+<h2 id="scene-infos">Scene Infos</h2>
+<p>SceneLoading uses some scriptable object called a <code>SceneInfo</code> to tie some data to a <code>.unity</code> scene file.</p>
+<p>A <code>SceneInfo</code> can be specialized into a <code>RoomInfo</code>, <code>GameplayInfo</code> or <code>MainSceneInfo</code> depending on what your <code>.unity</code> file represents. For example, if you have a Room in a <code>Lab.unity</code> file, you&#39;ll need to create a <code>RoomInfo</code> asset for this scene.</p>
+<blockquote><p>To create a <code>RoomInfo</code> asset, right-click in your Project tab, then go to <em>Create &gt; SceneLoading &gt; SceneInfo &gt; RoomInfo</em>. You can then edit the <code>RoomInfo</code> asset to select the <code>.unity</code> file it corresponds to.</p>
+</blockquote>
+<p>A small utility is also available to generate your <code>SceneInfo</code> assets automatically from your <code>.unity</code> files. For more info about that, please head over the <a href="4-EditorTools.html">Editor Tools</a> section.</p>
+<p>Once you have a <code>SceneInfo</code> for each one of your scenes, you can begin connecting your rooms together.</p>
+<h2 id="room-loading">Room Loading</h2>
+<h3 id="loading-a-new-room-from-the-current-room">Loading a new Room from the current room</h3>
+<p><strong>Edit time</strong></p>
+<ul>
+<li>In the current Room scene, create a new GameObject</li>
+<li>Attach a <code>RoomLoader</code> component to it</li>
+<li>Select the <code>RoomInfo</code> corrresponding to the new room you want to load</li>
+</ul>
+<p><strong>Runtime</strong></p>
+<ul>
+<li>When you want the new room to load, call the <code>Load</code> method of the <code>RoomLoader</code> component</li>
+</ul>
+<p>Note: you may want to use the <code>Trigger</code>* component to call the <code>Load</code> method when the player enters the trigger.</p>
+<p>* Details about the <code>Trigger</code> component are available in the <a href="https://github.com/SuperValou/UniKit#unikit">UniKit documentation</a>.</p>
+<h3 id="unloading-a-room">Unloading a Room</h3>
+<p>Currently, the <code>RoomLoader</code> component doesn&#39;t have an <code>Unload</code> method yet. You may want to use the auto-unloading system instead.</p>
+<h3 id="auto-unloading-old-rooms">Auto-unloading old rooms</h3>
+<p>You will usually have a collection of interconnected Rooms representing an Area. As the player moves between Rooms, you may want to unload the last visited Room automatically to save some memory.</p>
+<p><strong>Edit time</strong></p>
+<ul>
+<li>If you don&#39;t already have one, create a <code>RoomList</code> asset to represent an Area of managed Rooms.
+To create a <code>RoomList</code> asset, Right-click into your project tab, then go to <em>SceneLoading &gt; Create Room List</em>. You can then add all the Rooms of your Area to this asset</li>
+<li>If you don&#39;t already have one, create a new <code>PersistentString</code>* asset to track the room the player is in</li>
+<li>In your <code>Main Scene</code> representing the current Area, create a new GameObject</li>
+<li>Attach a <code>RoomUnloadManager</code> component to it</li>
+<li>In the <code>RoomUnloadManager</code> inspector, add your <code>PersistentString</code> asset tracking the player</li>
+<li>Add the <code>RoomList</code> asset corresponding to your Area</li>
+<li>Optionally, set the number of rooms you want to keep in memory </li>
+</ul>
+<p>* Details about persistent variables are available in the <a href="https://github.com/SuperValou/UniKit#unikit">UniKit documentation</a>.</p>
+<blockquote><p>Important note: the <code>RoomUnloadManager</code> will not unload a Room that does not appear in the given <code>RoomList</code> asset. </p>
+</blockquote>
+<h2 id="doors-connecting-rooms">Doors connecting Rooms</h2>
+<p>You may want to have physical doors connecting Rooms together. However, doors can get tricky as one side will be in one Room, but the other is in another Room that may or may not be loaded yet. Opening a door can then become tedious due to the required synchronization between each side.</p>
+<p>SceneLoading provides the <code>Door</code> component and the <code>DoorPairing</code> ScriptableObject to solve these issues.</p>
+<p><a href="https://shields.io/"><img src="https://img.shields.io/badge/Status-WIP-yellow.svg" alt="Generic badge"></a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/SuperValou/SceneLoading-private/blob/dev/Documentation/manual/2-MainTypes.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Scene Loading Documentation
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

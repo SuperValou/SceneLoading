@@ -10,7 +10,7 @@
     "changefreq": "weekly"
   },
   "homepages": [],
-  "source_base_path": "C:/Users/Aya/Git/UnityProjects/SceneLoading/Documentation",
+  "source_base_path": "C:/Users/Aya/Git/UnityProjects/SceneLoading-private/Documentation",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -24,11 +24,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Doors.Door.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.Doors.Door.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Doors.Door.html",
-          "hash": "NAVk6gWcgncUWjcaadhOgRG5iVgr94D+J/vtJuGPjSc="
+          "relative_path": "api/Packages.SceneLoading.Runtime.Doors.Door.html",
+          "hash": "BaqHpISvfLvbMCuJhZ31+Ugywu3Unoo2O60VNvqEzWc="
         }
       },
       "is_incremental": false,
@@ -36,11 +36,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Doors.DoorPairing.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.Doors.DoorPairing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Doors.DoorPairing.html",
-          "hash": "fbLqahWP8suwyi2NIVfVAwr11QsQactK7iSCIg3CgJI="
+          "relative_path": "api/Packages.SceneLoading.Runtime.Doors.DoorPairing.html",
+          "hash": "qc6zzbCDMgyJJLv3Jy7+4NHyiGPLUYpiyrgU0Vp3ugc="
         }
       },
       "is_incremental": false,
@@ -48,11 +48,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Doors.DoorState.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.Doors.DoorState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Doors.DoorState.html",
-          "hash": "3akcyI9klEgBCRfFtuusPLkQwnk1m9aPiw9S/vH3DLk="
+          "relative_path": "api/Packages.SceneLoading.Runtime.Doors.DoorState.html",
+          "hash": "GvLtBmgMTlNglm/IY8PObVm91Tz9SGo4ZhYwfbsWTRo="
         }
       },
       "is_incremental": false,
@@ -60,11 +60,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Doors.IDoor.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.Doors.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Doors.IDoor.html",
-          "hash": "BGceHTOqr0NwGTopn6wZr1abSveOnwAxfI9y4J/TzkM="
+          "relative_path": "api/Packages.SceneLoading.Runtime.Doors.html",
+          "hash": "lDYbJwsXO5XvH++9Pb9P9p5AaWyjvtFuAA6/eFp8aWU="
         }
       },
       "is_incremental": false,
@@ -72,11 +72,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Doors.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.Loaders.MainSceneLoader.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Doors.html",
-          "hash": "s+6EWYAImRxWnyuZM3eDuP9OlIsJEgshzhr/M3Q/STE="
+          "relative_path": "api/Packages.SceneLoading.Runtime.Loaders.MainSceneLoader.html",
+          "hash": "E4y+Czi4DY4F+3t2FuPFM2707EjrJrvq8rWNNuHrJI4="
         }
       },
       "is_incremental": false,
@@ -84,11 +84,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.AssetDatabaseExt.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.Loaders.RoomLoader.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.AssetDatabaseExt.html",
-          "hash": "WLerMTNr8OPXN94zClUE9JptaUQ6hp/TXciOklyDMfM="
+          "relative_path": "api/Packages.SceneLoading.Runtime.Loaders.RoomLoader.html",
+          "hash": "wUAn4bBBYFB8xvw/fvbljre/wHlAU5s/dreu/T4RKV0="
         }
       },
       "is_incremental": false,
@@ -96,11 +96,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.Loaders.RoomUnloadManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.CustomEditors.RoomLoadingManagerEditor.html",
-          "hash": "gny586TciaIm42Sw3/EX6+MVIAdkTbqLt5jhZqmyPXs="
+          "relative_path": "api/Packages.SceneLoading.Runtime.Loaders.RoomUnloadManager.html",
+          "hash": "3fvtngEdPmGn7IzX+gnQn4qPx/PHUaW5Rd/Lid0WA20="
         }
       },
       "is_incremental": false,
@@ -108,11 +108,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.CustomEditors.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.Loaders.SceneManagerExt.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.CustomEditors.html",
-          "hash": "R1OQk+x3OSPCHl/F46MuJeh+MQyJ53yHnwwA+eoPnQs="
+          "relative_path": "api/Packages.SceneLoading.Runtime.Loaders.SceneManagerExt.html",
+          "hash": "92RQp5fSBXuVem32MA55UWe2OSLFsMYs4vinSsE801I="
         }
       },
       "is_incremental": false,
@@ -120,11 +120,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.CustomMenu.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.Loaders.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.CustomMenu.html",
-          "hash": "SykhxqBPgaQ9c8dmVaa5myn2ewAnqf6SwYhTgOX7eHw="
+          "relative_path": "api/Packages.SceneLoading.Runtime.Loaders.html",
+          "hash": "QvSMQuHF9/MGRznRNVinlA8zlvwjoraN2/uemxxrPPk="
         }
       },
       "is_incremental": false,
@@ -132,11 +132,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.CustomMenu.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.GameplayInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.CustomMenu.html",
-          "hash": "TaEn4xVue5Y1RsVvN+6hRTSwfH+8LUiroAf5qN+T4D0="
+          "relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.GameplayInfo.html",
+          "hash": "VmNgesS0s62rqFXURkqiWpbHuCRKQJI2pQYxsIwtaXk="
         }
       },
       "is_incremental": false,
@@ -144,11 +144,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.LoadMenuGeneration.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.MainSceneInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.LoadMenuGeneration.html",
-          "hash": "IZxSeqxPDfz6w9zBY7zmBLSOmtQZ0xd62FzgNs0QZiA="
+          "relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.MainSceneInfo.html",
+          "hash": "+YYfAjfS+pRtLRy3PwhfrLUcaOfPS3gol4jcUQ4/wiw="
         }
       },
       "is_incremental": false,
@@ -156,11 +156,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.LoadSceneMenuFileGenerator.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.RoomInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.LoadSceneMenuFileGenerator.html",
-          "hash": "JmCy4hg+mblyrUcpCqUbM3RFgwBQfYzYSMrU0B1mMYw="
+          "relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.RoomInfo.html",
+          "hash": "JIdIYm8OOosU382+6uOd8AY3k7EQNyxv2+H5KfrmWrk="
         }
       },
       "is_incremental": false,
@@ -168,11 +168,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.RoomInfoList.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.LoadMenuGenerations.html",
-          "hash": "CuFCrJlSVATFAR+t36R4AnXjhBy8Osp8MdB5R0NgKAk="
+          "relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.RoomInfoList.html",
+          "hash": "RTWZJ0rpAPrBBZyydEMiwt9UZeb9ncX4D4e8VnFk+pU="
         }
       },
       "is_incremental": false,
@@ -180,11 +180,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.PropertyDrawers.SceneIdDrawer.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.SceneInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.PropertyDrawers.SceneIdDrawer.html",
-          "hash": "JdhNn/BdmoSVQQN9b3uyHhYR6I3ierLYKdsSkpfdQz0="
+          "relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.SceneInfo.html",
+          "hash": "F+sYQjSXdF22upI3qZLG8mH2r/YFi+XsAHWF1yavXcY="
         }
       },
       "is_incremental": false,
@@ -192,11 +192,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.PropertyDrawers.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.PropertyDrawers.html",
-          "hash": "plJSf9qB66ye4Wn1gFbYFMXHkWZHY/0e3Vvec56SRgE="
+          "relative_path": "api/Packages.SceneLoading.Runtime.SceneInfos.html",
+          "hash": "gEKDSrGqWu4mNCrMvP1mCrUIwczo2WXsupnDjcsZ2rA="
         }
       },
       "is_incremental": false,
@@ -204,11 +204,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.EnumFileGenerator.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.SceneRefs.SceneReference.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.EnumFileGenerator.html",
-          "hash": "sw1s19pZlzGGr/LDGJPoU/wNYlHVGYa8n1c7d3oMOoo="
+          "relative_path": "api/Packages.SceneLoading.Runtime.SceneRefs.SceneReference.html",
+          "hash": "VSWxtBvo1tb4S9d+fArUOOzcM8WrR42Sct3BoroWAlw="
         }
       },
       "is_incremental": false,
@@ -216,647 +216,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.FileGenerator.yml",
+      "source_relative_path": "api/Packages.SceneLoading.Runtime.SceneRefs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.FileGenerator.html",
-          "hash": "Hmtj4IYqFQmnqhs4HyOw6UzFPa10KLjzaZdU6wIRaCM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneClassesGeneration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneClassesGeneration.html",
-          "hash": "q5cpPO/rRu8VvCVo/3w1f+d5kEXnL3lc6cTOt1Lr67U="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneData.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneData.html",
-          "hash": "VKJkn55JGzMI40y3yBD0bRLZrglOZwGAI0ZSalsPs7E="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneDataGatherer.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneDataGatherer.html",
-          "hash": "Ji1mmDh5Dl97rao32cn6KOYcAm48uk06SYuWgSqYtaE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneIdFileGenerator.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneIdFileGenerator.html",
-          "hash": "7nLBFDgAG4MLzUeib3his8ngx7eL+z97/R0ZC8IrPEg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneInfoGenerator.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneInfoGenerator.html",
-          "hash": "WyqaWiML9/2LJ6pnYC/6trivXOTRJIeV1G1bkKQF/WI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneTypeFileGenerator.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.SceneTypeFileGenerator.html",
-          "hash": "ZXdEq1X7O7VziZ1gnxf2T7ynZSNZOdExVeBEJq2Cc/g="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.SceneClassesGenerations.html",
-          "hash": "Ae+hZT/xP7q5bK62D8UtUlexmu7aJumjSTUHa+5ua9Q="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.ISession.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.ISession.html",
-          "hash": "QQHffE9ncU6rLkfxbK6ejRjbw+BVU33mgG5vwgapAN4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.ISessionChunk.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.ISessionChunk.html",
-          "hash": "P87x7wyw8mEU/uRaBTg56ZGsGS8WJFLhkNNvUVxsXbw="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.Session.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.Session.html",
-          "hash": "wKtcXfl8ckkWLdZEL9tFAt7YdPQF8shUZn2LiNGDo44="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.SessionWriter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.SessionWriter.html",
-          "hash": "c3ZHHi9UXnE165sNoM9qtxP1PgAAajbcaMoTvGpjIeI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.SubsessionChunk.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.SubsessionChunk.html",
-          "hash": "wDhUN1+e2HaAb17mFn7r03o6W+fKWPGGszFwe9Pf9UA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.TextChunk.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.TextChunk.html",
-          "hash": "O/4Gv7MmbOsVM7lzUSD4dzqzWgiiwNizXR55X+eNvAg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.VariableChunk.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.VariableChunk.html",
-          "hash": "gHpBQwJNpOLfBme73oqhSas9q04ZqA0pg2f0P4BxH88="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Sessions.html",
-          "hash": "yTGHGt5s72lKthWC9r2hqF8lYI9lYob6iFvpWFepfNQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.INode.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.INode.html",
-          "hash": "TKbuBvpmg7SpHCCVHxjjVv19xF0Hvc7D51Fj3+jzxKg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.ITemplate.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.ITemplate.html",
-          "hash": "Ea+1leQUK2kxjacAn0kV6LbruYqNAu9oCQbiWLnxd1I="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.ITemplateBuilding.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.ITemplateBuilding.html",
-          "hash": "PugZR/cUeuicxfePEM6abL37jhr/77/q1hP+gtbllxA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.SubtemplateNode.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.SubtemplateNode.html",
-          "hash": "F+C15q/PMQGnwez0U6+J4M2GYWQu9bsngq2VhndjdSs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.Template.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.Template.html",
-          "hash": "sNo4Jw/vSYx14fDEodaqZXjB0f6Lj0QLebvNY7+1iDk="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.TemplateParser.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.TemplateParser.html",
-          "hash": "csldDowKj8BehPukx7yHwtqxqez8qkfq/8O1EVsFdP8="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.TextNode.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.TextNode.html",
-          "hash": "c/5xaUKy+bgqMmOqHaWp2r550kxcBwJC8zyyKaU0wSY="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.VariableNode.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.VariableNode.html",
-          "hash": "UUa1Ikue2EH/Z9p/yCDtztAs49ajziMIb3jQX52LGxw="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Templates.html",
-          "hash": "ranFexgurNWKO2ti9QUSRn5+0ynDrpaXwXNuU+/hdpE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.Token.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.Token.html",
-          "hash": "dzaFgXbr1JACxsGdVYyNr41DirEXFtrZx/OlP0ZMeUU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.TokenType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.TokenType.html",
-          "hash": "m53U5JEF/LkclVULm9TYaoIdliwETAd9+w2wJS3oHMI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.Tokenizer.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.Tokenizer.html",
-          "hash": "Ql+37z7OC+JmpzvtPYw4YsgZlU+Vu89S15rGy2mzMoE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.TokenizerState.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.TokenizerState.html",
-          "hash": "nNusYyQ06TgQm+uH6SiDWZKVPGzEWNC89hjI/qTFOIM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.TemplateEngine.Tokens.html",
-          "hash": "Cd6cuIQA8p1LS19Lu+oeEqM+Poh7q/W+TRYk9ZXC2UA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Editor.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Editor.html",
-          "hash": "uNL0jW6qWT1o4bAVbXlq6G/lgnUrZHZQgl6RTy5Vwww="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.Persistent-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.Persistent-1.html",
-          "hash": "zM3fwNNGu1iBsd40i/rUO5T5iwMYDfxtLKw9mV2CMT8="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentBool.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentBool.html",
-          "hash": "SKmUnMPA5p9TsrOp8zVQnP4mccy1Khb6gLqmxia0/yU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentFloat.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentFloat.html",
-          "hash": "to81cL96DDLSSOCLUhNGHwjX+F6oWJokuD9sQIM/drg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentInt.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentInt.html",
-          "hash": "SgQzR5d1rrvxUo2tOz2FyVBxrp+D1V1BRFcuyCx+cbg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentQuaternion.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentQuaternion.html",
-          "hash": "76WVtiRdoeGGVnbdrSG/J/a2lOx6GLtTnK/Dr+oZj94="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentRoomId.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentRoomId.html",
-          "hash": "G+iDrvLWxKxjstuIHU4xxpHjdE5GVYN3AYP+0B8WQ2g="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentSet-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentSet-1.html",
-          "hash": "gY8Dyva4sMLgkFF4EZd38dc9W1NohGYbvXLamqsQjro="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentString.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentString.html",
-          "hash": "umwtqjOMfBF+/stN7IuGvFaNTb6fcbw0q5NUyKmbkaI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentVector3.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.PersistentVector3.html",
-          "hash": "m/R5c80acHtiBjANJtZliEn8UjYMjy2n1Xb38CqX8xI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.PersistentVariables.html",
-          "hash": "NWjNxDtTJYrq3EG102pigL+cKICp+1feInuUzFUMJA0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Rooms.PlayerRoomTracker.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Rooms.PlayerRoomTracker.html",
-          "hash": "d0Z5WRsxAkawqE5/lF69zW0RaYwxYttjmgUeowXGDaU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Rooms.RoomLoadingManager.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Rooms.RoomLoadingManager.html",
-          "hash": "wxedIV7pqhuXo/ttswhhJBMASMhor15+v1gFuMoWNI0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.Rooms.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.Rooms.html",
-          "hash": "2WIaV6zVWVa/fSDLQLpVwJ0CclpzPe4bRoi4W7xDgOI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.Attributes.RestrictedSceneIdAttribute.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.Attributes.RestrictedSceneIdAttribute.html",
-          "hash": "S6ck8MTYPUpPhcSWkRMTeJkhth5qrefk807PIpqbPQE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.Attributes.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.Attributes.html",
-          "hash": "S7KANwevmmCGsvKst0AsAgHsleLJGu7/Ki4xQsSIwPk="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneId.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneId.html",
-          "hash": "MvSAH7u4eCRg8vO62i+l7uK7OqK22Pa7rI/XN1IdMNc="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneInfo.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneInfo.html",
-          "hash": "fJFiw2jVOyyjLNmgUHVuMQNTVAUDJ61D7LMBiVjh4Dk="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.SceneType.html",
-          "hash": "BlfyNixvtsH3osVUpLPnpOhMLCzerP3m8xkxqPOBggc="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.SceneInfos.html",
-          "hash": "FhYfMqKES7go7y993wLECIU7PuuHpQkiyhIXRjkw9MU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.SceneLoadings.ISceneLoadingSystem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.SceneLoadings.ISceneLoadingSystem.html",
-          "hash": "mnfKiJhg2CifTqWO/eWp/Clz9yl0ouWhObAOdVXzzgQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.SceneLoadings.SceneLoadingManager.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.SceneLoadings.SceneLoadingManager.html",
-          "hash": "CpFOTrGl+s664SZ/TVSv6q31OkXQkCI3zcQnaiybWgY="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.SceneLoadings.SceneLoadingSystem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.SceneLoadings.SceneLoadingSystem.html",
-          "hash": "r+ViO/eigXcz0Ifv4v53gPE8EhNS2lcFmYE6u05hVaY="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Assets.Scripts.LoadingSystems.SceneLoadings.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Assets.Scripts.LoadingSystems.SceneLoadings.html",
-          "hash": "qnp/x1IbQyyzN+2b/sKLis5UbQ9dACsMqVlyaK/9eCY="
+          "relative_path": "api/Packages.SceneLoading.Runtime.SceneRefs.html",
+          "hash": "97W8jw/kKxmfsfpdTtad0OimvJEB+w8Pzj6/zxbUxrQ="
         }
       },
       "is_incremental": false,
@@ -868,7 +232,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "HMOiftp58kgz5rTssDmOdCaEUSvZjCh2aFKywO7GPaU="
+          "hash": "WYblKYqT+e51EY5QRradNovB9ITHC8+Xfba/VwFXle4="
         }
       },
       "is_incremental": false,
@@ -880,7 +244,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "GJwbGoOCnfCbVehnEwTWlmM5mYoj0YzZjagyiyqrrs8="
+          "hash": "QQNqCYb5DO7ZYr0Yu6xlUBAwgsw5Fre9x8Q5E9ipK0c="
         }
       },
       "is_incremental": false,
@@ -888,11 +252,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "manual/CodingConventions.md",
+      "source_relative_path": "manual/0_Installation.md",
       "output": {
         ".html": {
-          "relative_path": "manual/CodingConventions.html",
-          "hash": "DdTu/tjDZb10h1K7MoNPgZvdZPX05cp6ISxfENxufVc="
+          "relative_path": "manual/0_Installation.html",
+          "hash": "146qZBLQOoXExistTkxh/NhE5bA5EX9LiFxIMhIKRtE="
         }
       },
       "is_incremental": false,
@@ -900,11 +264,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "manual/Concepts.md",
+      "source_relative_path": "manual/1_Concepts.md",
       "output": {
         ".html": {
-          "relative_path": "manual/Concepts.html",
-          "hash": "2Sr3vR67mP0jtXCokKxa9JMBO81PIEUjlIOwNtiisXk="
+          "relative_path": "manual/1_Concepts.html",
+          "hash": "QXUJOVv2naX/a9c6EmTIbKJEVFFsn3Ea4K9KBFq/LMA="
         }
       },
       "is_incremental": false,
@@ -912,11 +276,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "manual/EditorTools.md",
+      "source_relative_path": "manual/2_MainTypes.md",
       "output": {
         ".html": {
-          "relative_path": "manual/EditorTools.html",
-          "hash": "NX8jpxMV4pI6elq9taWq0x21JM7XlajIC726SDX3+MM="
+          "relative_path": "manual/2_MainTypes.html",
+          "hash": "M0+g+W1C3CorDITtPEp9Ph9emgvEG15T9BJNIw31oUc="
         }
       },
       "is_incremental": false,
@@ -924,11 +288,23 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "manual/MainTypes.md",
+      "source_relative_path": "manual/3_GettingStarted.md",
       "output": {
         ".html": {
-          "relative_path": "manual/MainTypes.html",
-          "hash": "TrwfyOOYVThSBDvhWp9DHzsNoHFoFa9kE95eyxzBTCc="
+          "relative_path": "manual/3_GettingStarted.html",
+          "hash": "fP65yByAX/1WpWYpvD3/OT6Xt1K4lZlSnSPUMYzluuM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/4_EditorTools.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/4_EditorTools.html",
+          "hash": "HQ/kk+Z8vOxuzlgB9LER4zi8VepNNgjFMKNOF/H1zZs="
         }
       },
       "is_incremental": false,
@@ -940,7 +316,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/toc.html",
-          "hash": "zm1SxpNaePWDR6U2b1Vk+6RxhnAkfQ90/vLuwYX5lPo="
+          "hash": "/4M7n5/6LOfz6M0tJajW6QYNQBq13Vbfu83HmgNsi4U="
         }
       },
       "is_incremental": false,
@@ -952,6 +328,83 @@
       "output": {
         "resource": {
           "relative_path": "resources/areas_example.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/create_sceneInfo.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/create_sceneInfo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/generate_assets.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/generate_assets.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/generate_load.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/generate_load.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/install_addFromGitUrl.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/install_addFromGitUrl.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/install_done.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/install_done.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/load_scene_menu.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/load_scene_menu.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/mainTypes_sceneInfo.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/mainTypes_sceneInfo.png"
         }
       },
       "is_incremental": false,
@@ -991,12 +444,23 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "resources/sceneloading.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/sceneloading.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "L2mlaEwp9E4K4Y/QZNvIrGOg3tBS9WJG6/Eh/uWJ/nY="
+          "hash": "p8lL6NsqQSaTZbVCtpPmHa1kd0Qfwe74MU94rBPaSEA="
         }
       },
       "is_incremental": false,
@@ -1015,14 +479,14 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 5,
-          "skipped_file_count": 5
+          "total_file_count": 6,
+          "skipped_file_count": 6
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 70,
-          "skipped_file_count": 70
+          "total_file_count": 17,
+          "skipped_file_count": 17
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

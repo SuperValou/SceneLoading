@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Editor Tools | Scene Loading Documentation </title>
+    <title>Concepts | Scene Loading Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Editor Tools | Scene Loading Documentation ">
+    <meta name="title" content="Concepts | Scene Loading Documentation ">
     <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -77,37 +77,34 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="editor-tools">Editor Tools</h1>
+<h1 id="concepts">Concepts</h1>
 
-<h2 id="generate-sceneinfo-assets">Generate SceneInfo assets</h2>
-<ul>
-<li><em>In Unity menu bar, under SceneLoading &gt; Generate SceneInfo assets</em></li>
-</ul>
-<p><img src="../resources/generate_assets.png" alt="Generate SceneInfo assets"></p>
-<p>This menu allows you to generate scriptable objects corresponding to your scene files, provided that you labeled these scenes properly beforehand. </p>
-<p>For example, a scene file like &quot;BossArena.unity&quot; can be labeled with <code>Scene-Room</code> to identify this scene as a <code>Room</code>.</p>
-<p><img src="../resources/scene_label.png" alt="Labelling a scene"></p>
-<p>Running the tool will then create a <code>RoomInfo</code> asset called &quot;BossArena.asset&quot; in your <code>Assets/</code> folder. You can then move it anywhere you like.</p>
-<p><strong>Additionnal notes</strong></p>
-<ul>
-<li>The label put on the .unity file <strong>must</strong> start with <code>Scene-</code> to be acknowledged by the tool.</li>
-<li>A custom label like <code>Scene-MyOwnSceneType</code> will also work, as long as you defined a <code>MyOwnSceneType</code> C# class inheriting from <code>SceneInfo</code> beforehand.</li>
-<li>Scenes having more than one <code>Scene-</code> label will be ignored and issue a warning in the console.</li>
-<li>Running the tool creates the corresponding scriptable object at the <strong>root</strong> of the <code>Assets/</code> folder. If an asset file with the same name already exists here (at the root), it will be overwritten. Existing Assets located in subfolders are ignored.</li>
-</ul>
-<h2 id="generate-load-scene-menu">Generate &#39;Load Scene&#39; Menu</h2>
-<ul>
-<li><em>In Unity menu bar, under SceneLoading &gt; Generate &#39;Load Scene&#39; Menu</em></li>
-</ul>
-<p><img src="../resources/generate_load.png" alt="Generate &#39;Load Scene&#39; Menu"></p>
-<p>This menu generates a script file that will append a new &#39;Load Scene&#39; menu to the toolbar. This generated menu allows you to quickly load a scene in the Editor without going back into the Project Window.</p>
-<p><img src="../resources/load_scene_menu.png" alt="Load Scene menu"></p>
-<p><strong>Additionnal notes</strong></p>
-<ul>
-<li>The tool uses the <code>SceneInfo</code> assets found in the project, not the <code>.unity</code> files.</li>
-<li>The tool generates a menu item for any ScriptableObject inheriting from the <code>SceneInfo</code> class, meaning your own subclasses will also be taken into account.</li>
-<li>You may want to run this tool every time a scene is added to (or removed from) the project in order to update the generated menu.</li>
-</ul>
+<p>The following concepts are inspired from how a classic Metroidvania game is usually broken down.</p>
+<h3 id="world">World</h3>
+<p>The <strong>World</strong> of the game will be defined as the universe the game takes place in. It encompasses all locations, and can be thought of as the whole main game itself.</p>
+<h3 id="area">Area</h3>
+<p>The world is usually split into interconnected <strong>Areas</strong> defining the general structure and pacing of the game. An Area can be thought of as a big sequence, as going through an Area usually takes at least one full play session. As the player progresses through the game, new Areas become available to her and more connections between previous Areas open up to allow some form of fast-travel or easier back-tracking. 
+Note that travelling between Areas often causes an acceptable downtine in gameplay (usually in the form of a loading screen) due to the underlying loading happening in the background.</p>
+<p><strong>Example of Areas:</strong></p>
+<p><img src="../resources/areas_example.png" alt="Example of interconnected Areas in the World."></p>
+<h3 id="room">Room</h3>
+<p>A given area is then divided into <strong>Rooms</strong> that the player can explore. A Room is a small, contained, physical location where one or more gameplay elements may happen, like an enemy to fight or a puzzle to solve.</p>
+<p><strong>Example of Rooms:</strong></p>
+<p><img src="../resources/rooms_example.png" alt="Example of Rooms in an Area."></p>
+<h1 id="scenes">Scenes</h1>
+<p>From these concepts, Unity Scenes can be divided into at least three different types:</p>
+<h3 id="main-scene">Main Scene</h3>
+<p>A <strong>Main Scene</strong> is an entry point of the game, and may correspond to an area.</p>
+<p>The key idea is that a Main scene does not actually contain any geometry, mesh or any other physical objects, but is instead responsible for additively <strong>loading the player</strong> and <strong>loading the first few rooms</strong> of the current area. </p>
+<p>GameObjects managing the game as a whole are supposed to be found in a Main Scene.</p>
+<h3 id="gameplay">Gameplay</h3>
+<p>A <strong>Gameplay</strong> scene contains everything related to the player. </p>
+<p>GameObjects related to controls, player camera and UI are expected to be found in a Gameplay scene. No physical object bound to a specific location should be present in such a scene.</p>
+<h3 id="room-1">Room</h3>
+<p>As the name implies, a <strong>Room</strong> corresponds to a room, and is a physical location (or level) the player can explore and interact with.</p>
+<p>Most of the familiar GameObjects like ground, walls, props, interactive items and entities such as enemies or bosses are expected to be found here.</p>
+<p><strong>Relations between Scene types:</strong></p>
+<p><img src="../resources/scene_types_example.png" alt="Relation between Scene Types."></p>
 </article>
           </div>
           
@@ -116,7 +113,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/SuperValou/SceneLoading-private/blob/dev/Documentation/manual/EditorTools.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/SuperValou/SceneLoading-private/blob/dev/Documentation/manual/1-Concepts.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
